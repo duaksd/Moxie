@@ -1,0 +1,89 @@
+:root {
+    /* Cores */
+    --preto: #000;
+    --azul-masc: #9698BC;
+    --rosa-fem: #B096BC;
+    --branco: #FFF;
+    --cinza-pers: #D9D9D9;
+}
+
+/*------------------------*\
+ Reset
+\*------------------------*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+img,
+span,
+data,
+input,
+botton,
+textarea,
+ion-icon {
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    height: auto;
+}
+
+input,
+select,
+textarea {
+    background: none;
+    border: none;
+    font: inherit;
+}
+
+input,
+select,
+text {
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+html {
+    font-family: var(--ff-poppins);
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bege);
+    color: var(--black);
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+.barra-promocao {
+    display: flex;
+    flex: 1;
+    background-color: var(--cinza-pers);
+    height: 25px;
+    
+}
+
+.header-bar {
+    background-color: var(--rosa-fem);
+    height: 50px;
+
+}
+
