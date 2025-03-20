@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOXIE</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="img/banner.jpg">
 </head>
 <body>
     <nav>
         <div class="barra-promocao">
-            <div class="container">
+            <div class="container-promocao">
                 <ul class="barra-promocao-lista">
                     <li><a href="#">Troca fácil</a></li>
                     <li><a href="#">frete grátis a partir de R$150</a></li>
@@ -20,30 +26,154 @@
         
     </nav>
     
-    <header>
-        <div class="header-bar">
-          <div class="container">...</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="h1-titulo">MOXIE</h1>
+            <div class="container">
+         
+                    <form action=" " method="post">
+                        <div class="container-busca">
+                            <input type="search" id="busca" name="q" placeholder="Buscar produtos...">
+                            <button type="submit"></button>
+                        </div>
             
+                    </form>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <section class="produtos">
-            <div class="produto">
-                <img src="img/masculina1.jpg" alt="produto1">
-                <h2>Produto 1</h2>
-                <p>Descrição do produto 1</p>
-                <p>R$ 100,00</p>
-                <button>Comprar</button>
+    <!-- Banner -->
+    <section class="banner" style="background-image: url('img/banner.png')">
+    </section>
+
+    <!-- Categoria -->
+    <section class="categoria">
+        <div class="categoria-conteudo">   
+            <div class="itens-categoria">
+                <article class="item">
+                    <h3 class="titulo-item">MASCULINO</h3>
+                </article>
+                <article class="item">
+                    <h3 class="titulo-item feminino">FEMININO</h3>
+                </article>
+                <!-- Adicionar mais itens de conteúdo aqui -->
             </div>
-                <div class="produto">
-                    <img src="img/produto1.jpg" alt="produto1">
-                    <h2>Produto 2</h2>
-                    <p>Descrição do produto 1</p>
-                    <p>R$ 85,40</p>
-                    <button>Comprar</button>
+        </div>
+        
+    </section>
+
+    <!-- Produtos -->
+    <section class="produtos">
+        <h2>Produtos</h2>
+        <div class="container-produtos">
+            <div class="btn-maisvendidos">MAIS VENDIDOS</div>
+            <div class="caixa-cards">
+                <div class="cards">
+                    <img src="img/produto1camisa.png" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$199,90</h4>
+                        <p>3x de $66,33 sem juros</p>
+                        <a href="produto.html"><button>Comprar</button></a>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
                 </div>
-            </section>
-    </main>
+                <div class="cards">
+                    <img src="img/produto2camisa.png" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$199,90</h4>
+                        <p>3x de $66,33 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+                <div class="cards">
+                    <img src="img/produto1camisa.webp" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$45,90</h4>
+                        <p>3x de $15,30 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+
+                </div>
+                <div class="cards">
+                    <img src="img/produto1camisa.webp" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$45,90</h4>
+                        <p>3x de $15,30 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="caixa-cards">
+                <div class="cards">
+                    <img src="img/produto1camisa.png" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$199,90</h4>
+                        <p>3x de $66,33 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+                <div class="cards">
+                    <img src="img/produto2camisa.png" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$199,90</h4>
+                        <p>3x de $66,33 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+                <div class="cards">
+                    <img src="img/produto1camisa.webp" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$45,90</h4>
+                        <p>3x de $15,30 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+
+                </div>
+                <div class="cards">
+                    <img src="img/produto1camisa.webp" style="width: 100%">
+                    <div class="caixinha">
+                        <h3>PRODUTO X</h3>
+                        <h4>$45,90</h4>
+                        <p>3x de $15,30 sem juros</p>
+                        <button>Comprar</button>
+                        <button class="carrinho">Adicionar ao carrinho</button>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="sobre">
+        <h2>Sobre a Academia</h2>
+        <p>Oferecemos os melhores equipamentos e acessórios para transformar sua rotina fitness.</p>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 MOXIE - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

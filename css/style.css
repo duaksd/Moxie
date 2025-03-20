@@ -5,28 +5,43 @@
     --rosa-fem: #B096BC;
     --branco: #FFF;
     --cinza-pers: #D9D9D9;
+
+    /* Fontes */
+    --ff-poppins: "Poppins", sans-serif;
+    --ff-OST: "Old Standard TT", serif;
 }
 
 /* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 li {
     list-style: none;
 }
 
 /* Nav promocoes */
-
 .barra-promocao {
     background-color: var(--cinza-pers);
-    padding: 2px 0;
+    padding: 10px 0;
+    height: 25px;
+}
+
+.container-promocao {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .barra-promocao-lista {
-    display: flex;  /* Coloca os itens lado a lado */
-    gap: 20px; /* Espaçamento entre os itens */
-    list-style: none; /* Remove os marcadores da lista */
-    justify-content: flex-end; /* Alinha os itens a direita Alinha na esquerda flex-start*/
+    display: flex;
+    gap: 20px;
     padding: 0;
     margin: 0;
+    font-size: 14px;
 }
 
 .barra-promocao-lista li a {
@@ -34,10 +49,276 @@ li {
     color: var(--preto);
 }
 
-
 .header-bar {
     background-color: var(--rosa-fem);
     height: 50px;
-
 }
 
+/* Header */
+header {
+    background: #111;
+    color: white;
+    padding: 10px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+header h1 {
+    font-size: 24px;
+    font-family: var(--ff-OST);
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: rgb(224, 187, 152);
+}
+
+/* Pesquisa */
+.container-busca {
+    position: relative;
+    width: 500px;
+}
+
+.container-busca input {
+    height: 40px;
+    border: 1px solid #ececec;
+    border-radius: 25px;
+    outline: none;
+    padding-left: 45px;
+    width: 100%;
+    background-color: var(--branco);
+    color; var(--preto);
+}
+
+.container-busca button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+    background: url('../img/lupa.png') center no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.container-produtos{
+    margin: 0 ;
+    padding: 0 auto;
+    min-height: 600px;
+    background-image: url('../img/parallax.png');
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* Banner */
+.banner {
+    background: url('https://source.unsplash.com/1600x900/?gym,fitness') no-repeat center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Produtos */
+.produtos {
+    text-align: center;
+    padding: 40px 0;
+    background: #f4f4f4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.produto {
+    background: white;
+    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.produto img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.produto h3 {
+    margin: 10px 0;
+}
+
+.produto p {
+    color: #555;
+    font-size: 14px;
+}
+
+.produto button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.produto button:hover {
+    background: #0056b3;
+}
+
+/* Sobre */
+.sobre {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ddd;
+}
+
+.sobre h2 {
+    font-size: 24px;
+}
+
+.sobre p {
+    font-size: 16px;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Rodapé */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+/* mais vendidos*/
+.btn-maisvendidos{
+    background-color:rgb(99, 109, 151);
+    color: #FFF;
+    text-decoration: none;
+    margin:0px 20px ;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 28px;
+    max-width: 100%;
+}
+
+.caixa-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.cards{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 18%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.3s ease-out;
+}
+
+.cards:hover{
+    border: 1px solid #9698BC;
+    box-shadow: 0 4px 8px 0 #9698BC;
+    transform: scale(1.04);
+    transition: all 0.1s ease-in;
+  }
+
+  .caixinha {
+    padding: 16px;
+    font-family: 'Comfortaa', cursive;
+    
+  }
+
+  /* Estilo geral da categoria de conteúdo */
+.categoria-conteudo {
+    background-color: #f4f4f4; /* Cor de fundo suave para a categoria */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 8px; /* Cantos arredondados */
+    margin: 20px 0; /* Espaçamento externo */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título da categoria */
+.titulo-categoria {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 15px; /* Espaçamento abaixo do título */
+}
+
+/* Descrição da categoria */
+.descricao-categoria {
+    font-size: 16px;
+    color: #666;
+    text-align: center; /* Centraliza a descrição */
+    margin-bottom: 25px; /* Espaçamento abaixo da descrição */
+}
+
+/* Estilo para os itens dentro da categoria */
+.itens-categoria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsivo */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+/* Estilo para cada item dentro da categoria */
+.itens-categoria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cada item ocupa 50% da largura da tela */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+/* Estilo para cada item dentro da categoria */
+.item {
+    background-color: #fff; /* Fundo branco para cada item */
+    border-radius: 8px; /* Arredonda os cantos dos itens */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título de cada item */
+.titulo-item {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.feminino {
+    text-align: right; /* Alinha o texto à direita */
+}
