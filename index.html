@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Preload -->
     <link rel="preload" as="image" href="img/banner.jpg">
@@ -17,8 +18,8 @@
         <div class="barra-promocao">
             <div class="container-promocao">
                 <ul class="barra-promocao-lista">
-                    <li><a href="#">Troca fácil</a></li>
-                    <li><a href="#">frete grátis a partir de R$150</a></li>
+                    <li><a href="#">TROCA FÁCIL</a></li>
+                    <li><a href="#">FRETE GRÁTIS A PARTIR DE R$150</a></li>
             </ul>
             </div>
 
@@ -26,91 +27,169 @@
         
     </nav>
     
-    <!-- Header -->
     <header class="header">
         <div class="container">
-            <h1 class="h1-titulo">MOXIE</h1>
-            <div class="container">
-         
-                    <form action=" " method="post">
-                        <div class="container-busca">
-                            <input type="search" id="busca" name="q" placeholder="Buscar produtos...">
-                            <button type="submit"></button>
-                        </div>
-            
-                    </form>
-            <nav>
+            <!-- Título -->
+            <h1 class="h1-titulo">
+                <a href="index.html" aria-label="Voltar para a página inicial">MOXIE</a>
+            </h1>
+    
+            <!-- Categorias -->
+            <nav class="header-categories">
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="feminino.html">Feminino</a></li>
+                    <li><a href="masculino.html">Masculino</a></li>
                 </ul>
             </nav>
-        </div>
-        
-        <div
-        aria-label="User Login Button"
-        tabindex="0"
-        role="button"
-        class="user-profile"
-        >
-        <div class="user-profile-inner">
-        <svg
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24">
-            <g data-name="Layer 2" id="Layer_2">
-            <path
-                d="m15.626 11.769a6 6 0 1 0 -7.252 0 9.008 9.008 0 0 0 -5.374 8.231 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 9.008 9.008 0 0 0 -5.374-8.231zm-7.626-4.769a4 4 0 1 1 4 4 4 4 0 0 1 -4-4zm10 14h-12a1 1 0 0 1 -1-1 7 7 0 0 1 14 0 1 1 0 0 1 -1 1z"
-            ></path>
-            </g>
-        </svg>
-        <p>Login</p>
-        </div>
+    
+            <!-- Botões estilizados -->
+            <div class="header-buttons">
+                <!-- Botão de pesquisa -->
+                <div class="search-container">
+                    <!-- Checkbox para controlar a exibição -->
+                    <input type="checkbox" id="search-toggle" class="search-toggle" />
+                    
+                    <!-- Botão da lupa -->
+                    <label for="search-toggle" class="icon-button search-icon">
+                        <i class='bx bx-search'></i>
+                    </label>
+                    
+                    <!-- Caixa de pesquisa -->
+                    <div class="search-box">
+                        <label for="search-toggle" class="close-search" aria-label="Fechar Pesquisa">
+                            <i class='bx bx-x'></i>
+                        </label>
+                        <input type="text" placeholder="Digite sua busca..." />
+                        <button type="submit">Buscar</button>
+                    </div>
+                </div>
+
+                <!-- Botão de Carrinho -->
+                <a href="carrinho.html" aria-label="Ir para a página do carrinho" class="icon-button">
+                    <i class='bx bx-cart'></i>
+                </a>
+    
+                <!-- Botão de Login -->
+                <button aria-label="User Login Button" class="icon-button">
+                    <i class='bx bx-user'></i>
+                </button>
+
+                <!-- Botão de Ajuda -->
+                <button aria-label="Help Button" class="icon-button">
+                    <i class='bx bx-help-circle'></i>
+                </button>
+            </div>
+
+            <!-- Menu Hambúrguer -->
+            <label for="menu-toggle" class="menu-icon">
+                <i class='bx bx-menu'></i>
+            </label>
+            <input type="checkbox" id="menu-toggle" />
+            <nav class="menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Banner -->
-    <section class="banner" style="background-image: url('img/banner.png')">
+    <section class="banner" style="background-image: url('img/banner1.png')">
     </section>
 
     <!-- Categoria -->
+    <!--
     <section class="categoria">
         <div class="categoria-conteudo">   
             <div class="itens-categoria">
-                <article class="item">
-                    <h3 class="titulo-item">MASCULINO</h3>
-                </article>
-                <article class="item">
+                <article class="item-1">
                     <h3 class="titulo-item feminino">FEMININO</h3>
                 </article>
-                <!-- Adicionar mais itens de conteúdo aqui -->
+                <article class="item-2">
+                    <h3 class="titulo-item masculino">MASCULINO</h3>
+                </article>
+                <-!- Adicionar mais itens de conteúdo aqui ->-
             </div>
         </div>
         
     </section>
+    -->
 
     <!-- Produtos -->
     <section class="produtos">
-        <h2>Produtos</h2>
+        <h2>Mais vendidos na semana</h2>
         <div class="grid">
             <div class="produto">
-                <img src="img" alt="Roupa Fitness">
-                <h3>Roupa Fitness</h3>
-                <p>Alta qualidade e conforto.</p>
+                <img src="img/calca-legging.webp" alt="Calça Legging Bicolor">
+                <h3>Calça Legging Bicolor</h3>
+                <p>Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.</p>
+                <h2 class="preco">R$ 40,41</h2>
                 <button>Comprar</button>
             </div>
             <div class="produto">
-                <img src="https://source.unsplash.com/300x200/?dumbbell" alt="Roupas">
-                <h3>roupas</h3>
+                <img src="img/calca-legging.webp" alt="Roupas">
+                <h3>Roupa</h3>
                 <p>Para treino intenso.</p>
+                <h2 class="preco">R$ 299,99</h2>
                 <button>Comprar</button>
             </div>
             <div class="produto">
-                <img src="https://source.unsplash.com/300x200/?gym-shoes" alt="Tênis Esportivo">
+                <img src="img/calca-legging.webp" alt="Tênis Esportivo">
                 <h3>Tênis Esportivo</h3>
                 <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Calça Legging Bicolor">
+                <h3>Calça Legging Bicolor</h3>
+                <p>Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.</p>
+                <h2 class="preco">R$ 40,41</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Roupas">
+                <h3>Roupa</h3>
+                <p>Para treino intenso.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Tênis Esportivo">
+                <h3>Tênis Esportivo</h3>
+                <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Calça Legging Bicolor">
+                <h3>Calça Legging Bicolor</h3>
+                <p>Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.</p>
+                <h2 class="preco">R$ 40,41</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Roupas">
+                <h3>Roupa</h3>
+                <p>Para treino intenso.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Tênis Esportivo">
+                <h3>Tênis Esportivo</h3>
+                <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/calca-legging.webp" alt="Tênis Esportivo">
+                <h3>Tênis Esportivo</h3>
+                <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
                 <button>Comprar</button>
             </div>
         </div>

@@ -1,0 +1,604 @@
+:root {
+    /* Cores */
+    --preto: #000;
+    --azul-masc: #9698BC;
+    --rosa-fem: #B096BC;
+    --branco: #FFF;
+    --cinza-pers: #D9D9D9;
+
+    /* Fontes */
+    --ff-poppins: "Poppins", sans-serif;
+    --ff-OST: "Old Standard TT", serif;
+}
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+/* Nav promocoes */
+.barra-promocao {
+    background-color: var(--cinza-pers);
+    padding: 5px;
+    height: 25px;
+}
+
+@keyframes rolar {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.container-promocao {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.barra-promocao-lista {
+    text-align: right;
+    display: flex;
+    font-family: var(--ff-poppins);
+    font-weight: 600;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap; /* Impede quebra de linha */
+    animation: rolar 20s linear infinite; /* Define a animação */
+    overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
+}
+
+.barra-promocao-lista li a {
+    text-decoration: none;
+    color: var(--preto);
+}
+
+/* Header */
+
+.header-bar {
+    background-color: var(--rosa-fem);
+    height: 50px;
+}
+
+header {
+    background: var(--azul-masc);
+    color: var(--branco);
+    padding: 10px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    height: auto;
+    gap: 20px;
+}
+
+/* Título */
+header h1 {
+    font-size: 29px;
+    font-weight: lighter;
+    font-family: var(--ff-OST);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: rgb(224, 187, 152);
+}
+
+header h1 {
+    font-size: 29px;
+    font-weight: lighter;
+    font-family: var(--ff-OST);
+}
+
+/* Estilo do título no header */
+.h1-titulo a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: var(--branco); /* Cor do texto */
+    transition: color 0.3s ease;
+}
+
+.h1-titulo a:hover {
+    color: rgba(46, 142, 255, 0.7); /* Cor ao passar o mouse */
+}
+
+/* Nav promoções */
+.barra-promocao {
+    background-color: var(--cinza-pers);
+    padding: 5px;
+    height: 25px;
+    overflow: hidden; /* Garante que o conteúdo extra não afete o tamanho da página */
+}
+
+.barra-promocao-lista {
+    text-align: right;
+    display: flex;
+    font-family: var(--ff-poppins);
+    font-weight: 600;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap; /* Impede quebra de linha */
+    animation: rolar 20s linear infinite; /* Define a animação */
+    overflow: hidden; /* Oculta o texto que ultrapassa os limites */
+}
+
+/* Categorias no Header */
+.header-categories ul {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-categories ul li a {
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header-categories ul li a:hover {
+    color: rgba(46, 142, 255, 0.7); /* Cor de destaque ao passar o mouse */
+}
+
+/* Botões do Header */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+/* Botão com apenas o ícone */
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Tamanho do ícone */
+    color: var(--branco); /* Cor do ícone */
+    text-decoration: none; /* Remove o sublinhado do link */
+    background: none; /* Remove o fundo padrão */
+    border: none; /* Remove bordas */
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    color: rgba(46, 142, 255, 0.7); /* Cor ao passar o mouse */
+}
+
+.icon-button:focus {
+    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline-offset: 2px;
+}
+
+/* Remove a borda padrão ao focar nos botões do header */
+.icon-button:focus {
+    outline: none; /* Remove o estilo de foco padrão */
+}
+
+/* Adiciona um estilo de foco personalizado (opcional) */
+.icon-button:focus-visible {
+    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline-offset: 2px;
+}
+
+/* Estilo do container de busca */
+.search-container {
+    position: relative;
+}
+
+/* Checkbox invisível para controlar a exibição */
+.search-toggle {
+    display: none;
+}
+
+/* Ícone da lupa */
+.search-icon {
+    font-size: 24px;
+    color: var(--branco);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.search-icon:hover {
+    transform: scale(1.1);
+    color: rgba(46, 142, 255, 0.7);
+}
+
+/* Caixa de pesquisa */
+.search-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Altura do header */
+    background-color: var(--branco);
+    display: none; /* Oculta por padrão */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Exibe a caixa de pesquisa quando o checkbox está marcado */
+.search-toggle:checked ~ .search-box {
+    display: flex;
+}
+
+/* Campo de entrada de busca */
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Botão de busca */
+.search-box button[type="submit"] {
+    background-color: var(--rosa-fem);
+    color: var(--branco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button[type="submit"]:hover {
+    background-color: #c0a7cc;
+}
+
+/* Botão de fechar (X) */
+.close-search {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--preto);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-search:hover {
+    transform: scale(1.1);
+    color: rgba(46, 142, 255, 0.7);
+}
+
+/* Input para controlar o menu */
+#menu-toggle {
+    display: none; /* Oculta o input */
+}
+
+/* Menu popup oculto por padrão */
+.menu {
+    position: absolute;
+    top: 60px; /* Ajuste para aparecer abaixo do ícone */
+    right: 20px; /* Alinhamento lateral */
+    background-color: #B096BC;
+    padding: 10px;
+    border-radius: 10px;
+    display: none; /* Oculto inicialmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Exibe o menu quando o checkbox está marcado */
+.menu-icon {
+    display: none; /* Oculta o ícone do menu hambúrguer */
+}
+
+#menu-toggle:checked + .menu {
+    display: none;
+}
+
+/* Itens do menu */
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu ul li {
+    margin: 10px 0;
+    display: none;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: var(--preto);
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: var(--branco);
+}
+
+.container-produtos{
+    margin: 0 ;
+    padding: 0 auto;
+    min-height: 600px;
+    background-image: url('../img/parallax.png');
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* Banner */
+.banner {
+    background: url('img/banner1.png') no-repeat center/cover;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Produtos */
+.produtos {
+    font-family: var(--ff-poppins);
+    text-align: center;
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.produto {
+    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.produto img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.produtos h2 {
+    margin-bottom: 20px;
+}
+
+.produto h3 {
+    margin: 10px 0;
+}
+
+.produto p {
+    color: #555;
+    font-size: 14px;
+}
+
+.preco {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.produto button {
+    background: #B096BC;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 140px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.produto button:hover {
+    background: #c0a7cc;
+}
+
+/* Sobre */
+.sobre {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ddd;
+}
+
+.sobre h2 {
+    font-size: 24px;
+}
+
+.sobre p {
+    font-size: 16px;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Rodapé */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+/* mais vendidos*/
+.btn-maisvendidos{
+    background-color:rgb(99, 109, 151);
+    color: #FFF;
+    text-decoration: none;
+    margin:0px 20px ;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 28px;
+    max-width: 100%;
+}
+
+.caixa-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.cards{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 18%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.3s ease-out;
+}
+
+.cards:hover{
+    border: 1px solid #9698BC;
+    box-shadow: 0 4px 8px 0 #9698BC;
+    transform: scale(1.04);
+    transition: all 0.1s ease-in;
+  }
+
+  .caixinha {
+    padding: 16px;
+    font-family: 'Comfortaa', cursive;
+    
+  }
+
+  /* Estilo geral da categoria de conteúdo */
+.categoria-conteudo {
+    cursor: pointer;
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para os itens dentro da categoria */
+.itens-categoria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsivo */
+}
+
+/* Estilo para cada item dentro da categoria */
+.itens-categoria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cada item ocupa 50% da largura da tela */
+}
+
+/* Estilo para cada item dentro da categoria */
+.item {
+    height: 279px;
+}
+
+.item-1 {
+    background-image: url('../img/feminino.png');
+    background-size: cover; /* Ajusta para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    height: 100%;
+    border: 2px solid transparent; /* Borda inicial transparente */
+  transition: border-color 0.3s ease; /* Transição suave para o efeito */
+}
+
+.item-1:hover {
+    border-color: #B096BC; /* Cor da borda ao passar o mouse */
+  }
+
+.item-2 {
+    background-image: url('../img/masculino.png');
+    background-size: cover; /* Ajusta para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    height: 100%;
+    border: 2px solid transparent; /* Borda inicial transparente */
+  transition: border-color 0.3s ease; /* Transição suave para o efeito */
+}
+
+.item-2:hover {
+    border-color: #B096BC; /* Cor da borda ao passar o mouse */
+  }
+
+/* Título de cada item */
+.titulo-item {
+    font-family: var(--ff-poppins);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+    text-align: right;
+    padding: 5px;
+    margin-right: 20px;
+    margin-top: 160px; /* Espaçamento abaixo do título */
+    transition: color 0.3s;
+}
+
+.titulo-item.feminino:hover {
+    color: #c0a7cc;
+}
+
+.titulo-item.masculino:hover {
+    color: #c0a7cc;
+}
+
+.categoria-masculino {
+    background-color: var(--azul-masc);
+    width: 100%;
+    height: 140px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.categoria-masculino h2 {
+    font-family: var(--ff-poppins);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+    text-align: center;
+}
+
+.categoria-feminino {
+    background-color: var(--rosa-fem);
+    width: 100%;
+    height: 140px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.categoria-feminino h2 {
+    font-family: var(--ff-poppins);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+    text-align: center;
+}

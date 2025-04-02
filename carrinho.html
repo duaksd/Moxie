@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Seu Carrinho</title>
+    <link rel="stylesheet" href="css/carrinho.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
+    <header>
+        <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial">
+            <i class='bx bx-arrow-back'></i>
+            Voltar
+        </a>
+        <span>Carrinho de compras</span>
+    </header>
+    <main>
+        <div class="titulo-pagina">Seu carrinho</div>
+            <div class="content">
+                <section>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Total</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="produto">
+                                        <img src="https://picsum.photos/100/120" alt="">
+                                        <div class="info">
+                                            <div class="nome">Nome do produto</div>
+                                            <div class="categoria">Categoria</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>R$ 140</td>
+                                <td>
+                                    <div class="quant-produto">
+                                        <button><i class='bx bx-minus' ></i></button>
+                                        <span>2</span>
+                                        <button><i class='bx bx-plus' ></i></button>
+                                    </div>
+                                </td>
+                                <td>R$ 240</td>
+                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="produto">
+                                        <img src="https://picsum.photos/100/120" alt="">
+                                        <div class="info">
+                                            <div class="nome">Nome do produto</div>
+                                            <div class="categoria">Categoria</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>R$ 140</td>
+                                <td>
+                                    <div class="quant-produto">
+                                        <button><i class='bx bx-minus' ></i></button>
+                                        <span>2</span>
+                                        <button><i class='bx bx-plus' ></i></button>
+                                    </div>
+                                </td>
+                                <td>R$ 240</td>
+                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="produto">
+                                        <img src="https://picsum.photos/100/120" alt="">
+                                        <div class="info">
+                                            <div class="nome">Nome do produto</div>
+                                            <div class="categoria">Categoria</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>R$ 140</td>
+                                <td>
+                                    <div class="quant-produto">
+                                        <button><i class='bx bx-minus' ></i></button>
+                                        <span>2</span>
+                                        <button><i class='bx bx-plus' ></i></button>
+                                    </div>
+                                </td>
+                                <td>R$ 240</td>
+                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <aside>
+                    <div class="box">
+                        <header>Resumo da compra</header>
+                        <div class="info">
+                            <div><span>Sub-total</span><span>R$ 418</span></div>
+                            <div><span>Frete</span><span>Gratuito</span></div>
+                            <div><button>Adicionar cupom de desconto <i class='bx bx-right-arrow-alt'></i></button></div>
+                        </div>
+                        <footer>
+                            <span>Total</span>
+                            <span>R$ 418</span>
+                        </footer>
+                    </div>
+                    <button>Finalizar Compra</button>
+                </aside>
+            </div>
+    </main>
 </body>
 </html>

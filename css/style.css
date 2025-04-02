@@ -25,8 +25,17 @@ li {
 /* Nav promocoes */
 .barra-promocao {
     background-color: var(--cinza-pers);
-    padding: 10px 0;
+    padding: 5px;
     height: 25px;
+}
+
+@keyframes rolar {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .container-promocao {
@@ -37,11 +46,17 @@ li {
 }
 
 .barra-promocao-lista {
+    text-align: right;
     display: flex;
+    font-family: var(--ff-poppins);
+    font-weight: 600;
     gap: 20px;
     padding: 0;
     margin: 0;
     font-size: 14px;
+    white-space: nowrap; /* Impede quebra de linha */
+    animation: rolar 20s linear infinite; /* Define a animação */
+    overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
 }
 
 .barra-promocao-lista li a {
@@ -49,15 +64,16 @@ li {
     color: var(--preto);
 }
 
+/* Header */
+
 .header-bar {
     background-color: var(--rosa-fem);
     height: 50px;
 }
 
-/* Header */
 header {
-    background: #111;
-    color: white;
+    background: var(--preto);
+    color: var(--branco);
     padding: 10px 0;
 }
 
@@ -67,16 +83,17 @@ header {
     align-items: center;
     max-width: 1200px;
     margin: auto;
+    position: relative;
+    z-index: 1;
+    height: auto;
+    gap: 20px;
 }
 
+/* Título */
 header h1 {
-    font-size: 24px;
+    font-size: 29px;
+    font-weight: lighter;
     font-family: var(--ff-OST);
-}
-
-nav ul {
-    display: flex;
-    gap: 15px;
 }
 
 nav ul li a {
@@ -89,77 +106,244 @@ nav ul li a:hover {
     color: rgb(224, 187, 152);
 }
 
-.user-profile {
-    width: 131px;
-    height: 51px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    background: linear-gradient(
-      to bottom right,
-      #2e8eff 0%,
-      rgba(46, 142, 255, 0) 30%
-    );
-    background-color: rgba(46, 142, 255, 0.2);
+header h1 {
+    font-size: 29px;
+    font-weight: lighter;
+    font-family: var(--ff-OST);
+}
+
+/* Estilo do título no header */
+.h1-titulo a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: var(--branco); /* Cor do texto */
+    transition: color 0.3s ease;
+}
+
+.h1-titulo a:hover {
+    color: rgba(46, 142, 255, 0.7); /* Cor ao passar o mouse */
+}
+
+/* Nav promoções */
+.barra-promocao {
+    background-color: var(--cinza-pers);
+    padding: 5px;
+    height: 25px;
+    overflow: hidden; /* Garante que o conteúdo extra não afete o tamanho da página */
+}
+
+.barra-promocao-lista {
+    text-align: right;
+    display: flex;
+    font-family: var(--ff-poppins);
+    font-weight: 600;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap; /* Impede quebra de linha */
+    animation: rolar 20s linear infinite; /* Define a animação */
+    overflow: hidden; /* Oculta o texto que ultrapassa os limites */
+}
+
+/* Categorias no Header */
+.header-categories ul {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-categories ul li a {
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header-categories ul li a:hover {
+    color: rgba(46, 142, 255, 0.7); /* Cor de destaque ao passar o mouse */
+}
+
+/* Botões do Header */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+/* Botão com apenas o ícone */
+.icon-button {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .user-profile:hover,
-  .user-profile:focus {
-    background-color: rgba(46, 142, 255, 0.7);
-    box-shadow: 0 0 10px rgba(46, 142, 255, 0.5);
-    outline: none;
-  }
-  
-  .user-profile-inner {
-    width: 127px;
-    height: 47px;
-    border-radius: 13px;
-    background-color: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: ;
-    gap: 15px;
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .user-profile-inner svg {
-    width: 27px;
-    height: 27px;
-    fill: #fff;
-  }
-
-/* Pesquisa */
-.container-busca {
-    position: relative;
-    width: 500px;
-}
-
-.container-busca input {
-    height: 40px;
-    border: 1px solid #ececec;
-    border-radius: 25px;
-    outline: none;
-    padding-left: 45px;
-    width: 100%;
-    background-color: var(--branco);
-    color; var(--preto);
-}
-
-.container-busca button {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    height: 24px;
-    width: 24px;
-    background: url('../img/lupa.png') center no-repeat;
-    background-size: cover;
-    border: none;
+    font-size: 24px; /* Tamanho do ícone */
+    color: var(--branco); /* Cor do ícone */
+    text-decoration: none; /* Remove o sublinhado do link */
+    background: none; /* Remove o fundo padrão */
+    border: none; /* Remove bordas */
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    color: rgba(46, 142, 255, 0.7); /* Cor ao passar o mouse */
+}
+
+.icon-button:focus {
+    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline-offset: 2px;
+}
+
+/* Remove a borda padrão ao focar nos botões do header */
+.icon-button:focus {
+    outline: none; /* Remove o estilo de foco padrão */
+}
+
+/* Adiciona um estilo de foco personalizado (opcional) */
+.icon-button:focus-visible {
+    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline-offset: 2px;
+}
+
+/* Estilo do container de busca */
+.search-container {
+    position: relative;
+}
+
+/* Checkbox invisível para controlar a exibição */
+.search-toggle {
+    display: none;
+}
+
+/* Ícone da lupa */
+.search-icon {
+    font-size: 24px;
+    color: var(--branco);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.search-icon:hover {
+    transform: scale(1.1);
+    color: rgba(46, 142, 255, 0.7);
+}
+
+/* Caixa de pesquisa */
+.search-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Altura do header */
+    background-color: var(--branco);
+    display: none; /* Oculta por padrão */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Exibe a caixa de pesquisa quando o checkbox está marcado */
+.search-toggle:checked ~ .search-box {
+    display: flex;
+}
+
+/* Campo de entrada de busca */
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Botão de busca */
+.search-box button[type="submit"] {
+    background-color: var(--rosa-fem);
+    color: var(--branco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button[type="submit"]:hover {
+    background-color: #c0a7cc;
+}
+
+/* Botão de fechar (X) */
+.close-search {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--preto);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-search:hover {
+    transform: scale(1.1);
+    color: rgba(46, 142, 255, 0.7);
+}
+
+/* Input para controlar o menu */
+#menu-toggle {
+    display: none; /* Oculta o input */
+}
+
+/* Menu popup oculto por padrão */
+.menu {
+    position: absolute;
+    top: 60px; /* Ajuste para aparecer abaixo do ícone */
+    right: 20px; /* Alinhamento lateral */
+    background-color: #B096BC;
+    padding: 10px;
+    border-radius: 10px;
+    display: none; /* Oculto inicialmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Exibe o menu quando o checkbox está marcado */
+.menu-icon {
+    display: none; /* Oculta o ícone do menu hambúrguer */
+}
+
+#menu-toggle:checked + .menu {
+    display: none;
+}
+
+/* Itens do menu */
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu ul li {
+    margin: 10px 0;
+    display: none;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: var(--preto);
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: var(--branco);
 }
 
 .container-produtos{
@@ -175,8 +359,8 @@ nav ul li a:hover {
 }
 /* Banner */
 .banner {
-    background: url('https://source.unsplash.com/1600x900/?gym,fitness') no-repeat center/cover;
-    height: 300px;
+    background: url('img/banner1.png') no-repeat center/cover;
+    height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,8 +371,9 @@ nav ul li a:hover {
 
 /* Produtos */
 .produtos {
+    font-family: var(--ff-poppins);
     text-align: center;
-    padding: 40px 0;
+    padding: 50px 0;
     background: #f4f4f4;
 }
 
@@ -201,7 +386,6 @@ nav ul li a:hover {
 }
 
 .produto {
-    background: white;
     padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -210,6 +394,10 @@ nav ul li a:hover {
 .produto img {
     width: 100%;
     border-radius: 5px;
+}
+
+.produtos h2 {
+    margin-bottom: 20px;
 }
 
 .produto h3 {
@@ -221,19 +409,25 @@ nav ul li a:hover {
     font-size: 14px;
 }
 
+.preco {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
 .produto button {
-    background: #007bff;
+    background: #B096BC;
     color: white;
     border: none;
     padding: 10px;
-    width: 100%;
+    width: 140px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: 0.3s;
 }
 
 .produto button:hover {
-    background: #0056b3;
+    background: #c0a7cc;
 }
 
 /* Sobre */
@@ -308,60 +502,103 @@ footer {
 
   /* Estilo geral da categoria de conteúdo */
 .categoria-conteudo {
-    background-color: #f4f4f4; /* Cor de fundo suave para a categoria */
-    padding: 30px; /* Espaçamento interno */
+    cursor: pointer;
     border-radius: 8px; /* Cantos arredondados */
-    margin: 20px 0; /* Espaçamento externo */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* Título da categoria */
-.titulo-categoria {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    text-align: center; /* Centraliza o título */
-    margin-bottom: 15px; /* Espaçamento abaixo do título */
-}
-
-/* Descrição da categoria */
-.descricao-categoria {
-    font-size: 16px;
-    color: #666;
-    text-align: center; /* Centraliza a descrição */
-    margin-bottom: 25px; /* Espaçamento abaixo da descrição */
 }
 
 /* Estilo para os itens dentro da categoria */
 .itens-categoria {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsivo */
-    gap: 20px; /* Espaçamento entre os itens */
 }
 
 /* Estilo para cada item dentro da categoria */
 .itens-categoria {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Cada item ocupa 50% da largura da tela */
-    gap: 20px; /* Espaçamento entre os itens */
 }
 
 /* Estilo para cada item dentro da categoria */
 .item {
-    background-color: #fff; /* Fundo branco para cada item */
-    border-radius: 8px; /* Arredonda os cantos dos itens */
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    height: 279px;
 }
+
+.item-1 {
+    background-image: url('../img/feminino.png');
+    background-size: cover; /* Ajusta para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    height: 100%;
+    border: 2px solid transparent; /* Borda inicial transparente */
+  transition: border-color 0.3s ease; /* Transição suave para o efeito */
+}
+
+.item-1:hover {
+    border-color: #B096BC; /* Cor da borda ao passar o mouse */
+  }
+
+.item-2 {
+    background-image: url('../img/masculino.png');
+    background-size: cover; /* Ajusta para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    height: 100%;
+    border: 2px solid transparent; /* Borda inicial transparente */
+  transition: border-color 0.3s ease; /* Transição suave para o efeito */
+}
+
+.item-2:hover {
+    border-color: #B096BC; /* Cor da borda ao passar o mouse */
+  }
 
 /* Título de cada item */
 .titulo-item {
-    font-size: 20px;
+    font-family: var(--ff-poppins);
+    font-size: 30px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    color: var(--branco);
+    text-align: right;
+    padding: 5px;
+    margin-right: 20px;
+    margin-top: 160px; /* Espaçamento abaixo do título */
+    transition: color 0.3s;
 }
 
-.feminino {
-    text-align: right; /* Alinha o texto à direita */
+.titulo-item.feminino:hover {
+    color: #c0a7cc;
+}
+
+.titulo-item.masculino:hover {
+    color: #c0a7cc;
+}
+
+.categoria-masculino {
+    background-color: var(--azul-masc);
+    width: 100%;
+    height: 140px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.categoria-masculino h2 {
+    font-family: var(--ff-poppins);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+    text-align: center;
+}
+
+.categoria-feminino {
+    background-color: var(--rosa-fem);
+    width: 100%;
+    height: 140px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.categoria-feminino h2 {
+    font-family: var(--ff-poppins);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+    text-align: center;
 }
