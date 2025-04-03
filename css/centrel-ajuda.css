@@ -18,6 +18,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: var(--ff-poppins), sans-serif;
+}
+
 li {
     list-style: none;
 }
@@ -346,380 +350,91 @@ header h1 {
     color: var(--branco);
 }
 
-.container-produtos{
-    margin: 0 ;
-    padding: 0 auto;
-    min-height: 600px;
-    background-image: url('../img/parallax.png');
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
 /* Banner */
 .banner {
-    background: url('img/banner1.png') no-repeat center/cover;
-    height: 700px;
+    background: url('../img/banner-ajuda.png') no-repeat center center; /* Caminho da imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir todo o banner */
+    height: 300px; /* Altura do banner */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhor visibilidade */
+}
+
+.banner h1 {
     font-size: 28px;
     font-weight: bold;
 }
 
-/* Produtos */
-.produtos {
-    font-family: var(--ff-poppins);
-    text-align: center;
-    padding: 50px 0;
-    background: #f4f4f4;
-}
-
-.grid {
+/* Seção de Ajuda */
+.ajuda {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    width: 90%;
-    margin: auto;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.produto {
-    padding: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+/* Ajustes para os itens */
+.item {
+    background: white;
+    padding: 25px; /* Aumentar o padding */
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.produto img {
-    width: 100%;
-    border-radius: 5px;
+.item:hover {
+    transform: translateY(-8px); /* Aumentar o efeito de hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
 }
 
-.produtos h2 {
-    margin-bottom: 20px;
+/* Ajustes para os ícones */
+.icon-help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px; /* Tamanho do círculo */
+    height: 70px;
+    font-size: 32px; /* Tamanho do ícone */
+    margin: 0 auto 20px; /* Centraliza e adiciona espaçamento */
+    color: black; /* Cor do ícone */
+    background: rgb(122, 35, 245); /* Cor de fundo roxa */
+    border-radius: 50%; /* Torna o fundo circular */
 }
 
-.produto h3 {
-    margin: 10px 0;
-}
-
-.produto p {
-    color: #555;
-    font-size: 14px;
-}
-
-.preco {
-    font-size: 18px;
+/* Ajustes para o texto */
+.item h3 {
+    font-size: 18px; /* Fonte maior */
     font-weight: bold;
     color: #333;
+    margin-bottom: 12px; /* Espaçamento maior abaixo do título */
 }
 
-.produto button {
-    background: #B096BC;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 140px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: 0.3s;
+.item p {
+    font-size: 15px; /* Fonte ligeiramente maior */
+    color: #666;
 }
 
-.produto button:hover {
-    background: #c0a7cc;
+/* Evitar que a fonte personalizada afete os ícones */
+.icon-help i, .icon i {
+    font-family: initial; /* Restaura a fonte padrão dos ícones */
 }
 
-/* Sobre */
-.sobre {
-    text-align: center;
-    padding: 40px 20px;
-    background: #ddd;
-}
-
-.sobre h2 {
-    font-size: 24px;
-}
-
-.sobre p {
-    font-size: 16px;
-    color: #444;
-    margin-top: 10px;
-}
-
-/* Rodapé */
-.footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 40px 0;
-    margin-top: 40px;
-}
-
-.payment-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.payment-icons img {
-    width: 50px;  
-    height: auto;  
-    object-fit: contain;  /* Garante que a imagem não fique distorcida */
-    transition: transform 0.3s ease;
-}
-
-.payment-icons img:hover {
-    transform: scale(1.1); 
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: auto;
-    padding: 0 20px;
-    gap: 30px;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 280px;
-    margin-bottom: 20px;
-}
-
-.footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin: 8px 0;
-}
-
-.footer-section ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    transition: color 0.3s;
-}
-
-.footer-section ul li a:hover {
-    text-decoration: underline;
-    color: #ddd;
-}
-
-/* Redes sociais */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-}
-
-.social-icons a {
-    color: white;
-    font-size: 24px;
-    transition: transform 0.3s ease, color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #ccc;
-    transform: scale(1.2);
-}
-
-/* Ícones de pagamento */
-.payment-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 28px;
-    margin-top: 10px;
-}
-
-/* Contato */
-.footer-contact {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Texto de direitos autorais */
-.footer-copy {
-    margin-top: 30px;
-    font-size: 13px;
-    border-top: 1px solid white;
-    padding-top: 15px;
-    opacity: 0.7;
-}
-
-/* Responsividade */
+/* Ajustes de responsividade */
 @media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    .payment-icons {
-        justify-content: center;
+    .ajuda {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; /* Espaçamento maior entre os itens */
     }
 }
 
-/* mais vendidos*/
-.btn-maisvendidos{
-    background-color:rgb(99, 109, 151);
-    color: #FFF;
-    text-decoration: none;
-    margin:0px 20px ;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 28px;
-    max-width: 100%;
-}
-
-.caixa-cards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-content: space-around;
-    padding: 40px;
-}
-
-.cards{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 18%;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #fff;
-    transition: all 0.3s ease-out;
-}
-
-.cards:hover{
-    border: 1px solid #9698BC;
-    box-shadow: 0 4px 8px 0 #9698BC;
-    transform: scale(1.04);
-    transition: all 0.1s ease-in;
-  }
-
-  .caixinha {
-    padding: 16px;
-    font-family: 'Comfortaa', cursive;
-    
-  }
-
-  /* Estilo geral da categoria de conteúdo */
-.categoria-conteudo {
-    cursor: pointer;
-    border-radius: 8px; /* Cantos arredondados */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* Estilo para os itens dentro da categoria */
-.itens-categoria {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsivo */
-}
-
-/* Estilo para cada item dentro da categoria */
-.itens-categoria {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Cada item ocupa 50% da largura da tela */
-}
-
-/* Estilo para cada item dentro da categoria */
-.item {
-    height: 279px;
-}
-
-.item-1 {
-    background-image: url('../img/feminino.png');
-    background-size: cover; /* Ajusta para cobrir todo o elemento */
-    background-repeat: no-repeat; /* Evita a repetição da imagem */
-    height: 100%;
-    border: 2px solid transparent; /* Borda inicial transparente */
-  transition: border-color 0.3s ease; /* Transição suave para o efeito */
-}
-
-.item-1:hover {
-    border-color: #B096BC; /* Cor da borda ao passar o mouse */
-  }
-
-.item-2 {
-    background-image: url('../img/masculino.png');
-    background-size: cover; /* Ajusta para cobrir todo o elemento */
-    background-repeat: no-repeat; /* Evita a repetição da imagem */
-    height: 100%;
-    border: 2px solid transparent; /* Borda inicial transparente */
-  transition: border-color 0.3s ease; /* Transição suave para o efeito */
-}
-
-.item-2:hover {
-    border-color: #B096BC; /* Cor da borda ao passar o mouse */
-  }
-
-/* Título de cada item */
-.titulo-item {
-    font-family: var(--ff-poppins);
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--branco);
-    text-align: right;
-    padding: 5px;
-    margin-right: 20px;
-    margin-top: 160px; /* Espaçamento abaixo do título */
-    transition: color 0.3s;
-}
-
-.titulo-item.feminino:hover {
-    color: #c0a7cc;
-}
-
-.titulo-item.masculino:hover {
-    color: #c0a7cc;
-}
-
-.categoria-masculino {
-    background-color: var(--azul-masc);
-    width: 100%;
-    height: 140px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.categoria-masculino h2 {
-    font-family: var(--ff-poppins);
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--branco);
-    text-align: center;
-}
-
-.categoria-feminino {
-    background-color: var(--rosa-fem);
-    width: 100%;
-    height: 140px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.categoria-feminino h2 {
-    font-family: var(--ff-poppins);
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--branco);
-    text-align: center;
+@media (max-width: 480px) {
+    .ajuda {
+        grid-template-columns: 1fr;
+        gap: 15px; /* Ajustar o espaçamento para telas menores */
+    }
 }

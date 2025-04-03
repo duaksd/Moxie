@@ -1,6 +1,6 @@
 /*Login*/
 
-.container-login {
+.container-login-cadastro {
     --form-width: 315px;
     --aspect-ratio: 1.33;
     --login-box-color-out: #272727;
@@ -186,40 +186,41 @@
   .icon {
     height: 16px;
   }
-  
-  .footer {
-    width: 100%;
-    text-align: left;
-    color: var(--footer-color);
-    font-size: 12px;
-  }
-  
-  .footer .link {
-    position: relative;
-    color: var(--footer-color);
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer .link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    border-radius: 6px;
-    height: 1px;
-    background: currentColor;
-    transition: width 0.3s ease;
-  }
-  
-  .footer .link:hover {
-    color: #fff;
-  }
-  
-  .footer .link:hover::after {
-    width: 100%;
+
+@media (max-width: 768px) {
+  .container-login-cadastro {
+    padding: 20px;
   }
 
-  
+  .login-box {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .header {
+    font-size: 20px;
+  }
+
+  .input, .button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 18px;
+    text-align: center; /* Reafirmar centralização */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input, .button {
+    font-size: 10px;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+}
