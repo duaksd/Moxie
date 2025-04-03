@@ -1,7 +1,7 @@
 :root {
     /* Cores */
     --preto: #000;
-    --azul-masc: #9698BC;
+    --azul-masc: #4169e1;
     --rosa-fem: #B096BC;
     --branco: #FFF;
     --cinza-pers: #D9D9D9;
@@ -157,7 +157,7 @@ header h1 {
 .header-categories ul li a {
     text-decoration: none;
     color: var(--branco);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
@@ -416,7 +416,7 @@ header h1 {
 }
 
 .produto button {
-    background: #B096BC;
+    background:rgb(104, 151, 255);
     color: white;
     border: none;
     padding: 10px;
@@ -427,7 +427,7 @@ header h1 {
 }
 
 .produto button:hover {
-    background: #c0a7cc;
+    background:rgb(70, 128, 255);
 }
 
 /* Sobre */
