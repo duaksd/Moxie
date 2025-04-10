@@ -173,6 +173,7 @@ header h1 {
     gap: 15px; /* Espaçamento entre os botões */
 }
 
+
 /* Botão com apenas o ícone */
 .icon-button {
     display: flex;
@@ -264,7 +265,7 @@ header h1 {
 
 /* Botão de busca */
 .search-box button[type="submit"] {
-    background-color: var(--rosa-fem);
+    background-color: var(--preto);
     color: var(--branco);
     border: none;
     padding: 10px 20px;
@@ -275,7 +276,7 @@ header h1 {
 }
 
 .search-box button[type="submit"]:hover {
-    background-color: #c0a7cc;
+    background-color: #727272;
 }
 
 /* Botão de fechar (X) */
@@ -291,7 +292,7 @@ header h1 {
 
 .close-search:hover {
     transform: scale(1.1);
-    color: rgba(46, 142, 255, 0.7);
+    color: #727272;
 }
 
 /* Input para controlar o menu */
@@ -301,19 +302,25 @@ header h1 {
 
 /* Menu popup oculto por padrão */
 .menu {
-    position: absolute;
-    top: 60px; /* Ajuste para aparecer abaixo do ícone */
-    right: 20px; /* Alinhamento lateral */
-    background-color: #B096BC;
+    display: none; /* Oculta o menu por padrão */
+    flex-direction: column; /* Alinha os itens verticalmente */
+    gap: 10px;
+    background-color: var(--preto); /* Cor de fundo do menu */
     padding: 10px;
-    border-radius: 10px;
-    display: none; /* Oculto inicialmente */
+    position: absolute;
+    top: 60px; /* Ajusta a posição abaixo do header */
+    right: 20px; /* Alinha à direita */
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 /* Exibe o menu quando o checkbox está marcado */
 .menu-icon {
-    display: none; /* Oculta o ícone do menu hambúrguer */
+    display: none; /* Oculta o ícone em telas maiores */
+    font-size: 24px;
+    color: var(--branco);
+    cursor: pointer;
 }
 
 #menu-toggle:checked + .menu {
@@ -323,27 +330,24 @@ header h1 {
 /* Itens do menu */
 .menu ul {
     list-style: none;
+    color: var(--branco);
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .menu ul li {
-    margin: 10px 0;
-    display: none;
+    margin: 0;
 }
 
 .menu ul li a {
     text-decoration: none;
-    color: var(--preto);
-    font-size: 16px;
+    color: var(--branco);
+    font-size: 24px; /* Aumenta o tamanho da fonte */
     transition: color 0.3s;
 }
 
 .menu ul li a:hover {
-    color: var(--branco);
+    color: #6A5ACD; /* Cor ao passar o mouse */
 }
 
 .container-produtos{
@@ -359,14 +363,16 @@ header h1 {
 }
 /* Banner */
 .banner {
-    background: url('img/banner1.png') no-repeat center/cover;
-    height: 700px;
+    background: url('img/banner1.png') no-repeat center;
+    background-size: cover;
+    height: 700px; /* Altura padrão */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 28px;
     font-weight: bold;
+    text-align: center;
 }
 
 /* Produtos */
@@ -386,48 +392,55 @@ header h1 {
 }
 
 .produto {
+    display: flex;
+    flex-direction: column; /* Alinha os elementos verticalmente */
+    justify-content: space-between; /* Garante que os elementos sejam distribuídos */
     padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    height: 100%; /* Garante que todos os cards tenham a mesma altura */
 }
 
 .produto img {
     width: 100%;
     border-radius: 5px;
-}
-
-.produtos h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o restante */
 }
 
 .produto h3 {
     margin: 10px 0;
+    font-size: 18px;
+    color: #333;
 }
 
 .produto p {
     color: #555;
     font-size: 14px;
+    margin-bottom: 10px; /* Espaçamento entre a descrição e o botão */
+    flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
 }
 
-.preco {
+.produto .preco {
     font-size: 18px;
     font-weight: bold;
     color: #333;
+    margin-bottom: 10px; /* Espaçamento entre o preço e o botão */
 }
 
 .produto button {
-    background: #B096BC;
+    background: var(--preto);
     color: white;
     border: none;
     padding: 10px;
-    width: 140px;
+    width: 100%; /* Faz o botão ocupar toda a largura do card */
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: 0.3s;
+    align-self: center; /* Centraliza o botão horizontalmente */
 }
 
 .produto button:hover {
-    background: #c0a7cc;
+    background: #727272;
 }
 
 /* Sobre */
@@ -722,4 +735,241 @@ header h1 {
     font-weight: bold;
     color: var(--branco);
     text-align: center;
+}
+
+/* Estilos para dispositivos móveis (largura máxima de 480px) */
+@media (max-width: 480px) {
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu hambúrguer */
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    .h1-titulo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o título */
+        flex: 1;
+        text-align: center; /* Centraliza o título */
+        font-size: 24px;
+        color: var(--branco);
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 15px; /* Espaçamento entre os ícones */
+    }
+
+    .header-buttons .icon-button {
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none; /* O menu será controlado pelo checkbox */
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 100%; /* Faz o menu ocupar 100% da largura */
+        background-color: var(--preto);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 0; /* Remove o arredondamento */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    #menu-toggle:checked + .menu {
+        display: flex; /* Exibe o menu quando o checkbox está marcado */
+    }
+
+    .header-categories {
+        display: none; /* Esconde o header-categories */
+    }
+
+    .header-buttons a[aria-label="Help Button"] {
+        display: none; /* Esconde o botão de ajuda */
+    }
+
+    .produtos .grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Uma coluna para ocupar toda a largura */
+        gap: 20px; /* Espaçamento entre os produtos */
+    }
+
+    .produtos .produto {
+        width: 90%; /* Reduz a largura dos produtos */
+        margin: 0 auto; /* Centraliza os produtos horizontalmente */
+        padding: 10px; /* Adiciona espaçamento interno */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        border-radius: 8px; /* Bordas arredondadas */
+    }
+
+    .produtos .produto img {
+        width: 100%; /* Faz a imagem ocupar toda a largura do card */
+        height: auto; /* Mantém a proporção da imagem */
+        margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+    }
+
+    .produtos .produto h3 {
+        font-size: 16px; /* Reduz o tamanho do título */
+        margin-bottom: 5px;
+    }
+
+    .produtos .produto p {
+        font-size: 14px; /* Reduz o tamanho da descrição */
+        margin-bottom: 10px;
+    }
+
+    .produtos .produto .preco {
+        font-size: 18px; /* Ajusta o tamanho do preço */
+        margin-bottom: 10px;
+    }
+
+    .produtos .produto button {
+        font-size: 14px; /* Ajusta o tamanho do botão */
+        padding: 10px;
+        width: 100%; /* Faz o botão ocupar toda a largura do card */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cards {
+        width: 90%; /* Ajusta a largura dos cards */
+    }
+
+    .banner {
+        height: 300px; /* Altura reduzida para celulares */
+        font-size: 18px;
+        background-size: contain; /* Garante que a imagem inteira seja exibida */
+    }
+}
+
+/* Estilos para tablets (largura máxima de 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu hambúrguer */
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    .h1-titulo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o título */
+        flex: 1;
+        text-align: center; /* Centraliza o título */
+        font-size: 24px;
+        color: var(--branco);
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 15px; /* Espaçamento entre os ícones */
+    }
+
+    .header-buttons .icon-button {
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none; /* O menu será controlado pelo checkbox */
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 75%;
+        background-color: var(--preto);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 0px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    #menu-toggle:checked + .menu {
+        display: flex; /* Exibe o menu quando o checkbox está marcado */
+    }
+
+    .header-categories {
+        display: none; /* Esconde o header-categories */
+    }
+
+    .header-buttons a[aria-label="Help Button"] {
+        display: none; /* Esconde o botão de ajuda */
+    }
+
+    .produtos .grid {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cards {
+        width: 45%; /* Ajusta a largura dos cards */
+    }
+
+    .banner {
+        height: 400px; /* Altura ajustada para tablets */
+        font-size: 24px;
+        background-size: contain; /* Garante que a imagem inteira seja exibida */
+    }
+}
+
+/* Estilos para desktops (largura mínima de 769px) */
+@media (min-width: 769px) {
+    .header .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .produtos .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout fluido */
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cards {
+        width: 18%; /* Mantém a largura original dos cards */
+    }
+
+    .banner {
+        height: 700px; /* Altura original para desktops */
+        font-size: 28px; /* Texto original */
+        background-size: cover; /* Faz a imagem cobrir o espaço */
+        background-position: center; /* Centraliza a imagem */
+    }
 }

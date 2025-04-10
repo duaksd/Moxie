@@ -12,6 +12,9 @@
 
     <!-- Preload -->
     <link rel="preload" as="image" href="img/banner.jpg">
+
+    <!-- Link do Font Awesome (ícones das redes sociais) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -29,6 +32,19 @@
     
     <header class="header">
         <div class="container">
+            <!-- Menu Hambúrguer -->
+            <label for="menu-toggle" class="menu-icon">
+                <i class='bx bx-menu'></i>
+            </label>
+            <input type="checkbox" id="menu-toggle" />
+            <nav class="menu">
+                <ul>
+                    <li><a href="feminino.html">Feminino</a></li>
+                    <li><a href="masculino.html">Masculino</a></li>
+                    <li><a href="cental-ajuda.html">Central de Ajuda</a></li>
+                </ul>
+            </nav>
+
             <!-- Título -->
             <h1 class="h1-titulo">
                 <a href="index.html" aria-label="Voltar para a página inicial">MOXIE</a>
@@ -70,29 +86,16 @@
                 </a>
     
                 <!-- Botão de Login -->
-                <button aria-label="User Login Button" class="icon-button">
+                <a href="login.html" aria-label="User Login Button" class="icon-button">
                     <i class='bx bx-user'></i>
-                </button>
+                </a>
 
                 <!-- Botão de Ajuda -->
-                <button aria-label="Help Button" class="icon-button">
+                <a href="cental-ajuda.html" aria-label="Help Button" class="icon-button">
                     <i class='bx bx-help-circle'></i>
-                </button>
+                </a>
             </div>
 
-            <!-- Menu Hambúrguer -->
-            <label for="menu-toggle" class="menu-icon">
-                <i class='bx bx-menu'></i>
-            </label>
-            <input type="checkbox" id="menu-toggle" />
-            <nav class="menu">
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -181,6 +184,20 @@
                 <h2 class="preco">R$ 299,99</h2>
                 <button>Comprar</button>
             </div>
+            <div class="produto">
+                <img src="img/fem4.png" alt="Tênis Esportivo">
+                <h3>Tênis Esportivo</h3>
+                <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="img/fem5.png" alt="Tênis Esportivo">
+                <h3>Tênis Esportivo</h3>
+                <p>Leve e resistente.</p>
+                <h2 class="preco">R$ 299,99</h2>
+                <button>Comprar</button>
+            </div>
         </div>
     </section>
 
@@ -209,10 +226,11 @@
             <div class="footer-section">
                 <h3>DÚVIDAS</h3>
                 <ul>
-                    <li><a href="#">Política de Privacidade e Segurança de Dados</a></li>
-                    <li><a href="#">Termo e Condições de Uso da MOXIE</a></li>
-                    <li><a href="#">Ajuda/FAQ</a></li>
-                    <li><a href="#">Solicitar troca/devolução</a></li>
+                    <li><a href="Politica_de_Priv.html">Política de Privacidade e Segurança de Dados</a></li>
+                    <li><a href="termosUso.html">Termo e Condições de Uso da MOXIE</a></li>
+                    <li><a href="sobrenos.html">Sobre Nós</a></li>
+                    <li><a href="cental-ajuda.html">Ajuda/FAQ</a></li>
+                    <li><a href="solicitarTroca.html">Solicitar troca/devolução</a></li>
                 </ul>
             </div>
 

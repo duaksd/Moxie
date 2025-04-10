@@ -166,6 +166,7 @@
   }
   .sign-in {
     margin-top: 5px;
+    text-decoration: none;
   }
   
   .google-sign-in {
@@ -221,5 +222,29 @@
   .footer .link:hover::after {
     width: 100%;
   }
-
   
+/* Botão de voltar para a página inicial */
+.back-to-homelogin {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-homelogin:hover {
+  background-color: #555;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+  .container-login {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+

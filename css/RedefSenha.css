@@ -200,4 +200,25 @@
   }
 }
 
-
+/* Botão de voltar para a página inicial */
+.back-to-homeRedef {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 50px;
+}
+.back-to-homeRedef:hover {
+  background-color: #555;
+}
