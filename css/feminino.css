@@ -613,6 +613,7 @@ footer {
     font-weight: bold;
     color: var(--branco);
     text-align: center;
+    padding: 50px;
 }
 
 /* Rodapé */
