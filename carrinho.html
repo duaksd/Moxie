@@ -26,75 +26,11 @@
                                 <th>Preço</th>
                                 <th>Quantidade</th>
                                 <th>Total</th>
-                                <th>-</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="produto">
-                                        <img src="https://picsum.photos/100/120" alt="">
-                                        <div class="info">
-                                            <div class="nome">Nome do produto</div>
-                                            <div class="categoria">Categoria</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>R$ 140</td>
-                                <td>
-                                    <div class="quant-produto">
-                                        <button><i class='bx bx-minus' ></i></button>
-                                        <span>2</span>
-                                        <button><i class='bx bx-plus' ></i></button>
-                                    </div>
-                                </td>
-                                <td>R$ 240</td>
-                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="produto">
-                                        <img src="https://picsum.photos/100/120" alt="">
-                                        <div class="info">
-                                            <div class="nome">Nome do produto</div>
-                                            <div class="categoria">Categoria</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>R$ 140</td>
-                                <td>
-                                    <div class="quant-produto">
-                                        <button><i class='bx bx-minus' ></i></button>
-                                        <span>2</span>
-                                        <button><i class='bx bx-plus' ></i></button>
-                                    </div>
-                                </td>
-                                <td>R$ 240</td>
-                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="produto">
-                                        <img src="https://picsum.photos/100/120" alt="">
-                                        <div class="info">
-                                            <div class="nome">Nome do produto</div>
-                                            <div class="categoria">Categoria</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>R$ 140</td>
-                                <td>
-                                    <div class="quant-produto">
-                                        <button><i class='bx bx-minus' ></i></button>
-                                        <span>2</span>
-                                        <button><i class='bx bx-plus' ></i></button>
-                                    </div>
-                                </td>
-                                <td>R$ 240</td>
-                                <td><button class="remove"><i class='bx bx-x'></i></button></td>
-                            </tr>
+                        <tbody class="carrinho-itens">
+                            <!-- Os itens do carrinho serão renderizados aqui -->
                         </tbody>
                     </table>
                 </section>
@@ -102,13 +38,18 @@
                     <div class="box">
                         <header>Resumo da compra</header>
                         <div class="info">
-                            <div><span>Sub-total</span><span>R$ 418</span></div>
+                            <div><span>Sub-total</span><span class="total-geral">R$ 0,00</span></div>
                             <div><span>Frete</span><span>Gratuito</span></div>
-                            <div><button>Adicionar cupom de desconto <i class='bx bx-right-arrow-alt'></i></button></div>
+                            <!-- Campo para cupom -->
+                            <div class="cupom-container">
+                                <input type="text" id="input-cupom" placeholder="Digite o cupom de desconto">
+                                <button id="aplicar-cupom">Aplicar Cupom</button>
+                                <p id="mensagem-cupom" style="color: red; display: none;">Cupom inválido!</p>
+                            </div>
                         </div>
                         <footer>
                             <span>Total</span>
-                            <span>R$ 418</span>
+                            <span class="total-final">R$ 0,00</span>
                         </footer>
                     </div>
                     <button>Finalizar Compra</button>
@@ -116,6 +57,6 @@
             </div>
     </main>
 
-    <script src="js/teste.js"></script>
+    <script src="js/carrinho.js"></script>
 </body>
 </html>

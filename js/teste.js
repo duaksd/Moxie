@@ -4,88 +4,90 @@ const produtos = [
         alt: "Calça Legging Bicolor",
         titulo: "Calça Legging Bicolor",
         descricao: "Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.",
-        preco: "R$ 40,41"
+        preco: "R$ 97,99"
     },
     {
         imagem: "img/fem1.png",
-        alt: "Roupas",
-        titulo: "Roupa",
+        alt: "Top Esportivo",
+        titulo: "Top Esportivo",
         descricao: "Para treino intenso.",
-        preco: "R$ 299,99"
+        preco: "R$ 78,89"
     },
     {
         imagem: "img/masc10.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
+        alt: "Munhequeira de pulso",
+        titulo: "Munhequeira de pulso",
         descricao: "Leve e resistente.",
         preco: "R$ 299,99"
     },
     {
         imagem: "img/fem10.png",
-        alt: "Calça Legging Bicolor",
-        titulo: "Calça Legging Bicolor",
+        alt: "Top de Academia",
+        titulo: "Top de Academia",
         descricao: "Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.",
-        preco: "R$ 40,41"
+        preco: "R$ 45,41"
     },
     {
         imagem: "img/masc2.png",
-        alt: "Roupas",
-        titulo: "Roupa",
+        alt: "Camisa Preta Leve",
+        titulo: "Camisa Preta Leve",
         descricao: "Para treino intenso.",
-        preco: "R$ 299,99"
+        preco: "R$ 80,59"
     },
     {
         imagem: "img/fem2.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
+        alt: "Conjunto Fitness Feminino",
+        titulo: "Conjunto Fitness Feminino",
         descricao: "Leve e resistente.",
-        preco: "R$ 299,99"
+        preco: "R$ 149,99"
     },
     {
         imagem: "img/masc3.png",
-        alt: "Calça Legging Bicolor",
-        titulo: "Calça Legging Bicolor",
-        descricao: "Desenvolvida em alta qualidade com cortes que valorizam as curvas do seu corpo e ótimo ajuste.",
-        preco: "R$ 40,41"
+        alt: "Camisa de Manga longa",
+        titulo: "Camisa de Manga longa",
+        descricao: "Desenvolvida em alta qualidade com cortes que valorizam e destacam os musculos.",
+        preco: "R$ 49,81"
     },
     {
         imagem: "img/fem3.png",
-        alt: "Roupas",
-        titulo: "Roupa",
+        alt: "Regata Feminina",
+        titulo: "Regata Feminina",
         descricao: "Para treino intenso.",
-        preco: "R$ 299,99"
+        preco: "R$ 60,29"
     },
     {
         imagem: "img/masc4.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
-        descricao: "Leve e resistente.",
-        preco: "R$ 299,99"
+        alt: "Camisa Preta Justa",
+        titulo: "Camisa Preta Justa",
+        descricao: "Leve e resistente não mancha.",
+        preco: "R$ 79,79"
     },
     {
         imagem: "img/fem4.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
-        descricao: "Leve e resistente.",
-        preco: "R$ 299,99"
+        alt: "Cunjunto Casual Feminino",
+        titulo: "Cunjunto Casual Feminino",
+        descricao: "Confortável ideal para caminhadas.",
+        preco: "R$ 81,95"
     },
     {
         imagem: "img/masc6.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
-        descricao: "Leve e resistente.",
-        preco: "R$ 299,99"
+        alt: "Elastico de Academia",
+        titulo: "Elastico de Academia",
+        descricao: "Resistente e flexivel.",
+        preco: "R$ 37,69"
     },
     {
         imagem: "img/fem5.png",
-        alt: "Tênis Esportivo",
-        titulo: "Tênis Esportivo",
+        alt: "Conjunto Moletom Fitness Feminino",
+        titulo: "Conjunto Moletom Fitness Feminino",
         descricao: "Leve e resistente.",
-        preco: "R$ 299,99"
+        preco: "R$ 199,99"
     }
 ];
 
 const grid = document.querySelector('.grid');
+
+const carrinho = JSON.parse(localStorage.getItem('carrinho')) || []; // Carrega o carrinho do localStorage ou inicializa vazio
 
 produtos.forEach((produto, index) => {
     const produtoHTML = `
@@ -100,67 +102,24 @@ produtos.forEach((produto, index) => {
     grid.innerHTML += produtoHTML;
 });
 
-const carrinho = [];
-
 // Adicionar evento aos botões "Comprar"
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('add-to-cart')) {
         const produtoId = event.target.getAttribute('data-id');
         const produtoSelecionado = produtos[produtoId];
 
-        // Adicionar o produto ao carrinho
-        carrinho.push(produtoSelecionado);
+        // Verifica se o produto já está no carrinho
+        const itemExistente = carrinho.find(item => item.titulo === produtoSelecionado.titulo);
+        if (itemExistente) {
+            itemExistente.quantidade = (itemExistente.quantidade || 1) + 1; // Incrementa a quantidade
+        } else {
+            carrinho.push({ ...produtoSelecionado, quantidade: 1 }); // Adiciona o produto ao carrinho
+        }
 
-        // Exibir mensagem de sucesso
+        // Salva o carrinho atualizado no localStorage
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+        // Exibe uma mensagem de sucesso
         alert(`${produtoSelecionado.titulo} foi adicionado ao carrinho!`);
-        console.log(carrinho); // Para verificar os itens no console
     }
 });
-
-function renderizarCarrinho() {
-    const carrinhoContainer = document.querySelector('.carrinho-itens');
-    carrinhoContainer.innerHTML = '';
-
-    carrinho.forEach((item, index) => {
-        const itemHTML = `
-            <li>
-                <img src="${item.imagem}" alt="${item.alt}" width="50">
-                <span>${item.titulo}</span>
-                <span>${item.preco}</span>
-                <button class="remover-item" data-id="${index}">Remover</button>
-            </li>
-        `;
-        carrinhoContainer.innerHTML += itemHTML;
-    });
-}
-
-// Atualizar o carrinho ao adicionar itens
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('add-to-cart')) {
-        renderizarCarrinho();
-    }
-});
-
-// Remover itens do carrinho
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('remover-item')) {
-        const itemId = event.target.getAttribute('data-id');
-        carrinho.splice(itemId, 1); // Remove o item do array
-        renderizarCarrinho(); // Atualiza a exibição do carrinho
-    }
-});
-
-function salvarCarrinho() {
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-}
-
-function carregarCarrinho() {
-    const carrinhoSalvo = localStorage.getItem('carrinho');
-    if (carrinhoSalvo) {
-        carrinho.push(...JSON.parse(carrinhoSalvo));
-        renderizarCarrinho();
-    }
-}
-
-// Chamar ao carregar a página
-carregarCarrinho();
