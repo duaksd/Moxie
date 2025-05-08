@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Área Logada</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container-login-cadastro">
+    <div class="login-box">
+      <div class="form">
+        <div class="header">Bem-vindo!</div>
+        <p style="color:white;">Você está logado com sucesso.</p>
+        <button class="button" onclick="logout()">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+
+    function logout() {
+      localStorage.setItem('isLoggedIn', 'false');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
