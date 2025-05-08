@@ -16,7 +16,7 @@ const produtos = [
     {
         imagem: "img/masc10.png",
         alt: "Munhequeira de pulso",
-        titulo: "Munhequeira de pulso",
+        titulo: "Munhequeira ",
         descricao: "Leve e resistente.",
         preco: "R$ 299,99"
     },
@@ -122,4 +122,6 @@ document.addEventListener('click', (event) => {
         // Exibe uma mensagem de sucesso
         alert(`${produtoSelecionado.titulo} foi adicionado ao carrinho!`);
     }
+
+
 });

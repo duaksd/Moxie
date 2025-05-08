@@ -452,12 +452,14 @@ header h1 {
 
 .sobre h2 {
     font-size: 24px;
+    font-weight: bold; 
 }
 
 .sobre p {
     font-size: 16px;
-    color: #444;
+    color: #000000;
     margin-top: 10px;
+    font-weight: 600; 
 }
 
 /* Rodapé */
@@ -972,4 +974,6 @@ header h1 {
         background-size: cover; /* Faz a imagem cobrir o espaço */
         background-position: center; /* Centraliza a imagem */
     }
+
+    
 }
