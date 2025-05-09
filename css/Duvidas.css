@@ -1,3 +1,16 @@
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+
+}
+
+:root {
+  /* Fontes */
+  --ff-poppins: "Poppins", sans-serif;
+  --ff-OST: "Old Standard TT", serif;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;

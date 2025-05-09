@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login</title>
-  <link rel="stylesheet" href="css/cadastro.css" /> <!-- Updated to match the correct file -->
+  <link rel="stylesheet" href="css/login.css" /> <!-- Updated to match the correct file -->
 </head>
 <body>
-  <div class="container-login-cadastro">
+  <div class="container-login">
     <div class="login-box">
       <div class="form">
         <div class="header">Login</div>
@@ -18,26 +18,6 @@
     </div>
   </div>
 
-  <script>
-    function login() {
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      const savedEmail = localStorage.getItem('userEmail');
-      const savedPassword = localStorage.getItem('userPassword');
-
-      if (!email || !password) {
-        alert('Preencha todos os campos.');
-        return;
-      }
-
-      if (email === savedEmail && password === savedPassword) {
-        localStorage.setItem('isLoggedIn', 'true');
-        window.location.href = 'dashboard.html';
-      } else {
-        alert('Email ou senha incorretos.');
-      }
-    }
-  </script>
+  <script src="js/TTeste.js"></script>
 </body>
 </html>

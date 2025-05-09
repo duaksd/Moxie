@@ -1,5 +1,16 @@
-/*Login*/
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+}
 
+:root {
+  /* Fontes */
+  --ff-poppins: "Poppins", sans-serif;
+  --ff-OST: "Old Standard TT", serif;
+}
+
+/*Login*/
 .container-login {
     --form-width: 315px;
     --aspect-ratio: 1.33;
@@ -167,6 +178,10 @@
   .sign-in {
     margin-top: 5px;
     text-decoration: none;
+    color: #fff;
+    font-family: var(--ff-poppins);
+    font-size: 14px;
+    font-weight: 300;
   }
   
   .google-sign-in {
@@ -247,4 +262,4 @@
     height: 100%;
     padding: 20px;
   }
-
+}
