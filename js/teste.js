@@ -31,7 +31,7 @@ const produtos = [
         imagem: "img/camisa-preta.jpeg",
         alt: "Camiseta Esportiva Funcional Masculina",
         titulo: "Camiseta Esportiva Funcional Masculina",
-        descricao: "Camiseta esportiva de tecido leve e respirável, com tecnologia de absorção de umidade, ideal para treinos na academia. Design moderno e confortável, com ajuste perfeito ao corpo e detalhes refletivos para maior segurança. Perfeita para quem busca desempenho e estilo durante as atividades físicas",
+        descricao: "Camiseta esportiva de tecido leve e respirável, com tecnologia de absorção de umidade, ideal para treinos na academia. Design moderno e confortável, com ajuste perfeito ao corpo e detalhes refletivos para maior segurança. Perfeita para quem busca desempenho e estilo durante as atividades físicas.",
         preco: "R$ 89,90"
     },
     {
