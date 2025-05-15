@@ -110,20 +110,34 @@ const grid = document.querySelector('.grid');
 
 const carrinho = JSON.parse(localStorage.getItem('carrinho')) || []; // Carrega o carrinho do localStorage ou inicializa vazio
 
+const container = document.getElementById('produtos-container');
+
+// Gera os produtos dinamicamente
 produtos.forEach((produto, index) => {
+    const descricaoCurta = produto.descricao.length > 100 
+        ? produto.descricao.substring(0, 100) + '...' 
+        : produto.descricao; // Limita a descrição a 100 caracteres
+
     const produtoHTML = `
         <div class="produto">
             <img src="${produto.imagem}" alt="${produto.alt}">
-            <h3>${produto.titulo}</h3>
-            <p>${produto.descricao}</p>
-            <h2 class="preco">${produto.preco}</h2>
-            <button class="add-to-cart" data-id="${index}">Comprar</button>
+            <h2>${produto.titulo}</h2>
+            <p>${descricaoCurta}</p> <!-- Exibe a descrição curta -->
+            <p class="preco">${produto.preco}</p>
+            <button onclick="redirecionarParaProduto(${index})">Comprar</button>
         </div>
     `;
-    grid.innerHTML += produtoHTML;
+    container.innerHTML += produtoHTML;
 });
 
-// Adicionar evento aos botões "Comprar"
+// Função para redirecionar para a página do produto
+function redirecionarParaProduto(index) {
+    const produto = produtos[index];
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&titulo=${encodeURIComponent(produto.titulo)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}`;
+    window.location.href = `produto.html${queryString}`;
+}
+
+// Adicionar evento aos botões "Comprar" add-to-cart <button class="add-to-cart" data-id="${index}">Comprar</button>
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('add-to-cart')) {
         const produtoId = event.target.getAttribute('data-id');
