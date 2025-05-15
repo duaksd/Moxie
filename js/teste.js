@@ -83,7 +83,7 @@ const produtos = [
         descricao: "Macacão feminino da linha Street Moxie, com design slim e acabamento em tecido stretch de alta resistência. Perfeito para um visual urbano, confortável e moderno, ideal para o dia a dia, treinos ou looks casuais. Cor preta, estilosa e versátil para quem busca praticidade com atitude.",
         preco: "R$ 179,90"
     },
-    {
+    /*{
         imagem: "img/verde-jade.jpeg",
         alt: "Conjunto Fitness Verde Jade",
         titulo: "Conjunto Fitness Verde Jade",
@@ -103,7 +103,7 @@ const produtos = [
         titulo: "Conjunto Esportivo Casual",
         descricao: "Conjunto de camiseta e shorts super finos + camisa moletom ideal para treinos e atividades físicas. O tecido leve e respirável proporciona conforto e liberdade de movimento. Design moderno e estiloso, perfeito para quem busca praticidade e conforto no dia a dia. Disponível em várias cores.",
         preco: "R$ 144,90"
-    }
+    }*/
 ];
 
 const grid = document.querySelector('.grid');
