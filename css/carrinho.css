@@ -86,6 +86,8 @@ table thead tr th {
     padding-bottom: 10px;
     text-transform: uppercase;
     color: #666;
+    padding-right: 15px; /* Adiciona espaço horizontal entre os textos */
+    letter-spacing: 1px; /* Adiciona espaçamento entre as letras */
 }
 
 table tbody tr {
@@ -238,4 +240,8 @@ aside > button {
 
 aside > button:hover {
     background: rgb(46, 196, 81);
+}
+
+.content{
+    padding: 10px;
 }
