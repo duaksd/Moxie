@@ -169,6 +169,8 @@ table tbody tr td {
     background: #ddd;
 }
 
+
+
 aside {
     margin-left: 30px;
 }
@@ -239,3 +241,7 @@ aside > button {
 aside > button:hover {
     background: rgb(46, 196, 81);
 }
+td:last-child {
+    vertical-align: middle;
+}
+
