@@ -16,13 +16,24 @@ body {
     align-items: flex-start;
     padding: 20px;
     padding-top: 50px;
-    gap: 30px;
-    max-width: 1200px;
-    height: 750px;
     margin: 0 auto;
+    max-width: 1200px;
+    width: 100%; /* Adicionado para garantir largura total */
+    height: 800px; /* Tamanho específico para a altura */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteúdo do produto */
+.produto-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
 }
 
 /* Imagem do produto */
@@ -79,9 +90,12 @@ body {
 /* Responsividade */
 @media (max-width: 768px) {
     .produto-detalhes {
+        padding: 15px;
+    }
+
+    .produto-conteudo {
         flex-direction: column;
         align-items: center;
-        padding: 15px;
     }
 
     .produto-imagem img {

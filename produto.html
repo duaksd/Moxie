@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOXIE</title>
     <link rel="stylesheet" href="css/produto.css">
-    <link rel="stylesheet" href="ccs/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -33,14 +32,17 @@
     <!-- Conteúdo principal -->
     <main>
         <section class="produto-detalhes">
-            <div class="produto-imagem">
-                <img id="produto-imagem" src="" alt="Imagem do Produto">
-            </div>
-            <div class="produto-info">
-                <h1 id="produto-titulo"></h1>
-                <p id="produto-descricao"></p>
-                <p id="produto-preco" class="produto-preco"></p>
-                <button id="adicionar-carrinho" class="btn-comprar">Adicionar ao Carrinho</button>
+            <div class="produto-conteudo">
+                <div class="produto-imagem">
+                    <img id="produto-imagem" src="" alt="Imagem do Produto">
+                </div>
+                <div class="produto-info">
+                    <h1 id="produto-titulo"></h1>
+                    <p id="produto-descricao"></p>
+                    <p id="produto-preco" class="produto-preco"></p>
+                    <p id="produto-parcela"></p>
+                    <button id="adicionar-carrinho" class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
             </div>
         </section>
     </main>
@@ -64,7 +66,8 @@
                 alt: params.get('alt'),
                 titulo: params.get('titulo'),
                 descricao: params.get('descricao'),
-                preco: params.get('preco')
+                preco: params.get('preco'),
+                parcelamento: params.get('parcelamento'),
             };
         }
 
@@ -76,6 +79,9 @@
             document.getElementById('produto-titulo').textContent = produto.titulo;
             document.getElementById('produto-descricao').textContent = produto.descricao;
             document.getElementById('produto-preco').textContent = `Preço: ${produto.preco}`;
+            document.getElementById('produto-parcela').textContent = produto.parcelamento 
+                ? `Parcelamento: ${produto.parcelamento}` 
+                : 'Parcelamento não disponível.';
         } else {
             document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
         }
@@ -95,5 +101,6 @@
             alert(`${produto.titulo} foi adicionado ao carrinho!`);
         });
     </script>
+    <script src="js/teste.js"></script>
 </body>
 </html>
