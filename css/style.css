@@ -5,6 +5,8 @@
     --rosa-fem: #B096BC;
     --branco: #FFF;
     --cinza-pers: #D9D9D9;
+    --gradiente-header: linear-gradient(to left, #000000 0%, #808080 150%);
+    --cinza: #808080;
 
     /* Fontes */
     --ff-poppins: "Poppins", sans-serif;
@@ -92,7 +94,9 @@ li {
 }
 
 header {
-    background: var(--preto);
+    background: linear-gradient(to left, #000000 0%, #808080 150%);
+
+
     color: var(--branco);
     padding: 10px 0;
 }
@@ -404,7 +408,7 @@ header h1 {
 }
 
 .produtos h2 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -427,13 +431,11 @@ header h1 {
     box-sizing: border-box;
     overflow: hidden;
     height: 100%; /* Garante que todos os cards tenham a mesma altura */
-    background: #fff; /* Fundo branco para destacar os cards */
 }
 
 .produto img {
-    width: 100%; /* Define a largura como responsiva */
-    height: 200px; /* Garante altura igual para todas as imagens */
-    object-fit: cover; /* Ajusta a imagem para preencher o espaço sem distorção */
+    width: 100%; /* define um tamanho fixo ou responsivo */
+    height: 285px; /* garante altura igual para todos */
     border-radius: 5px;
     margin-bottom: 10px; /* Espaçamento entre a imagem e o restante */
 }
@@ -445,18 +447,18 @@ header h1 {
 }
 
 .produto p {
-    font-size: 14px;
     color: #555;
-    margin-bottom: 10px;
-    text-align: left;
-    height: 60px; /* Limita a altura da descrição */
+    font-size: 14px;
+    height: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Limita a descrição a 3 linhas */
-    line-clamp: 3; /* Compatibilidade com navegadores modernos */
+    -webkit-line-clamp: 3;
+    line-clamp: 3; /* Standard property for compatibility */
+    margin-bottom: 10px; /* Espaçamento entre a descrição e o botão */
     flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+
 }
 
 .produto .preco {
@@ -464,19 +466,18 @@ header h1 {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px; /* Espaçamento entre o preço e o botão */
-    text-align: center;
-    margin-top: auto; /* Empurra o preço para o final do card */
 }
 
 .produto button {
-    background: var(--preto);
+    background: #444;
     color: white;
     border: none;
     padding: 10px;
     width: 100%; /* Faz o botão ocupar toda a largura do card */
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
     transition: 0.3s;
+    align-self: center; /* Centraliza o botão horizontalmente */
 }
 
 .produto button:hover {
