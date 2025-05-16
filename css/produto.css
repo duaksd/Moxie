@@ -1,0 +1,103 @@
+/* Estilo geral */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Seção de detalhes do produto */
+.produto-detalhes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    padding-top: 50px;
+    gap: 30px;
+    max-width: 1200px;
+    height: 750px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem do produto */
+.produto-imagem img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Informações do produto */
+.produto-info {
+    max-width: 600px;
+    width: 100%;
+}
+
+.produto-info h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.produto-info p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.produto-preco {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Botão "Adicionar ao Carrinho" */
+.btn-comprar {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .produto-detalhes {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .produto-imagem img {
+        max-width: 300px;
+    }
+
+    .produto-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .produto-preco {
+        font-size: 1.5rem;
+    }
+
+    .btn-comprar {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+}
