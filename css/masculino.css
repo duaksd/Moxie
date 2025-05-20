@@ -72,7 +72,7 @@ li {
 }
 
 header {
-    background: var(--azul-masc);
+    background: #06649b;
     color: var(--branco);
     padding: 10px 0;
 }
@@ -436,7 +436,7 @@ header h1 {
 }
 
 .produto button {
-    background: var(--azul-masc);
+    background: #06649b;
     color: white;
     border: none;
     padding: 10px;
@@ -529,7 +529,7 @@ footer {
 }
 
 .categoria-masculino {
-    background-color: var(--azul-masc);
+    background-color: #06649b;
     width: 100%;
     height: 140px;
     cursor: pointer;
