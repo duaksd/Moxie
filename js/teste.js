@@ -5,7 +5,8 @@ const produtos = [
         titulo: "Conjunto Fitness Plus Size Preto com Detalhes Listrados",
         descricao: "Conjunto de treino feminino de alta elasticidade, desenvolvido especialmente para conforto e estilo. O top de alças largas oferece suporte seguro, enquanto a legging de cintura alta valoriza a silhueta, com detalhes listrados que adicionam um toque de modernidade. Ideal para atividades físicas, caminhadas ou uso casual esportivo. Confeccionado com tecido respirável e de secagem rápida, perfeito para o seu dia a dia ativo.",
         preco: "R$ 115,99",
-        parcelamento: "3x de R$ 38,66"
+        parcelamento: "3x de R$ 38,66",
+        tamanho: "gg",
     },
     {
         imagem: "img/fem1.png",
@@ -13,7 +14,8 @@ const produtos = [
         titulo: "Shorts Fitness Feminino Moxie",
         descricao: "Shorts leve e confortável da linha Moxie, desenvolvido para atividades físicas intensas ou leisurely. Confeccionado com tecido de alta respirabilidade e elasticidade, garantindo liberdade de movimento e secagem rápida. Design estiloso na cor coral, com cintura elástica para melhor ajuste e conforto durante o uso.",
         preco: "R$ 78,89",
-        parcelamento: "2x de R$ 39,45"
+        parcelamento: "2x de R$ 39,45",
+        tamanho: "p",
     },
     {
         imagem: "img/munhequeira.jpeg",
@@ -21,7 +23,7 @@ const produtos = [
         titulo: "Munhequeira PowerGrip (Par)",
         descricao: "Estabilidade e proteção em cada repetição. A Munhequeira PowerGrip foi desenvolvida para dar suporte aos punhos durante treinos de musculação, crossfit e levantamento de peso. Com ajuste em velcro e tecido elástico respirável, ela previne lesões sem limitar seus movimentos. Ideal para quem leva o treino a sério.",
         preco: "R$ 39,99",
-        parcelamento: "2x de R$ 20,00"
+        parcelamento: "2x de R$ 20,00",
     },
     {
         imagem: "img/mae-roupa.jpeg",
@@ -145,7 +147,7 @@ produtos.forEach((produto, index) => {
 // Função para redirecionar para a página do produto
 function redirecionarParaProduto(index) {
     const produto = produtos[index];
-    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&titulo=${encodeURIComponent(produto.titulo)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}`;
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&titulo=${encodeURIComponent(produto.titulo)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}`;
     window.location.href = `produto.html${queryString}`;
 }
 

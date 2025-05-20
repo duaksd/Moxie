@@ -40,6 +40,7 @@
                     <h1 id="produto-titulo"></h1>
                     <p id="produto-descricao"></p>
                     <p id="produto-preco" class="produto-preco"></p>
+                    <p id="produto-tamanho"></p>
                     <p id="produto-parcela"></p>
                     <button id="adicionar-carrinho" class="btn-comprar">Adicionar ao Carrinho</button>
                 </div>
@@ -68,6 +69,7 @@
                 descricao: params.get('descricao'),
                 preco: params.get('preco'),
                 parcelamento: params.get('parcelamento'),
+                tamanho: params.get('tamanho'),
             };
         }
 
