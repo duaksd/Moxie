@@ -264,7 +264,7 @@ header h1 {
 
 /* Botão de busca */
 .search-box button[type="submit"] {
-    background-color: var(--rosa-fem);
+    background-color: var(--preto);
     color: var(--branco);
     border: none;
     padding: 10px 20px;
@@ -275,7 +275,7 @@ header h1 {
 }
 
 .search-box button[type="submit"]:hover {
-    background-color: #c0a7cc;
+    background-color: #946fa5;
 }
 
 /* Botão de fechar (X) */
@@ -291,7 +291,7 @@ header h1 {
 
 .close-search:hover {
     transform: scale(1.1);
-    color: rgba(46, 142, 255, 0.7);
+    color: #946fa5;
 }
 
 /* Input para controlar o menu */
