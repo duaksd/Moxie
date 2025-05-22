@@ -72,7 +72,7 @@ li {
 }
 
 header {
-    background: var(--azul-masc);
+    background: #06649b;
     color: var(--branco);
     padding: 10px 0;
 }
@@ -264,7 +264,7 @@ header h1 {
 
 /* Botão de busca */
 .search-box button[type="submit"] {
-    background-color: #4169e1;
+    background-color:var(--preto);
     color: var(--branco);
     border: none;
     padding: 10px 20px;
@@ -275,7 +275,7 @@ header h1 {
 }
 
 .search-box button[type="submit"]:hover {
-    background-color: rgb(104, 151, 255);
+    background-color: rgb(68, 86, 129);
 }
 
 /* Botão de fechar (X) */
@@ -291,7 +291,7 @@ header h1 {
 
 .close-search:hover {
     transform: scale(1.1);
-    color: rgba(46, 142, 255, 0.7);
+    color: rgb(68, 86, 129);
 }
 
 /* Input para controlar o menu */
@@ -436,7 +436,7 @@ header h1 {
 }
 
 .produto button {
-    background: var(--azul-masc);
+    background: #06649b;
     color: white;
     border: none;
     padding: 10px;
@@ -529,7 +529,7 @@ footer {
 }
 
 .categoria-masculino {
-    background-color: var(--azul-masc);
+    background-color: #06649b;
     width: 100%;
     height: 140px;
     cursor: pointer;
