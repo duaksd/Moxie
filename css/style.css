@@ -155,20 +155,6 @@ header h1 {
     overflow: hidden; /* Garante que o conteúdo extra não afete o tamanho da página */
 }
 
-.barra-promocao-lista {
-    text-align: right;
-    display: flex;
-    font-family: var(--ff-poppins);
-    font-weight: 600;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    white-space: nowrap; /* Impede quebra de linha */
-    animation: rolar 30s linear infinite; /* Define a animação */
-    overflow: hidden; /* Oculta o texto que ultrapassa os limites */
-}
-
 /* Categorias no Header */
 .header-categories ul {
     display: flex;
