@@ -37,7 +37,7 @@
                     <img id="produto-imagem" src="" alt="Imagem do Produto">
                 </div>
                 <div class="produto-info">
-                    <h1 id="produto-titulo"></h1>
+                    <h1 id="produto-nome"></h1>
                     <p id="produto-descricao"></p>
                     <p id="produto-preco" class="produto-preco"></p>
                     <p id="produto-tamanho"></p>
@@ -65,7 +65,7 @@
             return {
                 imagem: params.get('imagem'),
                 alt: params.get('alt'),
-                titulo: params.get('titulo'),
+                nome: params.get('nome'),
                 descricao: params.get('descricao'),
                 preco: params.get('preco'),
                 parcelamento: params.get('parcelamento'),
@@ -78,12 +78,15 @@
         if (produto.imagem) {
             document.getElementById('produto-imagem').src = produto.imagem;
             document.getElementById('produto-imagem').alt = produto.alt;
-            document.getElementById('produto-titulo').textContent = produto.titulo;
+            document.getElementById('produto-nome').textContent = produto.nome;
             document.getElementById('produto-descricao').textContent = produto.descricao;
             document.getElementById('produto-preco').textContent = `Preço: ${produto.preco}`;
             document.getElementById('produto-parcela').textContent = produto.parcelamento 
                 ? `Parcelamento: ${produto.parcelamento}` 
                 : 'Parcelamento não disponível.';
+            document.getElementById('produto-tamanho').textContent = produto.tamanho
+                ? `Tamanho: ${produto.tamanho}` 
+                : 'Tamanho não disponível.';
         } else {
             document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
         }
@@ -91,7 +94,7 @@
         // Adicionar produto ao carrinho
         document.getElementById('adicionar-carrinho').addEventListener('click', () => {
             const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const produtoExistente = carrinho.find(item => item.titulo === produto.titulo);
+            const produtoExistente = carrinho.find(item => item.nome === produto.nome);
 
             if (produtoExistente) {
                 produtoExistente.quantidade = (produtoExistente.quantidade || 1) + 1;
@@ -100,7 +103,7 @@
             }
 
             localStorage.setItem('carrinho', JSON.stringify(carrinho));
-            alert(`${produto.titulo} foi adicionado ao carrinho!`);
+            alert(`${produto.nome} foi adicionado ao carrinho!`);
         });
     </script>
     <script src="js/teste.js"></script>
