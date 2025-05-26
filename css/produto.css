@@ -29,25 +29,38 @@ body {
 /* Conteúdo do produto */
 .produto-conteudo {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;           /* impede quebra de linha */
     justify-content: center;
     align-items: flex-start;
     margin-top: 50px;
-    gap: 30px;
+    gap: 40px;                   /* mais espaço entre imagem e info */
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
 }
 
 /* Imagem do produto */
-.produto-imagem img {
-    max-width: 400px;
+.produto-imagem {
+    flex: 0 0 500px;             /* largura fixa maior para a imagem */
+    max-width: 500px;
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Informações do produto */
+.produto-imagem img {
+    width: 100%;
+    height: auto;
+    max-width: 480px;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
 .produto-info {
+    flex: 1 1 0;
     max-width: 600px;
     width: 100%;
 }
@@ -91,6 +104,26 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza a transição */
 }
 
+.btn-comprar {
+    background: linear-gradient(90deg, #8a00b4 60%, #c300ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255,77,77,0.10);
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-comprar:hover,
+.btn-comprar:focus {
+    background: linear-gradient(90deg, #c300ff 0%, #8a00b4 100%);
+    transform: scale(1.04);
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .produto-detalhes {
@@ -119,3 +152,4 @@ body {
         padding: 10px 15px;
     }
 }
+
