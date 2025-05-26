@@ -72,7 +72,7 @@ li {
 }
 
 header {
-    background: #06649b;
+    background: #191970;
     color: var(--branco);
     padding: 10px 0;
 }
@@ -120,7 +120,7 @@ header h1 {
 }
 
 .h1-titulo a:hover {
-    color: var(--preto); /* Cor ao passar o mouse */
+    color: #1E90FF; /* Cor ao passar o mouse */
 }
 
 /* Nav promoções */
@@ -163,7 +163,7 @@ header h1 {
 }
 
 .header-categories ul li a:hover {
-    color: var(--preto); /* Cor de destaque ao passar o mouse */
+    color: #1E90FF; /* Cor de destaque ao passar o mouse */
 }
 
 /* Botões do Header */
@@ -189,11 +189,11 @@ header h1 {
 
 .icon-button:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: var(--preto); 
+    color: #1E90FF; 
 }
 
 .icon-button:focus {
-    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline: 2px solid #1E90FF; /* Destaque ao focar */
     outline-offset: 2px;
 }
 
@@ -204,7 +204,7 @@ header h1 {
 
 /* Adiciona um estilo de foco personalizado (opcional) */
 .icon-button:focus-visible {
-    outline: 2px solid rgba(46, 142, 255, 0.7); /* Destaque ao focar */
+    outline: 2px solid #1E90FF; /* Destaque ao focar */
     outline-offset: 2px;
 }
 
@@ -228,7 +228,7 @@ header h1 {
 
 .search-icon:hover {
     transform: scale(1.1);
-    color: var(--preto);
+    color: #1E90FF;
 }
 
 /* Caixa de pesquisa */
@@ -346,7 +346,7 @@ header h1 {
 }
 
 .menu ul li a:hover {
-    color: #333; /* Cor ao passar o mouse */
+    color:#1E90FF; /* Cor ao passar o mouse */
 }
 
 .container-produtos{
@@ -436,7 +436,7 @@ header h1 {
 }
 
 .produto button {
-    background: #06649b;
+    background: #191970;
     color: white;
     border: none;
     padding: 10px;
@@ -448,7 +448,7 @@ header h1 {
 }
 
 .produto button:hover {
-    background: rgb(104, 151, 255);;
+    background: #1E90FF;;
 }
 
 /* Sobre */
@@ -529,7 +529,7 @@ footer {
 }
 
 .categoria-masculino {
-    background-color: #06649b;
+    background-color: #191970;
     width: 100%;
     height: 140px;
     cursor: pointer;

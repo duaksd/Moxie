@@ -115,12 +115,12 @@ header h1 {
 /* Estilo do título no header */
 .h1-titulo a {
     text-decoration: none; /* Remove o sublinhado do link */
-    color: var(--branco); /* Cor do texto */
+    color: var(--preto); /* Cor do texto */
     transition: color 0.3s ease;
 }
 
 .h1-titulo a:hover {
-    color: black; /* Cor ao passar o mouse */
+    color: #eee; /* Cor ao passar o mouse */
 }
 
 /* Nav promoções */
@@ -156,14 +156,14 @@ header h1 {
 
 .header-categories ul li a {
     text-decoration: none;
-    color: var(--branco);
+    color: var(--preto);
     font-size: 20px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .header-categories ul li a:hover {
-    color: black; /* Cor de destaque ao passar o mouse */
+    color: #eee; /* Cor de destaque ao passar o mouse */
 }
 
 /* Botões do Header */
@@ -179,7 +179,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     font-size: 24px; /* Tamanho do ícone */
-    color: white; /* Cor do ícone */
+    color: var(--preto); /* Cor do ícone */
     text-decoration: none; /* Remove o sublinhado do link */
     background: none; /* Remove o fundo padrão */
     border: none; /* Remove bordas */
@@ -189,7 +189,7 @@ header h1 {
 
 .icon-button:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: black; /* Cor ao passar o mouse */
+    color: #eee; /* Cor ao passar o mouse */
 }
 
 .icon-button:focus {
@@ -221,14 +221,14 @@ header h1 {
 /* Ícone da lupa */
 .search-icon {
     font-size: 24px;
-    color: var(--branco);
+    color: var(--preto);
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .search-icon:hover {
     transform: scale(1.1);
-    color: black;
+    color: #eee;
 }
 
 /* Caixa de pesquisa */
