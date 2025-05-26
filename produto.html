@@ -39,10 +39,11 @@
                 <div class="produto-info">
                     <h1 id="produto-nome"></h1>
                     <p id="produto-descricao"></p>
-                    <p id="produto-preco" class="produto-preco"></p>
+                    <p id="produto-preco" class="produto-preco"></p>                    
+                    <p id="produto-cor"></p>
                     <p id="produto-tamanho"></p>
                     <p id="produto-parcela"></p>
-                    <button id="adicionar-carrinho" class="btn-comprar">Adicionar ao Carrinho</button>
+                    <button id="adicionar-carrinho" class="btn-carro">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </section>
@@ -59,8 +60,8 @@
     </script>
 
     <script>
-        // Função para obter os parâmetros da URL
         function getQueryParams() {
+            // Função para obter os parâmetros da URL
             const params = new URLSearchParams(window.location.search);
             return {
                 imagem: params.get('imagem'),
@@ -70,6 +71,8 @@
                 preco: params.get('preco'),
                 parcelamento: params.get('parcelamento'),
                 tamanho: params.get('tamanho'),
+                cor: params.get('cor'),
+                genero: params.get('genero')
             };
         }
 
@@ -87,6 +90,9 @@
             document.getElementById('produto-tamanho').textContent = produto.tamanho
                 ? `Tamanho: ${produto.tamanho}` 
                 : 'Tamanho não disponível.';
+            document.getElementById('produto-cor').textContent = produto.cor
+                ? `Cor: ${produto.cor}` 
+                : 'Cor não disponível.';
         } else {
             document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
         }
@@ -106,6 +112,5 @@
             alert(`${produto.nome} foi adicionado ao carrinho!`);
         });
     </script>
-    <script src="js/teste.js"></script>
 </body>
 </html>

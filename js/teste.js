@@ -18,6 +18,7 @@ const produtos = [
         tamanho: "P",
         genero: "feminino",
         cor: "coral",
+        estoque: 10,
     },
     {
         imagem: "img/munhequeira.jpeg",
@@ -134,13 +135,18 @@ produtos.forEach((produto, index) => {
         ? produto.descricao.substring(0, 100) + '...' 
         : produto.descricao; // Limita a descrição a 100 caracteres
 
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
+
     const produtoHTML = `
         <div class="produto">
-            <img src="${produto.imagem}" alt="${produto.alt}">
+            <a href="produto.html${queryString}">
+                <img src="${produto.imagem}" alt="${produto.alt}">
+            </a>
             <h2>${produto.nome}</h2>
-            <p>${descricaoCurta}</p> <!-- Exibe a descrição curta -->
+            <p>${descricaoCurta}</p>
             <p class="preco">${produto.preco}</p>
             <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+            <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
         </div>
     `;
     container.innerHTML += produtoHTML;
@@ -149,7 +155,7 @@ produtos.forEach((produto, index) => {
 // Função para redirecionar para a página do produto
 function redirecionarParaProduto(index) {
     const produto = produtos[index];
-    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}`;
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`; // Adiciona os parâmetros da URL
     window.location.href = `produto.html${queryString}`;
 }
 
@@ -160,7 +166,7 @@ document.addEventListener('click', (event) => {
         const produtoSelecionado = produtos[produtoId];
 
         // Verifica se o produto já está no carrinho
-        const itemExistente = carrinho.find(item => item.titulo === produtoSelecionado.titulo);
+        const itemExistente = carrinho.find(item => item.nome === produtoSelecionado.nome);
         if (itemExistente) {
             itemExistente.quantidade = (itemExistente.quantidade || 1) + 1; // Incrementa a quantidade
         } else {
@@ -171,7 +177,7 @@ document.addEventListener('click', (event) => {
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
         // Exibe uma mensagem de sucesso
-        alert(`${produtoSelecionado.titulo} foi adicionado ao carrinho!`);
+        alert(`${produtoSelecionado.nome} foi adicionado ao carrinho!`);
     }
 
 

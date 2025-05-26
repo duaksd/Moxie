@@ -62,7 +62,7 @@ function carregarCarrinho() {
             <div class="produto">
               <img src="${item.imagem}" alt="${item.alt}" width="50">
               <div class="info">
-                <div class="nome">${item.titulo}</div>
+                <div class="nome">${item.nome}</div>
                 <div class="categoria">${descricaoLimitada}</div>
               </div>
             </div>
