@@ -135,13 +135,18 @@ produtos.forEach((produto, index) => {
         ? produto.descricao.substring(0, 100) + '...' 
         : produto.descricao; // Limita a descrição a 100 caracteres
 
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
+
     const produtoHTML = `
         <div class="produto">
-            <img src="${produto.imagem}" alt="${produto.alt}">
+            <a href="produto.html${queryString}">
+                <img src="${produto.imagem}" alt="${produto.alt}">
+            </a>
             <h2>${produto.nome}</h2>
-            <p>${descricaoCurta}</p> <!-- Exibe a descrição curta -->
+            <p>${descricaoCurta}</p>
             <p class="preco">${produto.preco}</p>
             <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+            <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
         </div>
     `;
     container.innerHTML += produtoHTML;

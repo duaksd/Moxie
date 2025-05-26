@@ -71,7 +71,7 @@ body {
 }
 
 /* Botão "Adicionar ao Carrinho" */
-.btn-comprar {
+.btn-carro {
     display: inline-block;
     background-color: #696969;
     color: white;
@@ -85,7 +85,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.btn-comprar:hover {
+.btn-carro:hover {
     background-color: #4f4f4f;
     transform: scale(1.02);
     transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza a transição */
@@ -114,7 +114,7 @@ body {
         font-size: 1.5rem;
     }
 
-    .btn-comprar {
+    .btn-carro {
         font-size: 0.9rem;
         padding: 10px 15px;
     }
