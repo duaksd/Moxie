@@ -34,7 +34,11 @@ const produtos = [
         nome: "Conjunto Fitness Mãe Atleta",
         descricao: "Este conjunto feminino de roupas de fitness foi criado para celebrar a força, energia e conexão entre mães e seus filhos. Com tecido dry-fit leve, que proporciona conforto e liberdade de movimento, é perfeito para treinos em casa, na academia ou ao ar livre. O design moderno e estiloso incentiva uma rotina saudável e cheia de amor.",
         preco: "R$ 119,90",
-        parcelamento: "3x de R$ 39,97"
+        parcelamento: "3x de R$ 39,97",
+        tamanho: "P",
+        genero: "feminino",
+        cor: "preto",
+        estoque: 10,
     },
     {
         imagem: "img/camisa-preta.jpeg",
@@ -50,7 +54,11 @@ const produtos = [
         nome: "Conjunto Fitness Feminino Lana",
         descricao: "Conjunto de top e legging fitness feitos em tecido de alta performance, com acabamento confortável e resistente. O top oferece suporte perfeito para treinos de alta intensidade, enquanto a legging garante liberdade de movimento e ajuste perfeito ao corpo. Ideal para atividades na academia, yoga ou corrida, proporcionando estilo e conforto.",
         preco: "R$ 149,99",
-        parcelamento: "3x de R$ 50,00"
+        parcelamento: "3x de R$ 50,00",
+        tamanho: "P",
+        genero: "feminino",
+        cor: "rosa",
+        estoque: 10,
     },
     {
         imagem: "img/camisa-longa.jpeg",
@@ -98,7 +106,11 @@ const produtos = [
         nome: "Macacão Fit Street Moxie",
         descricao: "Macacão feminino da linha Street Moxie, com design slim e acabamento em tecido stretch de alta resistência. Perfeito para um visual urbano, confortável e moderno, ideal para o dia a dia, treinos ou looks casuais. Cor preta, estilosa e versátil para quem busca praticidade com atitude.",
         preco: "R$ 179,90",
-        parcelamento: "3x de R$ 59,97"
+        parcelamento: "3x de R$ 59,97",
+        tamanho: "P",
+        genero: "feminino",
+        cor: "preto",
+        estoque: 10,
     },
     /*{
         imagem: "img/verde-jade.jpeg",
