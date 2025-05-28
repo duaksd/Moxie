@@ -66,7 +66,7 @@ li {
     margin: 0;
     font-size: 14px;
     white-space: nowrap; /* Impede quebra de linha */
-    animation: rolar 20s linear infinite; /* Define a animação */
+    animation: rolar 40s linear infinite; /* Define a animação */
     overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
     width: 100%; /* Garante que o contêiner ocupe toda a largura */
     position: relative; /* Necessário para a animação */
