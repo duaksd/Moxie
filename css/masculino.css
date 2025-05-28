@@ -437,6 +437,7 @@ header h1 {
 
 .produto button {
     background: #191970;
+    margin-top: 16px;
     color: white;
     border: none;
     padding: 10px;
