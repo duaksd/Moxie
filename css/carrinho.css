@@ -243,3 +243,51 @@ aside > button {
 aside > button:hover {
     background: rgb(46, 196, 81);
 }
+
+/* Responsividade para dispositivos móveis (largura máxima de 768px) */
+@media (max-width: 768px) {
+    body > main .content {
+        flex-direction: column; /* Alinha os elementos verticalmente */
+    }
+
+    aside {
+        margin-left: 0; /* Remove o espaçamento lateral */
+        margin-top: 20px; /* Adiciona espaçamento acima */
+    }
+}
+
+/* Responsividade para tablets (largura mínima de 768px e máxima de 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body > main .content {
+        flex-direction: column; /* Alinha os elementos verticalmente */
+    }
+
+    aside {
+        margin-left: 0; /* Remove o espaçamento lateral */
+        margin-top: 20px; /* Adiciona espaçamento acima */
+    }
+}
+
+/* Responsividade para desktops (largura mínima de 1024px) */
+@media (min-width: 1024px) {
+    body > main .content {
+        flex-direction: row; /* Alinha os elementos horizontalmente */
+    }
+
+    aside {
+        margin-left: 30px; /* Adiciona espaçamento lateral */
+        margin-top: 0; /* Remove o espaçamento acima */
+    }
+}
+
+/* Responsividade para grandes monitores (largura mínima de 1440px) */
+@media (min-width: 1440px) {
+    body > main .content {
+        flex-direction: row; /* Alinha os elementos horizontalmente */
+    }
+
+    aside {
+        margin-left: 30px; /* Adiciona espaçamento lateral */
+        margin-top: 0; /* Remove o espaçamento acima */
+    }
+}
