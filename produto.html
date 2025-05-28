@@ -18,6 +18,8 @@
 
 </head>
 <body>
+
+    
     <!-- Header -->
     <div id="header"></div>
     <script>
@@ -27,16 +29,17 @@
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Erro ao carregar o header:', error));
-    </script>
+        </script>
 
-    <!-- Conteúdo principal -->
-    <main>
-        <section class="produto-detalhes">
-            <div class="produto-conteudo">
-                <div class="produto-imagem">
-                    <img id="produto-imagem" src="" alt="Imagem do Produto" class="">
-                </div>
-                <div class="produto-info">
+<!-- Conteúdo principal -->
+<main>
+    <section class="produto-detalhes">
+        
+        <div class="produto-conteudo">
+            <div class="produto-imagem">
+                <img id="produto-imagem" src="" alt="Imagem do Produto" class="">
+            </div>
+            <div class="produto-info">
                     <h1 id="produto-nome"></h1>
                     <p id="produto-descricao"></p>
                     <p id="produto-preco" class="produto-preco"></p>                    
@@ -45,6 +48,16 @@
                     <p id="produto-parcela"></p>
                     <button id="adicionar-carrinho" class="btn-carro">Adicionar ao Carrinho</button>
                     <button id="comprar-agora" class="btn-comprar">Comprar Agora</button>
+                    <!--Botão de favoritos-->
+                    <input type="checkbox" checked="checked" id="favorite" name="favorite-checkbox" value="favorite-button">
+                    <label for="favorite" class="container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <div class="action">
+                            <span class="option-1">Adicionar aos favoritos</span>
+                            <span class="option-2">Remover dos favoritos</span>
+                        </div>
+                    </label>
+                    <!--fim do botão de favoritos-->
                 </div>
             </div>
         </section>
@@ -58,12 +71,12 @@
                 document.getElementById('footer').innerHTML = data;
             })
             .catch(error => console.error('Erro ao carregar o footer:', error));
-    </script>
+            </script>
 
-    <script>
-        function getQueryParams() {
-            // Função para obter os parâmetros da URL
-            const params = new URLSearchParams(window.location.search);
+<script>
+    function getQueryParams() {
+        // Função para obter os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
             return {
                 imagem: params.get('imagem'),
                 alt: params.get('alt'),
@@ -88,30 +101,30 @@
             document.getElementById('produto-parcela').textContent = produto.parcelamento 
                 ? `Parcelamento: ${produto.parcelamento}` 
                 : 'Parcelamento não disponível.';
-            document.getElementById('produto-tamanho').textContent = produto.tamanho
+                document.getElementById('produto-tamanho').textContent = produto.tamanho
                 ? `Tamanho: ${produto.tamanho}` 
                 : 'Tamanho não disponível.';
             document.getElementById('produto-cor').textContent = produto.cor
                 ? `Cor: ${produto.cor}` 
                 : 'Cor não disponível.';
-        } else {
-            document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
-        }
-
-        // Adicionar produto ao carrinho
-        document.getElementById('adicionar-carrinho').addEventListener('click', () => {
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const produtoExistente = carrinho.find(item => item.nome === produto.nome);
-
-            if (produtoExistente) {
-                produtoExistente.quantidade = (produtoExistente.quantidade || 1) + 1;
             } else {
-                carrinho.push({ ...produto, quantidade: 1 });
+                document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
             }
-
-            localStorage.setItem('carrinho', JSON.stringify(carrinho));
-            alert(`${produto.nome} foi adicionado ao carrinho!`);
-        });
-    </script>
+            
+            // Adicionar produto ao carrinho
+            document.getElementById('adicionar-carrinho').addEventListener('click', () => {
+                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                const produtoExistente = carrinho.find(item => item.nome === produto.nome);
+                
+                if (produtoExistente) {
+                    produtoExistente.quantidade = (produtoExistente.quantidade || 1) + 1;
+                } else {
+                    carrinho.push({ ...produto, quantidade: 1 });
+                }
+                
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                alert(`${produto.nome} foi adicionado ao carrinho!`);
+            });
+            </script>
 </body>
 </html>
