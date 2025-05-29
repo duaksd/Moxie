@@ -20,4 +20,17 @@ function register() {
   window.location.href = 'login.html';
 }
 
+  // Voltar ao index.html ao apertar ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+      window.location.href = "index.html";
+    }
+  });
 
+  // Voltar ao index.html ao clicar fora da login-box
+  document.addEventListener('click', function(e) {
+    const loginBox = document.querySelector('.login-box');
+    if (loginBox && !loginBox.contains(e.target)) {
+      window.location.href = "index.html";
+    }
+  });
