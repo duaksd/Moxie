@@ -1,4 +1,4 @@
-const produtos = [
+window.produtos = [
     {
         imagem: "img/plus-size.jpeg",
         alt: "Conjunto Fitness Plus Size Preto",
