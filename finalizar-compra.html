@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finalizar Compra Completo</title>
+  <link rel="stylesheet" href="css/finalizarcompra.css" />
+</head>
+<body>
+  <div class="container" role="main" aria-label="Finalizar compra">
+    <h1>Finalize sua Compra</h1>
+
+    <!-- Dados usuário e endereço -->
+    <section aria-labelledby="titulo-endereco">
+      <h2 id="titulo-endereco">Endereço de Entrega</h2>
+
+      <div class="endereco-usuario" id="mostrar-endereco" tabindex="0" aria-live="polite" aria-atomic="true">
+        <!-- Endereço renderizado qua -->
+      </div>
+      <button class="btn-alterar-endereco" id="btn-alterar-endereco" aria-expanded="false" aria-controls="form-endereco">
+        Alterar Endereço
+      </button>
+
+      <form id="form-endereco" class="form-endereco" aria-hidden="true" novalidate>
+        <div class="form-row">
+          <div>
+            <label for="cep">CEP*</label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\\d{5}-?\\d{3}" required />
+          </div>
+          <div>
+            <label for="endereco">Endereço*</label>
+            <input type="text" id="endereco" name="endereco" placeholder="Rua, Av, etc." required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="numero">Número*</label>
+            <input type="text" id="numero" name="numero" required />
+          </div>
+          <div>
+            <label for="complemento">Complemento</label>
+            <input type="text" id="complemento" name="complemento" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="bairro">Bairro*</label>
+            <input type="text" id="bairro" name="bairro" required />
+          </div>
+          <div>
+            <label for="cidade">Cidade*</label>
+            <input type="text" id="cidade" name="cidade" required />
+          </div>
+          <div>
+            <label for="estado">Estado*</label>
+            <select id="estado" name="estado" required>
+              <option value="">Selecione</option>
+              <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+              <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+              <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+              <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+              <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+              <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+              <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+              <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+              <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-salvar-endereco">Salvar Endereço</button>
+      </form>
+    </section>
+
+    <!-- Produtos -->
+    <section aria-labelledby="titulo-produtos">
+      <h2 id="titulo-produtos">Produtos do Pedido</h2>
+      <table aria-describedby="subtitle-produtos" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Qtd.</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody id="produtos-lista">
+          <!-- Listagem dinâmica -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Cupom -->
+    <section aria-labelledby="titulo-cupom">
+      <h2 id="titulo-cupom">Cupom de Desconto</h2>
+      <div class="cupom-container">
+        <input type="text" id="input-cupom" placeholder="Digite o cupom de desconto" aria-label="Cupom de desconto" />
+        <button id="aplicar-cupom" class="btn-cupom">Aplicar</button>
+      </div>
+      <p id="mensagem-cupom" class="mensagem-cupom" aria-live="polite"></p>
+    </section>
+
+    <!-- Resumo e Totais -->
+    <section aria-labelledby="titulo-resumo">
+      <h2 id="titulo-resumo">Resumo da Compra</h2>
+      <div class="resumo-totais" role="region" aria-live="polite" aria-atomic="true">
+        <div class="resumo-item">
+          <span>Subtotal</span>
+          <span id="subtotal-produtos">R$ 0,00</span>
+        </div>
+        <div class="resumo-item">
+          <span>Frete</span>
+          <span id="frete-valor">R$ 0,00</span>
+        </div>
+        <div class="resumo-item desconto-item">
+          <span>Desconto</span>
+          <span id="desconto-valor">- R$ 0,00</span>
+        </div>
+        <div class="resumo-item total">
+          <span>Total a Pagar</span>
+          <span id="total-pagar">R$ 0,00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagamento -->
+    <section aria-labelledby="titulo-pagamento">
+      <h2 id="titulo-pagamento">Forma de Pagamento</h2>
+      <form id="form-pagamento" class="formas-pagamento" aria-label="Formas de pagamento" novalidate>
+        <label>
+          <input type="radio" name="pagamento" value="cartao" required />
+          Cartão de Crédito
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="boleto" />
+          Boleto Bancário
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="pix" />
+          Pix
+        </label>
+        <button type="submit" class="finalizar-compra">Finalizar Compra</button>
+      </form>
+    </section>
+
+    <div id="mensagem-resultado" class="mensagem-resultado" role="alert" aria-live="assertive"></div>
+  </div>
+
+  <script src="js/finalizar-compra.js"></script>
+</body>
+</html>
+
+

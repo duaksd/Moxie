@@ -145,6 +145,16 @@ document.getElementById("aplicar-cupom").addEventListener("click", () => {
   renderizarCarrinho();
 });
 
+// Evento para finalizar a compra
+document.getElementById("finalizar-compra").addEventListener("click", (event) => {
+  event.preventDefault(); // Evita o comportamento padrão do botão
+
+  // Aqui você pode adicionar qualquer lógica que deseja executar antes de redirecionar
+  // Por exemplo, você pode verificar se o carrinho está vazio ou se o endereço está preenchido
+
+  // Redireciona para a página de finalização da compra
+  window.location.href = "finalizar-compra.html"; // Substitua pelo caminho correto da sua página
+});
+
 // Renderiza o carrinho ao carregar a página
 renderizarCarrinho();
-
