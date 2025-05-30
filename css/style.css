@@ -66,7 +66,7 @@ li {
     margin: 0;
     font-size: 14px;
     white-space: nowrap; /* Impede quebra de linha */
-    animation: rolar 40s linear infinite; /* Define a animação */
+    animation: rolar 20s linear infinite; /* Define a animação */
     overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
     width: 100%; /* Garante que o contêiner ocupe toda a largura */
     position: relative; /* Necessário para a animação */
@@ -391,6 +391,7 @@ header h1 {
     text-align: center;
     padding: 50px 0;
     background: #f4f4f4;
+    
 }
 
 .produtos h2 {
@@ -401,22 +402,25 @@ header h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     width: 90%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .produto {
     display: flex;
-    flex-direction: column; /* Alinha os elementos verticalmente */
-    justify-content: space-between; /* Garante que os elementos sejam distribuídos */
+    flex-direction: column;
     padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
+    width: 100%;
     height: 100%; /* Garante que todos os cards tenham a mesma altura */
+    max-width: 300px;
+    min-width: 0;
+    
 }
 
 .produto img {
