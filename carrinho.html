@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Seu Carrinho</title>
-    <link rel="stylesheet" href="css/carrinho.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/carrinho.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial">
-            <i class='bx bx-arrow-back'></i>
+            <i class="bx bx-arrow-back"></i>
             Voltar
         </a>
         <span>Carrinho de compras</span>
     </header>
     <main>
         <div class="titulo-pagina">Seu carrinho</div>
-            <div class="content">
-                <section>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Preço</th>
-                                <th>Quantidade</th>
-                                <th>Total</th>
-                                <th>Remover</th>
-                            </tr>
-                        </thead>
-                        <tbody class="carrinho-itens">
-                            <!-- Os itens do carrinho serão renderizados aqui -->
-                        </tbody>
-                    </table>
-                </section>
-                <aside>
-                    <div class="box">
-                        <header>Resumo da compra</header>
-                        <div class="info">
-                            <div><span>Sub-total</span><span class="total-geral">R$ 0,00</span></div>
-                            <div><span>Frete</span><span>Gratuito</span></div>
-                            <!-- Campo para cupom -->
-                            <div class="cupom-container">
-                                <input type="text" id="input-cupom" placeholder="Digite o cupom de desconto">
-                                <button id="aplicar-cupom">Aplicar Cupom</button>
-                                <p id="mensagem-cupom" style="color: red; display: none;">Cupom inválido!</p>
-                            </div>
+        <div class="content">
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Total</th>
+                            <th>Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody class="carrinho-itens">
+                        <!-- Os itens do carrinho serão renderizados aqui -->
+                    </tbody>
+                </table>
+            </section>
+            <aside>
+                <div class="box">
+                    <header>Resumo da compra</header>
+                    <div class="info">
+                        <div>
+                            <span>Sub-total</span>
+                            <span class="subtotal">R$ 0,00</span>
                         </div>
-                        <footer>
-                            <span>Total</span>
-                            <span class="total-final">R$ 0,00</span>
-                        </footer>
+                        <div>
+                            <span>Frete</span>
+                            <span>Gratuito</span>
+                        </div>
+                        <div class="cupom-container">
+                            <input
+                                type="text"
+                                id="input-cupom"
+                                placeholder="Digite o cupom de desconto"
+                            />
+                            <button id="aplicar-cupom">Aplicar Cupom</button>
+                            <p id="mensagem-cupom" style="color: red; display: none;">
+                                Cupom inválido!
+                            </p>
+                        </div>
                     </div>
-                    <button>Finalizar Compra</button>
-                </aside>
-            </div>
+                    <footer>
+                        <span>Total</span>
+                        <span class="total-geral">R$ 0,00</span>
+                    </footer>
+                </div>
+                <button>Finalizar Compra</button>
+            </aside>
+        </div>
     </main>
 
     <script src="js/carrinho.js"></script>
 </body>
 </html>
+
