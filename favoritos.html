@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Favoritos - MOXIE</title>
+    <link rel="stylesheet" href="css/usuariologado.css">
+</head>
+<body>
+    <!-- Adicione o header se quiser o perfil visível -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+    <main>
+        <section class="produtos">
+            <h2>Meus Favoritos</h2>
+            <div class="grid" id="favoritos-container">
+                <!-- Produtos favoritados serão renderizados aqui -->
+            </div>
+        </section>
+    </main>
+    <script>
+        const container = document.getElementById('favoritos-container');
+        const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+        if (favoritos.length === 0) {
+            container.innerHTML = "<p>Nenhum produto favoritado.</p>";
+        } else {
+            container.innerHTML = favoritos.map(produto => `
+                <div class="produto">
+                    <img src="${produto.imagem}" alt="${produto.alt || produto.nome}">
+                    <h3>${produto.nome}</h3>
+                    <p>${produto.descricao || ''}</p>
+                    <div class="preco">${produto.preco || ''}</div>
+                    <a href="produto.html?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt || '')}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao || '')}&preco=${encodeURIComponent(produto.preco || '')}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}" class="btn-maisvendidos">Ver Produto</a>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

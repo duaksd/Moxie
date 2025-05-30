@@ -49,7 +49,7 @@
                     <button id="adicionar-carrinho" class="btn-carro">Adicionar ao Carrinho</button>
                     <button id="comprar-agora" class="btn-comprar">Comprar Agora</button>
                     <!--Botão de favoritos-->
-                    <input type="checkbox" checked="checked" id="favorite" name="favorite-checkbox" value="favorite-button">
+                    <input type="checkbox" id="favorite" name="favorite-checkbox" value="favorite-button">
                     <label for="favorite" class="container">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                         <div class="action">
@@ -125,6 +125,33 @@
                 localStorage.setItem('carrinho', JSON.stringify(carrinho));
                 alert(`${produto.nome} foi adicionado ao carrinho!`);
             });
+
+            // Função para verificar se o produto já está nos favoritos
+            function isFavorito(produto) {
+                const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                return favoritos.some(item => item.nome === produto.nome);
+            }
+
+            // Atualiza o estado do checkbox de favoritos ao carregar a página
+            const favoriteCheckbox = document.getElementById('favorite');
+            favoriteCheckbox.checked = isFavorito(produto);
+
+           // Evento do botão de favoritos
+const favCheckbox = document.getElementById('favorite');
+favCheckbox.addEventListener('change', function() {
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    if (this.checked) {
+        if (!favoritos.find(item => item.nome === produto.nome)) {
+            favoritos.push(produto);
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            // Redireciona para a página de favoritos
+            window.location.href = "favoritos.html";
+        }
+    } else {
+        favoritos = favoritos.filter(item => item.nome !== produto.nome);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    }
+});
             </script>
 </body>
 </html>
