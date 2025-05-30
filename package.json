@@ -1,0 +1,44 @@
+{
+  "name": "moxie",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "API",
+    "Node.js",
+    "Desenvolvimento WEB",
+    "Backend",
+    "Roupas",
+    "Loja Virtual",
+    "E-commerce",
+    "IFSP"
+  ],
+  "author": "Mauricio Vaz Oliveira",
+  "contributors": [
+    "Eduarda Oliveira Casado",
+    "Julio Carlos de Moraes Junior",
+    "Mateus Rodrigo Alves dos Santos"
+  ],
+  "license": "MIT",
+  "description": "Sistema de exemplo para curso Técnico de Informática do IFSP, aplicando API",
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "eslint": "^9.26.0",
+    "globals": "^16.0.0",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3",
+    "sucrase": "^3.35.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
+  }
+}
