@@ -72,7 +72,7 @@ li {
 }
 
 header {
-    background: var(--rosa-fem);
+    background: #571970;
     color: var(--preto);
     padding: 10px 0;
 }
@@ -115,12 +115,12 @@ header h1 {
 /* Estilo do título no header */
 .h1-titulo a {
     text-decoration: none; /* Remove o sublinhado do link */
-    color: var(--preto); /* Cor do texto */
+    color: var(--branco); /* Cor do texto */
     transition: color 0.3s ease;
 }
 
 .h1-titulo a:hover {
-    color: #eee; /* Cor ao passar o mouse */
+    color: #a51eff; /* Cor ao passar o mouse */
 }
 
 /* Nav promoções */
@@ -156,14 +156,14 @@ header h1 {
 
 .header-categories ul li a {
     text-decoration: none;
-    color: var(--preto);
+    color: var(--branco);
     font-size: 20px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .header-categories ul li a:hover {
-    color: #eee; /* Cor de destaque ao passar o mouse */
+    color: #a51eff; /* Cor de destaque ao passar o mouse */
 }
 
 /* Botões do Header */
@@ -179,7 +179,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     font-size: 24px; /* Tamanho do ícone */
-    color: var(--preto); /* Cor do ícone */
+    color: var(--branco); /* Cor do ícone */
     text-decoration: none; /* Remove o sublinhado do link */
     background: none; /* Remove o fundo padrão */
     border: none; /* Remove bordas */
@@ -189,11 +189,11 @@ header h1 {
 
 .icon-button:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: #eee; /* Cor ao passar o mouse */
+    color: #a51eff; /* Cor ao passar o mouse */
 }
 
 .icon-button:focus {
-    outline: 2px solid #eee; /* Destaque ao focar */
+    outline: 2px solid #a51eff; /* Destaque ao focar */
     outline-offset: 2px;
 }
 
@@ -204,7 +204,7 @@ header h1 {
 
 /* Adiciona um estilo de foco personalizado (opcional) */
 .icon-button:focus-visible {
-    outline: 2px solid #eee; /* Destaque ao focar */
+    outline: 2px solid #a51eff; /* Destaque ao focar */
     outline-offset: 2px;
 }
 
@@ -221,14 +221,14 @@ header h1 {
 /* Ícone da lupa */
 .search-icon {
     font-size: 24px;
-    color: var(--preto);
+    color: var(--branco);
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .search-icon:hover {
     transform: scale(1.1);
-    color: #eee;
+    color: #a51eff;
 }
 
 /* Caixa de pesquisa */
@@ -275,7 +275,7 @@ header h1 {
 }
 
 .search-box button[type="submit"]:hover {
-    background-color: #946fa5;
+    background-color: rgb(107, 68, 129);
 }
 
 /* Botão de fechar (X) */
@@ -291,7 +291,7 @@ header h1 {
 
 .close-search:hover {
     transform: scale(1.1);
-    color: #946fa5;
+    color: rgb(107, 68, 129);
 }
 
 /* Input para controlar o menu */
@@ -362,7 +362,7 @@ header h1 {
 }
 /* Banner */
 .banner {
-    background: url('img/banner1.png') no-repeat center;
+    background: url('img/banner-fem.png') no-repeat center;
     background-size: cover;
     height: 700px; /* Altura padrão */
     display: flex;
@@ -437,7 +437,7 @@ header h1 {
 
 .produto button {
     margin-top: 16px;
-    background: var(--rosa-fem);
+    background: #571970;
     color: white;
     border: none;
     padding: 10px;
@@ -449,7 +449,7 @@ header h1 {
 }
 
 .produto button:hover {
-    background: #c0a7cc;
+    background: #a51eff;
 }
 
 /* Sobre */
@@ -530,10 +530,9 @@ footer {
 }
 
 .categoria-feminino {
-    background-color: var(--rosa-fem);
+    background-color: #571970;
     width: 100%;
     height: 140px;
-    cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
