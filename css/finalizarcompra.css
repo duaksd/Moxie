@@ -461,3 +461,9 @@ button.finalizar-compra:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+.back-to-cart:hover {
+  color: var(--ml-white);
+  transform: scale(1.03);
+    background-color: var(--cinza);
+}
