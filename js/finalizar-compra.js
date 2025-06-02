@@ -110,7 +110,7 @@
     // Salvar endereço do formulário
     formEndereco.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!formEndereco.checkValidity()) {
+            if (!formEndereco.checkValidity()) {
         formEndereco.reportValidity();
         return;
       }
