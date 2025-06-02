@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import sequelize from './database/ModelConnection.js';
 import produtosRouter from './routes/produtos.js';
-import usuariosRouter from './routes/usuarios.js';
+import usuariosRouter from './routes/Usuarios.js';
 
 const app = express();
 
