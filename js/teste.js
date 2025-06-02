@@ -1,5 +1,6 @@
 window.produtos = [
     {
+        id: 1,
         imagem: "img/plus-size.jpeg",
         alt: "Conjunto Fitness Plus Size Preto",
         nome: "Conjunto Fitness Plus Size Preto com Detalhes Listrados",
@@ -12,6 +13,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 2,
         imagem: "img/fem1.png",
         alt: "Shorts Fitness Feminino Moxie",
         nome: "Shorts Fitness Feminino Moxie",
@@ -24,6 +26,7 @@ window.produtos = [
         estoque: 10
     },
     {
+        id: 3,
         imagem: "img/munhequeira.jpeg",
         alt: "Munhequeira PowerGrip (Par)",
         nome: "Munhequeira PowerGrip (Par)",
@@ -36,6 +39,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 4,
         imagem: "img/mae-roupa.jpeg",
         alt: "Conjunto Fitness Mãe Atleta",
         nome: "Conjunto Fitness Mãe Atleta",
@@ -48,6 +52,7 @@ window.produtos = [
         estoque: 10
     },
     {
+        id: 5,
         imagem: "img/camisa-preta.jpeg",
         alt: "Camiseta Esportiva Funcional Masculina",
         nome: "Camiseta Esportiva Funcional Masculina",
@@ -60,6 +65,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 6,
         imagem: "img/fem2.png",
         alt: "Conjunto Fitness Feminino Lana",
         nome: "Conjunto Fitness Feminino Lana",
@@ -72,6 +78,7 @@ window.produtos = [
         estoque: 10
     },
     {
+        id: 7,
         imagem: "img/camisa-longa.jpeg",
         alt: "Camisa de Manga Longa",
         nome: "Camisa de Manga Longa",
@@ -84,6 +91,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 8,
         imagem: "img/alta-performance.jpeg",
         alt: "Camiseta masculina de alta performance",
         nome: "Camiseta masculina de alta performance",
@@ -96,6 +104,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 9,
         imagem: "img/camisa-preta2.jpg",
         alt: "Camisa Preta Justa",
         nome: "Camisa Preta Justa",
@@ -108,6 +117,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 10,
         imagem: "img/casal-conjunto.jpeg",
         alt: "Conjunto Casual para Casal",
         nome: "Conjunto Casual para Casal",
@@ -120,6 +130,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 11,
         imagem: "img/elastico.jpeg",
         alt: "Elástico de Resistência para Exercícios",
         nome: "Elástico de Resistência para Exercícios",
@@ -132,6 +143,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 12,
         imagem: "img/fem5.png",
         alt: "Macacão Street Moxie",
         nome: "Macacão Fit Street Moxie",
@@ -144,6 +156,7 @@ window.produtos = [
         estoque: 10
     },
     {
+        id: 13,
         imagem: "img/fem2.png",
         alt: "Conjunto Fitness Feminino",
         nome: "Conjunto Fitness Feminino",
@@ -156,6 +169,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 14,
         imagem: "img/fem3.png",
         alt: "Polo Sport Moxie Elegance",
         nome: "Polo Sport Moxie Elegance",
@@ -168,6 +182,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 15,
         imagem: "img/fem4.png",
         alt: "Conjunto Moxie Green Flow",
         nome: "Conjunto Moxie Green Flow",
@@ -180,6 +195,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 16,
         imagem: "img/fem6.png",
         alt: "Conjunto Fitness Moxie Pink Power",
         nome: "Conjunto Fitness Moxie Pink Power",
@@ -192,6 +208,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 17,
         imagem: "img/verde-jade.jpeg",
         alt: "Conjunto Fitness Verde Jade",
         nome: "Conjunto Fitness Verde Jade",
@@ -204,6 +221,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 18,
         imagem: "img/fem8.png",
         alt: "Strap Moxie Grip",
         nome: "Strap Moxie Grip",
@@ -216,6 +234,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 19,
         imagem: "img/masc-casual1.jpeg",
         alt: "Conjunto Esportivo Casual",
         nome: "Conjunto Esportivo Casual",
@@ -228,6 +247,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 20,
         imagem: "img/shorts.jpeg",
         alt: "Shorts Moxie TitanGrip",
         nome: "Shorts Moxie TitanGrip",
@@ -240,6 +260,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 21,
         imagem: "img/camisa-cinza.jpeg",
         alt: "Camiseta Moxie UrbanFlex",
         nome: "Camiseta Moxie UrbanFlex",
@@ -252,6 +273,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 22,
         imagem: "img/masc-moxie.jpeg",
         alt: "Regata Moxie Pursuit",
         nome: "Regata Moxie Pursuit",
@@ -264,6 +286,7 @@ window.produtos = [
         estoque: 0
     },
     {
+        id: 23,
         imagem: "img/masc-moxie2.jpeg",
         alt: "Conjunto Esportivo Fit Moxie",
         nome: "Conjunto Esportivo Fit Moxie",
