@@ -43,4 +43,21 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// ROTA GET PARA BUSCAR USUÁRIO POR EMAIL
+router.get('/email/:email', async (req, res) => {
+  try {
+    const email = req.params.email;
+    const usuario = await Usuario.findOne({ where: { email } });
+
+    if (usuario) {
+      res.status(200).json(usuario);
+    } else {
+      res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar usuário', details: error.message });
+  }
+});
+
+
 export default router;

@@ -39,8 +39,17 @@
       "FRETEGRATIS": 0,
     };
   
+    // Carregar cupom e desconto do localStorage, se houver
     let descontoAplicado = 0;
     let cupomAtivo = null;
+    const cupomStorage = JSON.parse(localStorage.getItem("cupomAplicado"));
+    if (cupomStorage && typeof cupomStorage.cupom === "string" && cupons.hasOwnProperty(cupomStorage.cupom)) {
+      descontoAplicado = cupons[cupomStorage.cupom];
+      cupomAtivo = cupomStorage.cupom;
+      // Mostra mensagem de cupom aplicado ao carregar a página
+      mensagemCupom.textContent = "Cupom aplicado: " + cupomAtivo;
+      mensagemCupom.classList.add("sucesso");
+    }
   
     // Dados do endereço (inicializar vazio ou de localStorage)
     let enderecoDados = JSON.parse(localStorage.getItem("enderecoDados")) || {
@@ -188,12 +197,16 @@
         mensagemCupom.textContent = "Cupom aplicado com sucesso!";
         mensagemCupom.classList.add("sucesso");
         inputCupom.value = "";
+        // Salva cupom e desconto no localStorage
+        localStorage.setItem("cupomAplicado", JSON.stringify({ cupom }));
         atualizarTotais();
       } else {
         descontoAplicado = 0;
         cupomAtivo = null;
         mensagemCupom.textContent = "Cupom inválido!";
         mensagemCupom.classList.remove("sucesso");
+        // Remove cupom do localStorage se inválido
+        localStorage.removeItem("cupomAplicado");
         atualizarTotais();
       }
     });
@@ -214,10 +227,10 @@
   
       // Dados básicos para apresentar
       const resumo = `
-        Compra finalizada com sucesso!\\n
-        Endereço: ${enderecoDados.endereco}, Nº ${enderecoDados.numero}, ${enderecoDados.bairro} - ${enderecoDados.cidade}/${enderecoDados.estado}\\n
-        Total a pagar: ${totalPagarEl.textContent}\\n
-        Forma de pagamento: ${metodoPagamento.charAt(0).toUpperCase() + metodoPagamento.slice(1)}\\n
+        Compra finalizada com sucesso!\n
+        Endereço: ${enderecoDados.endereco}, Nº ${enderecoDados.numero}, ${enderecoDados.bairro} - ${enderecoDados.cidade}/${enderecoDados.estado}\n
+        Total a pagar: ${totalPagarEl.textContent}\n
+        Forma de pagamento: ${metodoPagamento.charAt(0).toUpperCase() + metodoPagamento.slice(1)}\n
       `;
       msgResultado.textContent = resumo;
       msgResultado.style.display = "block";
@@ -226,6 +239,7 @@
       localStorage.removeItem("carrinho");
       descontoAplicado = 0;
       cupomAtivo = null;
+      localStorage.removeItem("cupomAplicado"); // Limpa cupom do localStorage
       atualizarTotais();
       produtosLista.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#777;">Seu carrinho está vazio.</td></tr>';
   
@@ -236,5 +250,4 @@
     });
   
   })();
-  
-  
+
