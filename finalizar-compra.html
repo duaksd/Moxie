@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Finalizar Compra Completo</title>
+  <title>Finalizar Compra</title>
   <link rel="stylesheet" href="css/finalizarcompra.css" />
 </head>
 <body>
   <div class="container" role="main" aria-label="Finalizar compra">
+    <header>
+      <a href="carrinho.html" class="back-to-cart" aria-label="Voltar para o carrinho">
+        <i class="bx bx-arrow-back"></i>
+        Voltar
+      </a>
+    
+    </header>
     <h1>Finalize sua Compra</h1>
 
     <!-- Dados usuário e endereço -->
@@ -15,7 +22,7 @@
       <h2 id="titulo-endereco">Endereço de Entrega</h2>
 
       <div class="endereco-usuario" id="mostrar-endereco" tabindex="0" aria-live="polite" aria-atomic="true">
-        <!-- Endereço renderizado qua -->
+        <!-- Endereço renderizado -->
       </div>
       <button class="btn-alterar-endereco" id="btn-alterar-endereco" aria-expanded="false" aria-controls="form-endereco">
         Alterar Endereço

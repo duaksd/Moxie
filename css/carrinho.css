@@ -1,4 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital&display=swap');
+/* Variáveis e fontes do finalizarcompra.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+    --ml-blue: #232f3e;
+    --ml-green: #2ecc40;
+    --ml-green-dark: #1e7d2d;
+    --ml-white: #fff;
+    --ml-black: #111;
+    --ml-gray: #f5f6fa;
+    --ml-yellow: #ffe600;
+    --preto: #000;
+    --azul-masc: #9698bc;
+    --rosa-fem: #b096bc;
+    --branco: #fff;
+    --cinza-pers: #d9d9d9;
+    --gradiente-header: linear-gradient(to left, #000000 0%, #808080 150%);
+    --cinza: #808080;
+    --ff-poppins: "Poppins", sans-serif;
+    --ff-OST: "Old Standard TT", serif;
+}
 
 * {
     margin: 0;
@@ -12,15 +32,18 @@
     align-items: center;
     gap: 5px;
     text-decoration: none;
-    color: #fff;
-    background-color: #333;
+    color: var(--ml-white);
+    background-color: var(--ml-blue);
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s, transform 0.2s;
     position: absolute;
     top: 20px;
     left: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .back-to-home i {
@@ -28,32 +51,45 @@
 }
 
 .back-to-home:hover {
-    background-color: #555;
+    background-color: var(--cinza);
+    color: var(--ml-white);
+    transform: scale(1.04);
 }
 
 body {
-    background-color: #f6f6f6;
-    font-family: "Poppins", sans-serif;
+    background-color: var(--ml-gray);
+    font-family: var(--ff-poppins);
+    color: var(--ml-black);
 }
 
 body > header {
-    background-color: black;
-    color: white;
+    background: var(--gradiente-header);
+    color: var(--ml-white);
     padding: 20px 0;
-    font-size: 24px;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 body > main {
-    background-color: #fff;
+    background-color: var(--ml-white);
     padding: 0 30px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(52, 131, 250, 0.1), 0 0 0 4px #232f3e11;
+    border: 2.5px solid #eaeaea;
+    max-width: 1100px;
+    margin: 2rem auto;
 }
 
 body > main .titulo-pagina {
-    font-size: 40px;
-    padding: 50px 0;
+    font-size: 2.3rem;
+    padding: 50px 0 30px 0;
     text-align: center;
+    color: var(--ml-blue);
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 body > main .content {
@@ -75,6 +111,11 @@ button {
 table {
     width: 100%;
     border-collapse: collapse;
+    background: var(--ml-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #232f3e11;
+    color: var(--ml-black);
 }
 
 table thead tr {
@@ -82,12 +123,13 @@ table thead tr {
 }
 
 table thead tr th {
-    text-align: left;
-    padding-bottom: 10px;
+    padding-bottom: 1px;
     text-transform: uppercase;
-    color: #666;
+    color: var(--ml-white);
+    background: var(--ml-blue);
     padding-right: 15px; /* Adiciona espaço horizontal entre os textos */
     letter-spacing: 1px; /* Adiciona espaçamento entre as letras */
+    font-weight: 700;
 }
 
 table tbody tr {
@@ -100,6 +142,7 @@ table tbody tr:last-child {
 
 table tbody tr td {
     padding: 30px 0;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .produto {
@@ -108,7 +151,12 @@ table tbody tr td {
 }
 
 .produto img {
-    border-radius: 5px;
+    border-radius: 6px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  
+    margin-right: 0.7rem;
 }
 
 .produto .info {
@@ -116,8 +164,11 @@ table tbody tr td {
 }
 
 .produto .info .nome {
-    font-size: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ml-blue);
     margin-bottom: 10px;
+    letter-spacing: 0.5px;
 }
 
 .produto .info .categoria {
@@ -125,7 +176,7 @@ table tbody tr td {
 }
 
 .quant-produto {
-    background-color: #ccc;
+    background-color: var(--cinza-pers);
     display: inline-flex;
     padding: 0;
     justify-content: space-around;
@@ -148,10 +199,13 @@ table tbody tr td {
     padding: 0 10px;
     font-size: 20px;
     height: 100%;
+    color: var(--ml-blue);
+    transition: background 0.2s, color 0.2s;
 }
 
 .quant-produto button:hover {
-    background: #ddd;
+    background: var(--ml-green);
+    color: var(--ml-white);
 }
 
 .remover-item {
@@ -165,13 +219,14 @@ table tbody tr td {
     justify-content: center;
     font-size: 20px;
     margin-left: 30px;
+    color: var(--ml-blue);
+    transition: background 0.2s, color 0.2s;
 }
 
 .remover-item:hover {
-    background: #ddd;
+    background: var(--ml-green);
+    color: var(--ml-white);
 }
-
-
 
 aside {
     margin-left: 30px;
@@ -179,27 +234,36 @@ aside {
 
 aside .box {
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    background: #eee;
-    color: #222;
+    border: 2px solid #eaeaea;
+    background: var(--ml-white);
+    color: var(--ml-black);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #232f3e11;
 }
 
 aside .box header {
     padding: 15px 20px;
-    font-size: 18px;
-    border-bottom: 1px solid #ccc;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--ml-blue);
+    color: var(--ml-blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--ml-gray);
+    border-radius: 10px 10px 0 0;
 }
 
 aside .box .info {
     padding: 20px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 aside .box .info > div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    color: #555;
+    color: var(--ml-black);
+    font-weight: 600;
 }
 
 aside .box .info > div:last-child {
@@ -207,41 +271,57 @@ aside .box .info > div:last-child {
 }
 
 aside .box .info button {
-    color: #28a745;
+    color: var(--ml-green);
     background: transparent;
     border: 0;
     display: flex;
     align-items: center;
-    font-size: 16px;
-
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
 }
 
 aside .box .info button i {
     font-size: 16px;
 }
 
+aside .box .info button:hover {
+    color: var(--ml-blue);
+}
+
 aside .box footer {
     padding: 20px;
-    background: #ddd;
-    font-size: 18px;
+    background: var(--ml-gray);
+    font-size: 1.1rem;
     display: flex;
     justify-content: space-between;
+    color: var(--ml-green);
+    font-weight: 900;
+    border-radius: 0 0 10px 10px;
+    border-top: 2px solid var(--ml-green);
 }
 
 aside > button {
     border: 0;
     padding: 15px 0;
-    color: white;
-    background: #28a745;
+    color: var(--ml-white);
+    background: linear-gradient(
+        90deg,
+        var(--ml-green) 60%,
+        var(--ml-blue) 100%
+    );
     display: block;
     width: 100%;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 16px;
-}
-
-aside > button:hover {
-    background: rgb(46, 196, 81);
+    font-size: 1.1rem;
+    font-weight: 900;
+    border-radius: 30px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 10px #232f3e22;
+    transition: background 0.3s, transform 0.2s;
 }
 
 /* Responsividade para dispositivos móveis (largura máxima de 768px) */
@@ -253,6 +333,21 @@ aside > button:hover {
     aside {
         margin-left: 0; /* Remove o espaçamento lateral */
         margin-top: 20px; /* Adiciona espaçamento acima */
+    }
+
+    body > main {
+        padding: 1.5rem 1.2rem;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 0.85rem;
+    }
+
+    aside > button {
+        font-size: 1rem;
+        padding: 0.8rem;
     }
 }
 

@@ -38,7 +38,7 @@ function calcularTotalComDesconto(carrinho) {
   return totalComDesconto;
 }
 
-// ✅ Função renderizarCarrinho única e corrigida
+// Função renderizarCarrinho única e corrigida
 function renderizarCarrinho() {
   const carrinho = carregarCarrinho();
   const carrinhoContainer = document.querySelector(".carrinho-itens");
