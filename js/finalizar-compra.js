@@ -248,6 +248,12 @@
       mensagemCupom.textContent = "";
       formPagamento.reset();
     });
-  
+    
+    // esc voltar para pagina
+    addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        window.location.href = "carrinho.html"; // Redireciona para a página do carrinho
+      }
+    });
   })();
 
