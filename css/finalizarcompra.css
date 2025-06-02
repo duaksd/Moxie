@@ -184,7 +184,7 @@ select:focus {
     letter-spacing: 1px;
 }
 .btn-salvar-endereco:hover {
-    background: var(--ml-blue);
+    background: var(--ml-green-dark);
     color: var(--ml-white);
     transform: scale(1.04);
 }
@@ -397,7 +397,6 @@ button.finalizar-compra {
 }
 
 button.finalizar-compra:hover {
-    background: linear-gradient(90deg, var(--ml-blue) 0%, var(--ml-green) 100%);
     color: #fff;
     transform: scale(1.03);
 }
