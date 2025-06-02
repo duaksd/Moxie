@@ -79,13 +79,16 @@
   
     // Preenche o formulário com os dados atuais do endereço
     function preencherFormularioEndereco() {
-      formEndereco.cep.value = enderecoDados.cep;
-      formEndereco.endereco.value = enderecoDados.endereco;
-      formEndereco.numero.value = enderecoDados.numero;
+      formEndereco.cep.value = enderecoDados.cep || "";
+      formEndereco.endereco.value = enderecoDados.endereco || "";
+      formEndereco.numero.value = enderecoDados.numero || "";
       formEndereco.complemento.value = enderecoDados.complemento || "";
-      formEndereco.bairro.value = enderecoDados.bairro;
-      formEndereco.cidade.value = enderecoDados.cidade;
-      formEndereco.estado.value = enderecoDados.estado;
+      formEndereco.bairro.value = enderecoDados.bairro || "";
+      formEndereco.cidade.value = enderecoDados.cidade || "";
+      // Seleciona corretamente o estado
+      if (formEndereco.estado) {
+        formEndereco.estado.value = enderecoDados.estado || "";
+      }
     }
   
     // Alterna exibição do formulário de endereço
@@ -98,7 +101,9 @@
         preencherFormularioEndereco();
         formEndereco.style.display = "block";
         btnAlterarEndereco.setAttribute("aria-expanded", "true");
-        formEndereco.querySelector("input").focus();
+        // Foca no primeiro campo do formulário
+        const primeiroInput = formEndereco.querySelector("input, select");
+        if (primeiroInput) primeiroInput.focus();
       }
     });
   
