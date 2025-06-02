@@ -1,3 +1,4 @@
+// Usuario.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../database/ModelConnection.js';
 
@@ -6,10 +7,11 @@ const Usuario = sequelize.define('usuario', {
   nome: DataTypes.STRING,
   email: DataTypes.STRING,
   telefone: DataTypes.STRING,
+  senha: DataTypes.STRING,
   status: DataTypes.ENUM('ativo', 'inativo')
 }, {
   tableName: 'usuario',
-  timestamps: false // coloque true se sua tabela tem created_at/updated_at
+  timestamps: false
 });
 
 export default Usuario;

@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database/ModelConnection.js';
+import Usuario from './Usuario.js';
 
 const Endereco = sequelize.define('endereco', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -16,5 +17,10 @@ const Endereco = sequelize.define('endereco', {
   tableName: 'endereco',
   timestamps: false
 });
+
+// Endereco.belongsTo(Usuario, {
+//   foreignKey: 'usuario_id',
+//   as: 'usuario'
+// });
 
 export default Endereco;

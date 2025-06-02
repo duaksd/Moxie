@@ -3,6 +3,7 @@ import cors from 'cors';
 import sequelize from './database/ModelConnection.js';
 import produtosRouter from './routes/produtos.js';
 import usuariosRouter from './routes/Usuarios.js';
+import enderecosRouter from './routes/Enderecos.js';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.get('/', (req, res) => {
 app.use('/produtos', produtosRouter);
 
 app.use('/usuarios', usuariosRouter);
+
+app.use('/enderecos', enderecosRouter);
 
 // Testa a conexão com o banco ao iniciar o app
 sequelize.authenticate()
