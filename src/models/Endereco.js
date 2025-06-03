@@ -18,9 +18,8 @@ const Endereco = sequelize.define('endereco', {
   timestamps: false
 });
 
-// Endereco.belongsTo(Usuario, {
-//   foreignKey: 'usuario_id',
-//   as: 'usuario'
-// });
+// Definindo os relacionamentos:
+Endereco.belongsTo(Usuario, { foreignKey: 'usuario_id', as: 'usuario' });
+Usuario.hasMany(Endereco, { foreignKey: 'usuario_id', as: 'enderecos' });
 
 export default Endereco;

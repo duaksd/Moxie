@@ -6,10 +6,12 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const produtos = await Produto.findAll();
-    res.json(produtos);
+    return res.status(200).json(produtos);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar produtos.' });
+    console.error(error);
+    return res.status(500).json({ error: 'Erro ao buscar produtos.' });
   }
 });
+
 
 export default router;
