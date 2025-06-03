@@ -3,6 +3,7 @@ import Produto from '../models/Produto.js';
 
 const router = express.Router();
 
+// Listar todos os produtos
 router.get('/', async (req, res) => {
   try {
     const produtos = await Produto.findAll();
@@ -13,5 +14,64 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Buscar um produto por ID
+router.get('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const produto = await Produto.findByPk(id);
+    if (produto) {
+      return res.status(200).json(produto);
+    } else {
+      return res.status(404).json({ error: 'Produto não encontrado.' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Erro ao buscar produto.' });
+  }
+});
+
+// Criar um novo produto
+router.post('/', async (req, res) => {
+  try {
+    const produto = await Produto.create(req.body);
+    return res.status(201).json(produto);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: 'Erro ao criar produto.', details: error.message });
+  }
+});
+
+// Atualizar um produto
+router.put('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const [updated] = await Produto.update(req.body, { where: { id } });
+    if (updated) {
+      const produtoAtualizado = await Produto.findByPk(id);
+      return res.status(200).json(produtoAtualizado);
+    } else {
+      return res.status(404).json({ error: 'Produto não encontrado.' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: 'Erro ao atualizar produto.', details: error.message });
+  }
+});
+
+// Deletar um produto
+router.delete('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deleted = await Produto.destroy({ where: { id } });
+    if (deleted) {
+      return res.status(200).json({ mensagem: 'Produto deletado com sucesso!' });
+    } else {
+      return res.status(404).json({ error: 'Produto não encontrado.' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Erro ao deletar produto.' });
+  }
+});
 
 export default router;

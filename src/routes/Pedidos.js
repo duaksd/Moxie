@@ -1,5 +1,6 @@
 import express from 'express';
 import Pedido from '../models/Pedido.js';
+import validarCupom from '../middlewares/validarCupom.js';
 
 const router = express.Router();
 
@@ -66,6 +67,16 @@ router.delete('/:id', async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: 'Erro ao deletar pedido', details: error.message });
+  }
+});
+
+// Rota para finalizar pedido com validação de cupom
+router.post('/finalizar', validarCupom, async (req, res) => {
+  try {
+    // Lógica para finalizar pedido
+    res.status(200).json({ mensagem: 'Pedido finalizado com sucesso!' });
+  } catch (error) {
+    res.status(500).json({ mensagem: 'Erro ao finalizar pedido.', error: error.message });
   }
 });
 

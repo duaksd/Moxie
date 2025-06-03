@@ -9,6 +9,7 @@ import pedidosRouter from './routes/Pedidos.js';
 import itemPedidosRouter from './routes/ItemPedidos.js';
 import pagamentosRouter from './routes/Pagamentos.js';
 import parcelamentosRouter from './routes/Parcelamentos.js';
+import validarCupom from './middlewares/validarCupom.js';
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use('/itempedidos', itemPedidosRouter);
 app.use('/pagamentos', pagamentosRouter);
 
 app.use('/parcelamentos', parcelamentosRouter);
+
+//app.use(validarCupom);
 
 // Testa a conexão com o banco ao iniciar o app
 sequelize.authenticate()
