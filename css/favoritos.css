@@ -1,0 +1,17 @@
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* Uma coluna para dispositivos menores */
+    }
+
+    .produto img {
+        height: auto; /* Ajusta a altura da imagem */
+    }
+
+    .btn-maisvendidos {
+        font-size: 0.9rem; /* Ajusta o tamanho do botão */
+        padding: 8px;
+    }
+}
