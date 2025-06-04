@@ -137,21 +137,23 @@
             favoriteCheckbox.checked = isFavorito(produto);
 
            // Evento do botão de favoritos
-const favCheckbox = document.getElementById('favorite');
-favCheckbox.addEventListener('change', function() {
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    if (this.checked) {
-        if (!favoritos.find(item => item.nome === produto.nome)) {
-            favoritos.push(produto);
-            localStorage.setItem('favoritos', JSON.stringify(favoritos));
-            // Redireciona para a página de favoritos
-            window.location.href = "favoritos.html";
-        }
-    } else {
-        favoritos = favoritos.filter(item => item.nome !== produto.nome);
-        localStorage.setItem('favoritos', JSON.stringify(favoritos));
-    }
-});
-            </script>
+            const favCheckbox = document.getElementById('favorite');
+            favCheckbox.addEventListener('change', function() {
+                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                if (this.checked) {
+                    if (!favoritos.find(item => item.nome === produto.nome)) {
+                        favoritos.push(produto);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                        // Redireciona para a página de favoritos
+                        window.location.href = "favoritos.html";
+                    }
+                } else {
+                    favoritos = favoritos.filter(item => item.nome !== produto.nome);
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                }
+            });
+    </script>
+    <script src="js/navbar.js"></script>
+    <script src="js/btnLogin.js"></script>
 </body>
 </html>
