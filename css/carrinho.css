@@ -324,6 +324,34 @@ aside > button {
     transition: background 0.3s, transform 0.2s;
 }
 
+/*Cupom*/
+.cupom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%; 
+    max-height: 100px; 
+    overflow: hidden; 
+}
+
+.cupom-container input {
+    height: 40px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.cupom-container button {
+    align-self: flex-start; 
+}
+
+#mensagem-cupom {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+    display: none; /* Default state */
+}
+
 /* Responsividade para dispositivos móveis (largura máxima de 768px) */
 @media (max-width: 768px) {
     body > main .content {
