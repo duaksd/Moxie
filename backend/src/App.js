@@ -37,6 +37,12 @@ app.use('/pagamentos', pagamentosRouter);
 
 app.use('/parcelamentos', parcelamentosRouter);
 
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+
 //app.use(validarCupom);
 
 // Testa a conexão com o banco ao iniciar o app
