@@ -38,9 +38,10 @@
     border-radius: 20px;
     font-size: 16px;
     transition: background 0.3s, transform 0.2s;
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    position: static;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -71,6 +72,10 @@ body > header {
     justify-content: center;
     font-weight: 800;
     letter-spacing: 1px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 2.5rem;
 }
 
 body > main {
@@ -324,30 +329,168 @@ aside > button {
     transition: background 0.3s, transform 0.2s;
 }
 
+/*Cupom*/
+.cupom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%; 
+    max-height: 100px; 
+    overflow: hidden; 
+}
+
+.cupom-container input {
+    height: 40px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.cupom-container button {
+    align-self: flex-start; 
+}
+
+#mensagem-cupom {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+    display: none; /* Default state */
+}
+
 /* Responsividade para dispositivos móveis (largura máxima de 768px) */
 @media (max-width: 768px) {
     body > main .content {
-        flex-direction: column; /* Alinha os elementos verticalmente */
+        flex-direction: column;
     }
 
     aside {
-        margin-left: 0; /* Remove o espaçamento lateral */
-        margin-top: 20px; /* Adiciona espaçamento acima */
+        margin-left: 0;
+        margin-top: 20px;
     }
 
     body > main {
-        padding: 1.5rem 1.2rem;
+        padding: 1.5rem 0.5rem;
     }
 
     table,
     th,
     td {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 
-    aside > button {
+    /* Esconde o cabeçalho da tabela */
+    table thead {
+        display: none;
+    }
+
+    /* Cada linha da tabela vira um cartão */
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    table tbody tr {
+        background: var(--ml-white);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px #232f3e11;
+        margin-bottom: 1.5rem;
+        padding: 1rem 1rem 0.5rem 1rem;
+        border: 1.5px solid #eaeaea;
+    }
+
+    table tbody tr td {
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .produto {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 0.7rem;
+    }
+
+    .produto img {
+        width: 110px;
+        height: 110px;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .produto .info {
+        margin-left: 0;
+        margin-bottom: 0.3rem;
+    }
+
+    .produto .info .nome {
+        font-size: 1.05rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .produto .info .categoria {
+        font-size: 0.92rem;
+        color: #888;
+    }
+
+    .preco-mobile,
+    .total-mobile,
+    .remover-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .preco-mobile {
+        color: var(--ml-blue);
+        font-size: 1.08rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+    }
+
+    .quant-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .quant-produto {
+        min-width: 48px;
+        height: 28px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .total-mobile {
+        color: var(--ml-green);
         font-size: 1rem;
-        padding: 0.8rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+    }
+
+    .remover-item {
+        width: 28px;
+        height: 28px;
+        font-size: 17px;
+        margin: 0.5rem auto 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Ajuste header para mobile */
+    body > header {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
