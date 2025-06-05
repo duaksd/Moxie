@@ -29,7 +29,6 @@ async function register() {
   }
 }
 
-
 // Voltar ao index.html ao apertar ESC
 document.addEventListener('keydown', function(e) {
   if (e.key === "Escape") {
