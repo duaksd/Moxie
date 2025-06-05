@@ -815,7 +815,7 @@ header h1 {
         top: 54px;
         left: 0;
         width: 100%; /* Faz o menu ocupar 100% da largura */
-        background-color: var(--preto);
+        background: var(--gradiente-header);
         flex-direction: column;
         gap: 10px;
         padding: 10px;
