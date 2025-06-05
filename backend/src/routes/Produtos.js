@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Criar um novo produto
+/* Criar um novo produto
 router.post('/', async (req, res) => {
   try {
     const produto = await Produto.create(req.body);
@@ -38,6 +38,27 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(400).json({ error: 'Erro ao criar produto.', details: error.message });
+  }
+}); */
+
+// POST múltiplos produtos
+router.post('/', async (req, res) => {
+  try {
+    const dados = req.body;
+
+    // Verifica se está recebendo um array
+    if (Array.isArray(dados)) {
+      const produtosCriados = await Produto.bulkCreate(dados);
+      return res.status(201).json(produtosCriados);
+    }
+
+    // Se for apenas um produto, cria normalmente
+    const produto = await Produto.create(dados);
+    return res.status(201).json(produto);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: 'Erro ao criar produto(s).', details: error.message });
   }
 });
 
