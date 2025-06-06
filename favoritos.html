@@ -2,23 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos - MOXIE</title>
-    <link rel="stylesheet" href="css/usuariologado.css">
+    <link rel="stylesheet" href="css/favoritos.css">
 </head>
 <body>
     <!-- Adicione o header se quiser o perfil visível -->
-    <div id="header"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
-    <main>
-        <section class="produtos">
-            <h2>Meus Favoritos</h2>
-            <div class="grid" id="favoritos-container">
+    <header id="header" role="banner">
+        <script>
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                });
+        </script>
+    </header>
+    <main role="main">
+        <section class="produtosfav" aria-labelledby="titulo-favoritos">
+            <h2 id="titulo-favoritos">Meus Favoritos</h2>
+            <div class="grid" id="favoritos-container" role="region" aria-live="polite">
                 <!-- Produtos favoritados serão renderizados aqui -->
             </div>
         </section>
@@ -35,7 +37,7 @@
                     <h3>${produto.nome}</h3>
                     <p>${produto.descricao || ''}</p>
                     <div class="preco">${produto.preco || ''}</div>
-                    <a href="produto.html?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt || '')}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao || '')}&preco=${encodeURIComponent(produto.preco || '')}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}" class="btn-maisvendidos">Ver Produto</a>
+                    <a href="produto.html?imagem=${encodeURIComponent(produto.imagem)}&alt=${encodeURIComponent(produto.alt || '')}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao || '')}&preco=${encodeURIComponent(produto.preco || '')}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}" class="btn-ver-produto">Ver Produto</a>
                 </div>
             `).join('');
         }
