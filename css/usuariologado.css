@@ -325,7 +325,6 @@ header h1 {
 
 .menu ul li {
     margin: 0;
-    display: none; /* Oculta os itens do menu por padrão */
 }
 
 .menu ul li a {
@@ -578,23 +577,7 @@ header h1 {
     padding-top: 15px;
     opacity: 0.7;
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    .payment-icons {
-        justify-content: center;
-    }
-}
+   
 
 /* mais vendidos*/
 .btn-maisvendidos{
@@ -817,4 +800,255 @@ header h1 {
     color: #000;
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
+    .social-icons {
+        justify-content: center;
+    }
+
+    .payment-icons {
+        justify-content: center;
+    }
+}
+
+/* Estilos para dispositivos móveis (largura máxima de 480px) */
+@media (max-width: 480px) {
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu hambúrguer */
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    .h1-titulo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o título */
+        flex: 1;
+        text-align: center; /* Centraliza o título */
+        font-size: 24px;
+        color: var(--branco);
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 15px; /* Espaçamento entre os ícones */
+    }
+
+    .header-buttons .icon-button {
+        font-size: 20px;
+        color: var(--branco);
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none; /* O menu será controlado pelo checkbox */
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 100%; /* Faz o menu ocupar 100% da largura */
+        background-color: var(--rosa-fem);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 0; /* Remove o arredondamento */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    #menu-toggle:checked + .menu {
+        display: flex; /* Exibe o menu quando o checkbox está marcado */
+    }
+
+    .header-categories {
+        display: none; /* Esconde o header-categories */
+    }
+
+    .header-buttons a[aria-label="Help Button"] {
+        display: none; /* Esconde o botão de ajuda */
+    }
+
+    .produtos .grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Uma coluna para ocupar toda a largura */
+        gap: 20px; /* Espaçamento entre os produtos */
+    }
+
+    .produtos .produto {
+        width: 90%; /* Reduz a largura dos produtos */
+        margin: 0 auto; /* Centraliza os produtos horizontalmente */
+        padding: 10px; /* Adiciona espaçamento interno */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        border-radius: 8px; /* Bordas arredondadas */
+    }
+
+    .produtos .produto img {
+        width: 100%; /* Faz a imagem ocupar toda a largura do card */
+        height: auto; /* Mantém a proporção da imagem */
+        margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+    }
+
+    .produtos .produto h3 {
+        font-size: 16px; /* Reduz o tamanho do título */
+        margin-bottom: 5px;
+    }
+
+    .produtos .produto p {
+        font-size: 14px; /* Reduz o tamanho da descrição */
+        margin-bottom: 10px;
+    }
+
+    .produtos .produto .preco {
+        font-size: 18px; /* Ajusta o tamanho do preço */
+        margin-bottom: 10px;
+    }
+
+    .produtos .produto button {
+        font-size: 14px; /* Ajusta o tamanho do botão */
+        padding: 10px;
+        width: 100%; /* Faz o botão ocupar toda a largura do card */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cards {
+        width: 90%; /* Ajusta a largura dos cards */
+    }
+
+    .banner {
+        height: 300px; /* Altura reduzida para celulares */
+        font-size: 18px;
+        background-size: contain; /* Garante que a imagem inteira seja exibida */
+    }
+}
+/* Estilos para tablets (largura máxima de 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu hambúrguer */
+        font-size: 20px;
+        color: var(--preto);
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    .h1-titulo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o título */
+        flex: 1;
+        text-align: center; /* Centraliza o título */
+        font-size: 24px;
+        color: var(--preto);
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 15px; /* Espaçamento entre os ícones */
+    }
+
+    .header-buttons .icon-button {
+        font-size: 20px;
+        color: var(--preto);
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none; /* O menu será controlado pelo checkbox */
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 75%;
+        background-color: var(--rosa-fem);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 0px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    #menu-toggle:checked + .menu {
+        display: flex; /* Exibe o menu quando o checkbox está marcado */
+    }
+
+    .header-categories {
+        display: none; /* Esconde o header-categories */
+    }
+
+    .header-buttons a[aria-label="Help Button"] {
+        display: none; /* Esconde o botão de ajuda */
+    }
+
+    .produtos .grid {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cards {
+        width: 45%; /* Ajusta a largura dos cards */
+    }
+
+    .banner {
+        height: 400px; /* Altura ajustada para tablets */
+        font-size: 24px;
+        background-size: contain; /* Garante que a imagem inteira seja exibida */
+    }
+}
+
+/* Estilos para desktops (largura mínima de 769px) */
+@media (min-width: 769px) {
+    .header .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .produtos .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout fluido */
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cards {
+        width: 18%; /* Mantém a largura original dos cards */
+    }
+
+    .banner {
+        height: 700px; /* Altura original para desktops */
+        font-size: 28px; /* Texto original */
+        background-size: cover; /* Faz a imagem cobrir o espaço */
+        background-position: center; /* Centraliza a imagem */
+    }
+}
