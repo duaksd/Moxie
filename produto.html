@@ -144,8 +144,6 @@
                     if (!favoritos.find(item => item.nome === produto.nome)) {
                         favoritos.push(produto);
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                        // Redireciona para a página de favoritos
-                        window.location.href = "favoritos.html";
                     }
                 } else {
                     favoritos = favoritos.filter(item => item.nome !== produto.nome);

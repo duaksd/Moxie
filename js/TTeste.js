@@ -59,10 +59,10 @@ async function login() {
     }
   });
 
-  // Voltar ao index.html ao clicar fora da login-box
-  document.addEventListener('click', function(e) {
-    const loginBox = document.querySelector('.login-box');
-    if (loginBox && !loginBox.contains(e.target)) {
-      window.location.href = "index.html";
-    }
-  });
+  // // Voltar ao index.html ao clicar fora da login-box
+  // document.addEventListener('click', function(e) {
+  //   const loginBox = document.querySelector('.login-box');
+  //   if (loginBox && !loginBox.contains(e.target)) {
+  //     window.location.href = "index.html";
+  //   }
+  // });

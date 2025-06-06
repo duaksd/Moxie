@@ -325,6 +325,7 @@ header h1 {
 
 .menu ul li {
     margin: 0;
+    display: none; /* Oculta os itens do menu por padrão */
 }
 
 .menu ul li a {
@@ -815,3 +816,5 @@ header h1 {
     background-color: #ddd;
     color: #000;
 }
+
+
