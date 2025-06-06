@@ -302,20 +302,6 @@ header h1 {
     display: none; /* Oculta o input */
 }
 
-/* Menu popup oculto por padrão */
-.menu {
-    display: none; /* Oculta o menu por padrão */
-    flex-direction: column; /* Alinha os itens verticalmente */
-    gap: 10px;
-    background-color: var(--preto); /* Cor de fundo do menu */
-    padding: 10px;
-    position: absolute;
-    top: 60px; /* Ajusta a posição abaixo do header */
-    right: 20px; /* Alinha à direita */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
 
 /* Exibe o menu quando o checkbox está marcado */
 .menu-icon {
@@ -815,7 +801,7 @@ header h1 {
 }
 
 .dropdown-content a {
-    display: block;
+    display: block !important;
     padding: 7px;
     text-decoration: none;
     font-size: 14px;
