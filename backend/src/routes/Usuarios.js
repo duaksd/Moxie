@@ -110,4 +110,15 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// ROTA GET PARA RETORNAR TODOS OS USUÁRIOS
+router.get('/', async (req, res) => {
+  try {
+    const usuarios = await Usuario.findAll();
+    res.status(200).json(usuarios);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar usuários', details: error.message });
+  }
+});
+
+
 export default router;
