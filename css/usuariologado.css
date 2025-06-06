@@ -862,7 +862,7 @@ header h1 {
         top: 54px;
         left: 0;
         width: 100%; /* Faz o menu ocupar 100% da largura */
-        background-color: var(--rosa-fem);
+        background: var(--gradiente-header);
         flex-direction: column;
         gap: 10px;
         padding: 10px;
@@ -939,116 +939,26 @@ header h1 {
         background-size: contain; /* Garante que a imagem inteira seja exibida */
     }
 }
-/* Estilos para tablets (largura máxima de 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-    .header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        position: relative;
-    }
 
-    .menu-icon {
-        display: block; /* Exibe o ícone do menu hambúrguer */
-        font-size: 20px;
-        color: var(--preto);
-        cursor: pointer;
-        margin-right: auto;
-    }
+/* ...existing code... */
 
-    .h1-titulo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%); /* Centraliza o título */
-        flex: 1;
-        text-align: center; /* Centraliza o título */
-        font-size: 24px;
-        color: var(--preto);
-    }
-
-    .header-buttons {
-        display: flex;
-        gap: 15px; /* Espaçamento entre os ícones */
-    }
-
-    .header-buttons .icon-button {
-        font-size: 20px;
-        color: var(--preto);
-        cursor: pointer;
-    }
-
-    .menu {
-        display: none; /* O menu será controlado pelo checkbox */
-        position: absolute;
-        top: 54px;
-        left: 0;
-        width: 75%;
-        background-color: var(--rosa-fem);
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        border-radius: 0px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-    }
-
-    #menu-toggle:checked + .menu {
-        display: flex; /* Exibe o menu quando o checkbox está marcado */
-    }
-
-    .header-categories {
-        display: none; /* Esconde o header-categories */
-    }
-
-    .header-buttons a[aria-label="Help Button"] {
-        display: none; /* Esconde o botão de ajuda */
-    }
-
-    .produtos .grid {
-        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .cards {
-        width: 45%; /* Ajusta a largura dos cards */
-    }
-
-    .banner {
-        height: 400px; /* Altura ajustada para tablets */
-        font-size: 24px;
-        background-size: contain; /* Garante que a imagem inteira seja exibida */
-    }
+/* Mobile first (até 600px) */
+body {
+    font-size: 16px;
 }
 
-/* Estilos para desktops (largura mínima de 769px) */
-@media (min-width: 769px) {
-    .header .container {
-        flex-direction: row;
-        justify-content: space-between;
+/* Tablet (601px até 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
     }
+    /* Ajuste outros elementos conforme necessário */
+}
 
-    .produtos .grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout fluido */
+/* Desktop (acima de 1024px) */
+@media (min-width: 1025px) {
+    body {
+        font-size: 20px;
     }
-
-    .footer-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .cards {
-        width: 18%; /* Mantém a largura original dos cards */
-    }
-
-    .banner {
-        height: 700px; /* Altura original para desktops */
-        font-size: 28px; /* Texto original */
-        background-size: cover; /* Faz a imagem cobrir o espaço */
-        background-position: center; /* Centraliza a imagem */
-    }
+    /* Ajuste outros elementos conforme necessário */
 }
