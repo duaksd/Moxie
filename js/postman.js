@@ -174,7 +174,7 @@ const asdasdas = [
         "descricao": "Conjunto de top e legging fitness feitos em tecido de alta performance, com acabamento confortável e resistente. O top oferece suporte perfeito para treinos de alta intensidade, enquanto a legging garante liberdade de movimento e ajuste perfeito ao corpo. Ideal para atividades na academia, yoga ou corrida, proporcionando estilo e conforto.",
         "preco": 149.99,
         "parcelamento": "3x de R$ 50,00",
-        "tamanho": "",
+        "tamanho": "G",
         "genero": "feminino",
         "cor": "",
         "estoque": 0,
