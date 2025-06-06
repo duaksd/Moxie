@@ -85,10 +85,31 @@
                     <i class='bx bx-cart'></i>
                 </a>
     
-                <!-- Botão de Login -->
-                <a href="login.html" aria-label="User Login Button" class="icon-button">
-                    <i class='bx bx-user'></i>
-                </a>
+                   <!-- Botão de Login -->
+                   <div class="user-container dropdown">
+                    <a href="#" aria-label="User Login Button" class="icon-button user-icon" onclick="toggleDropdown(event)">
+                        <i class='bx bx-user'></i>
+                    </a>
+                
+                    <div id="dropdownContent" class="dropdown-content">
+                        <div class="user-info">
+                            <p id="userNameDisplay"><strong>Nome:</strong></p>
+                            <p id="userEmailDisplay"><strong>Email:</strong></p>
+                            <p id="lastOrderDisplay"><strong>Último pedido:</strong></p>
+                            <p id="favoritesDisplay"><strong>Favoritos:</strong></p>
+                            <p id="savedCardsDisplay"><strong>Cartões Salvos:</strong></p>
+                            <p id="addressDisplay"><strong>Endereço:</strong></p>
+                        </div>
+                        <hr>
+                        <a href="meuPerfil.html">Meu Perfil</a>
+                        <a href="#">Meus Pedidos</a>
+                        <a href="favoritos.html">Favoritos</a>
+                        <a href="#">Métodos de Pagamento</a>
+                        <a href="#">Endereços</a>
+                        <button onclick="logout()" class="logout-btn">Sair da Conta</button>
+                        <button onclick="deleteProfile()" class="delete-btn">Deletar Perfil</button>
+                    </div>
+                  </div>   
 
                 <!-- Botão de Ajuda -->
                 <a href="cental-ajuda.html" aria-label="Help Button" class="icon-button">
@@ -165,6 +186,8 @@
         <p class="footer-copy">&copy; 2025 MOXIE Inc. - Todos os direitos reservados.</p>
     </footer>
     <script src="js/teste.js"></script>
-    <script src="js/feminino.js"></script>
+    <script src="js/masculino.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/perfil.js"></script>
 </body>
 </html>
