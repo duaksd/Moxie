@@ -64,6 +64,8 @@ async function deleteProfile() {
               throw new Error('Usuário não encontrado.');
           }
           const user = await response.json();
+          localStorage.setItem('usuarioId', user.id); // <- Salva o ID do usuário logado
+
 
           const deleteResponse = await fetch(`http://localhost:4000/usuarios/${user.id}`, {
               method: 'DELETE'
@@ -83,3 +85,11 @@ async function deleteProfile() {
   }
 }
 
+function logout() {
+  localStorage.removeItem("userEmail");
+  localStorage.removeItem("usuarioId");
+  localStorage.removeItem("isLoggedIn");
+  // ou use localStorage.clear(); se quiser apagar tudo
+
+  window.location.href = "login.html"; // redireciona para a página de login
+}

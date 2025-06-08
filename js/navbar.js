@@ -33,14 +33,24 @@ function carregarDadosUsuario() {
 }
 
 function logout() {
-    // Remove dados de autenticação
-    localStorage.removeItem("userEmail");
-
-    // Alerta e redirecionamento
-    alert("Você saiu da sua conta.");
-    window.location.href = "index.html";
+  localStorage.removeItem("token");
+  localStorage.removeItem("usuario");
+  window.location.href = "login.html";
 }
+
+
 
 function deleteProfile() {
     console.log("Função de deletar perfil a implementar.");
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  if (token && usuario) {
+    document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${usuario.nome}`;
+    document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${usuario.email}`;
+    // Pode buscar mais dados via /usuarios/perfil com token se quiser
+  }
+});

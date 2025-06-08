@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOXIE</title>
+    <link rel="stylesheet" href="css/produto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="img/banner1.png">
+
+    <!-- Link do Font Awesome (ícones das redes sociais) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+
+    
+    <!-- Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Erro ao carregar o header:', error));
+        </script>
+
+<!-- Conteúdo principal -->
+<main>
+    <section class="produto-detalhes">
+        
+        <div class="produto-conteudo">
+            <div class="produto-imagem">
+                <img id="produto-imagem" src="" alt="Imagem do Produto" class="">
+            </div>
+            <div class="produto-info">
+                    <h1 id="produto-nome"></h1>
+                    <p id="produto-descricao"></p>
+                    <p id="produto-preco" class="produto-preco"></p>                    
+                    <p id="produto-cor"></p>
+                    <p id="produto-tamanho"></p>
+                    <p id="produto-parcela"></p>
+                    <button id="adicionar-carrinho" class="btn-carro">Adicionar ao Carrinho</button>
+                    <button id="comprar-agora" class="btn-comprar">Comprar Agora</button>
+                    <!--Botão de favoritos-->
+                    <input type="checkbox" id="favorite" name="favorite-checkbox" value="favorite-button">
+                    <label for="favorite" class="container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <div class="action">
+                            <span class="option-1">Adicionar aos favoritos</span>
+                            <span class="option-2">Remover dos favoritos</span>
+                        </div>
+                    </label>
+                    <!--fim do botão de favoritos-->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o footer:', error));
+            </script>
+
+<script>
+    function getQueryParams() {
+        // Função para obter os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+            return {
+                imagem: params.get('imagem'),
+                alt: params.get('alt'),
+                nome: params.get('nome'),
+                descricao: params.get('descricao'),
+                preco: params.get('preco'),
+                parcelamento: params.get('parcelamento'),
+                tamanho: params.get('tamanho'),
+                cor: params.get('cor'),
+                genero: params.get('genero')
+            };
+        }
+
+        // Preenche os dados do produto na página
+        const produto = getQueryParams();
+        if (produto.imagem) {
+            document.getElementById('produto-imagem').src = produto.imagem;
+            document.getElementById('produto-imagem').alt = produto.alt;
+            document.getElementById('produto-nome').textContent = produto.nome;
+            document.getElementById('produto-descricao').textContent = produto.descricao;
+            document.getElementById('produto-preco').textContent = `Preço: ${produto.preco}`;
+            document.getElementById('produto-parcela').textContent = produto.parcelamento 
+                ? `Parcelamento: ${produto.parcelamento}` 
+                : 'Parcelamento não disponível.';
+                document.getElementById('produto-tamanho').textContent = produto.tamanho
+                ? `Tamanho: ${produto.tamanho}` 
+                : 'Tamanho não disponível.';
+            document.getElementById('produto-cor').textContent = produto.cor
+                ? `Cor: ${produto.cor}` 
+                : 'Cor não disponível.';
+            } else {
+                document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
+            }
+            
+            // Adicionar produto ao carrinho
+            document.getElementById('adicionar-carrinho').addEventListener('click', () => {
+                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                const produtoExistente = carrinho.find(item => item.nome === produto.nome);
+                
+                if (produtoExistente) {
+                    produtoExistente.quantidade = (produtoExistente.quantidade || 1) + 1;
+                } else {
+                    carrinho.push({ ...produto, quantidade: 1 });
+                }
+                
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                alert(`${produto.nome} foi adicionado ao carrinho!`);
+            });
+
+            // Função para verificar se o produto já está nos favoritos
+            function isFavorito(produto) {
+                const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                return favoritos.some(item => item.nome === produto.nome);
+            }
+
+            // Atualiza o estado do checkbox de favoritos ao carregar a página
+            const favoriteCheckbox = document.getElementById('favorite');
+            favoriteCheckbox.checked = isFavorito(produto);
+
+           // Evento do botão de favoritos
+            const favCheckbox = document.getElementById('favorite');
+            favCheckbox.addEventListener('change', function() {
+                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                if (this.checked) {
+                    if (!favoritos.find(item => item.nome === produto.nome)) {
+                        favoritos.push(produto);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    }
+                } else {
+                    favoritos = favoritos.filter(item => item.nome !== produto.nome);
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                }
+            });
+    </script>
+    <script src="js/navbar.js"></script>
+    <script src="js/btnLogin.js"></script>
+</body>
+</html>

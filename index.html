@@ -11,114 +11,25 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Preload -->
-    <link rel="preload" as="image" href="img/banner.png">
+    <link rel="preload" href="./img/banner1.png" as="image">
+
 
     <!-- Link do Font Awesome (ícones das redes sociais) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="barra-promocao">
-            <div class="container-promocao">
-                <ul class="barra-promocao-lista">
-                    <li><a href="#">TROCA FÁCIL</a></li>
-                    <li><a href="#">FRETE GRÁTIS A PARTIR DE R$150</a></li>
-            </ul>
-            </div>
 
-        </div>
-        
-    </nav>
-    
-    <header class="header">
-        <div class="container">
-            <!-- Menu Hambúrguer -->
-            <label for="menu-toggle" class="menu-icon">
-                <i class='bx bx-menu'></i>
-            </label>
-            <input type="checkbox" id="menu-toggle" />
-            <nav class="menu">
-                <ul>
-                    <li><a href="feminino.html">Feminino</a></li>
-                    <li><a href="masculino.html">Masculino</a></li>
-                    <li><a href="cental-ajuda.html">Central de Ajuda</a></li>
-                </ul>
-            </nav>
 
-            <!-- Título -->
-            <h1 class="h1-titulo">
-                <a href="index.html" aria-label="Voltar para a página inicial">MOXIE</a>
-            </h1>
-    
-            <!-- Categorias -->
-            <nav class="header-categories">
-                <ul>
-                    <li><a href="feminino.html">Feminino</a></li>
-                    <li><a href="masculino.html">Masculino</a></li>
-                </ul>
-            </nav>
-    
-            <!-- Botões estilizados -->
-            <div class="header-buttons">
-                <!-- Botão de pesquisa -->
-                <div class="search-container">
-                    <!-- Checkbox para controlar a exibição -->
-                    <input type="checkbox" id="search-toggle" class="search-toggle" />
-                    
-                    <!-- Botão da lupa -->
-                    <label for="search-toggle" class="icon-button search-icon">
-                        <i class='bx bx-search'></i>
-                    </label>
-                    
-                    <!-- Caixa de pesquisa -->
-                    <div class="search-box">
-                        <label for="search-toggle" class="close-search" aria-label="Fechar Pesquisa">
-                            <i class='bx bx-x'></i>
-                        </label>
-                        <input type="text" placeholder="Digite sua busca..." />
-                        <button type="submit">Buscar</button>
-                    </div>
-                </div>
-
-                <!-- Botão de Carrinho -->
-                <a href="carrinho.html" aria-label="Ir para a página do carrinho" class="icon-button">
-                    <i class='bx bx-cart'></i>
-                </a>
-    
-                   <!-- Botão de Login -->
-                   <div class="user-container dropdown">
-                    <a href="#" aria-label="User Login Button" class="icon-button user-icon" onclick="toggleDropdown(event)">
-                        <i class='bx bx-user'></i>
-                    </a>
-                
-                    <div id="dropdownContent" class="dropdown-content">
-                        <div class="user-info">
-                            <p id="userNameDisplay"><strong>Nome:</strong></p>
-                            <p id="userEmailDisplay"><strong>Email:</strong></p>
-                            <p id="lastOrderDisplay"><strong>Último pedido:</strong></p>
-                            <p id="favoritesDisplay"><strong>Favoritos:</strong></p>
-                            <p id="savedCardsDisplay"><strong>Cartões Salvos:</strong></p>
-                            <p id="addressDisplay"><strong>Endereço:</strong></p>
-                        </div>
-                        <hr>
-                        <a href="meuPerfil.html">Meu Perfil</a>
-                        <a href="#">Meus Pedidos</a>
-                        <a href="favoritos.html">Favoritos</a>
-                        <a href="#">Métodos de Pagamento</a>
-                        <a href="#">Endereços</a>
-                        <button onclick="logout()" class="logout-btn">Sair da Conta</button>
-                        <button onclick="deleteProfile()" class="delete-btn">Deletar Perfil</button>
-                    </div>
-                  </div>   
-
-                <!-- Botão de Ajuda -->
-                <a href="cental-ajuda.html" aria-label="Help Button" class="icon-button">
-                    <i class='bx bx-help-circle'></i>
-                </a>
-            </div>
-
-        </div>
-    </header>
+    <!-- Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Erro ao carregar o header:', error));
+        </script>
 
     <!-- Banner -->
     <section class="banner" style="background-image: url('img/banner1.png')">
@@ -189,10 +100,12 @@
     </footer>
 
     <script src="js/render.js"></script>
+    <script src="js/navbar.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/registro.js"></script>
+    <!-- <script src="js/registro.js"></script>
     <script src="js/TTeste.js"></script>
     <script src="js/auth.js"></script>
-    <script src="js/perfil.js"></script>
+    <script src="js/perfil.js"></script> -->
+    
 </body>
 </html>
