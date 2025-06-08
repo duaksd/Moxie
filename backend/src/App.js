@@ -9,12 +9,21 @@ import pedidosRouter from './routes/Pedidos.js';
 import itemPedidosRouter from './routes/ItemPedidos.js';
 import pagamentosRouter from './routes/Pagamentos.js';
 import parcelamentosRouter from './routes/Parcelamentos.js';
-import validarCupom from './middlewares/validarCupom.js';
+//import validarCupom from './middlewares/validarCupom.js';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Define __dirname para ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/img', express.static(path.join(__dirname, 'img')));
 
 app.get('/', (req, res) => {
   res.send('Backend Node.js funcionando!');
@@ -31,7 +40,6 @@ app.use('/carrinho', carrinhoRouter);
 app.use('/pedidos', pedidosRouter);
 
 app.use('/itempedidos', itemPedidosRouter);
-
 
 app.use('/pagamentos', pagamentosRouter);
 

@@ -1,3 +1,5 @@
+import { addCarrinho } from './addCarrinho.js'
+
 document.addEventListener('DOMContentLoaded', () => {
   fetchProdutos();
 });
@@ -18,29 +20,37 @@ async function fetchProdutos() {
   }
 }
 
+// Função para redirecionar para a página do produto
 function renderizarProdutos(produtos) {
   const container = document.getElementById('produtos-container');
-  container.innerHTML = ''; // Limpa antes de inserir
+  container.innerHTML = ''; // Limpa o conteúdo anterior
 
   if (!produtos || produtos.length === 0) {
     container.innerHTML = '<p>Nenhum produto encontrado.</p>';
     return;
   }
 
-  produtos.forEach(produto => {
-    const card = document.createElement('div');
-    card.classList.add('produto-card');
+  produtos.forEach((produto, index) => {
+    const descricaoCurta = produto.descricao.length > 100 
+      ? produto.descricao.substring(0, 100) + '...'
+      : produto.descricao;
 
-    card.innerHTML = `
-      <img src="${produto.imagem}" alt="${produto.nome}" class="produto-imagem" />
-      <h3 class="produto-nome">${produto.nome}</h3>
-      <p class="produto-descricao">${produto.descricao}</p>
-      <p class="produto-preco">R$ ${produto.preco.toFixed(2)}</p>
-      <p class="produto-estoque">Estoque: ${produto.estoque}</p>
-      <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    const queryString = `?imagem=${encodeURIComponent(produto.imagem_url)}&alt=${encodeURIComponent(produto.alt || produto.nome)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
+
+    const produtoHTML = `
+      <div class="produto">
+        <a href="produto.html${queryString}">
+          <img src="${produto.imagem_url}" alt="${produto.alt || produto.nome}">
+        </a>
+        <h2>${produto.nome}</h2>
+        <p>${descricaoCurta}</p>
+        <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
+        <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+        <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
+      </div>
     `;
 
-    container.appendChild(card);
+    container.innerHTML += produtoHTML;
   });
 }
 
@@ -48,3 +58,8 @@ function exibirMensagemErro(mensagem) {
   const container = document.getElementById('produtos-container');
   container.innerHTML = `<p class="erro">${mensagem}</p>`;
 }
+
+// Dentro do evento de clique no botão:
+botao.addEventListener('click', () => {
+  addCarrinho(produto);
+});
