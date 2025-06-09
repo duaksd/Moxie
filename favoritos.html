@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos - MOXIE</title>
     <link rel="stylesheet" href="css/favoritos.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Adicione o header se quiser o perfil visível -->
-    <header id="header" role="banner">
-        <script>
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-                });
-        </script>
-    </header>
+    <!-- Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Erro ao carregar o header:', error));
+    </script>
     <main role="main">
         <section class="produtosfav" aria-labelledby="titulo-favoritos">
             <h2 id="titulo-favoritos">Meus Favoritos</h2>
