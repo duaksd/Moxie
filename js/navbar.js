@@ -1,56 +1,105 @@
-function toggleDropdown(event) {
+document.addEventListener("DOMContentLoaded", async function () {
+  const userContainer = document.querySelector(".user-container");
+  const dropdown = document.getElementById("dropdownContent");
+
+  if (!userContainer || !dropdown) {
+    // Não tem userContainer na página, então não faz nada
+    return;
+  }
+
+  userContainer.addEventListener("click", async function (event) {
     event.preventDefault();
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
     const userEmail = localStorage.getItem("userEmail");
 
-    if (!userEmail) {
-        window.location.href = "login.html";
-        return;
+    if (isLoggedIn === "true" && userEmail) {
+      try {
+        const response = await fetch(`http://localhost:4000/usuarios/email/${userEmail}`);
+        if (!response.ok) {
+          throw new Error("Usuário não encontrado");
+        }
+
+        const user = await response.json();
+
+        // ✅ Salva o ID do usuário no localStorage (ESSENCIAL para adicionar ao carrinho)
+        localStorage.setItem("usuarioId", user.id);
+
+        const userName = user.nome || "Usuário";
+        const lastOrder = user.ultimo_pedido || "Nenhum pedido registrado";
+        const favorites = user.favoritos?.length ? user.favoritos.join(", ") : "Nenhum item favoritado";
+        const savedCards = user.cartao || "";
+        const address = user.endereco || "Endereço não cadastrado";
+        const maskedCard = savedCards.length >= 4 ? `**** **** **** ${savedCards.slice(-4)}` : "Nenhum cartão salvo";
+
+        document.getElementById("userNameDisplay").innerText = `Nome: ${userName}`;
+        document.getElementById("userEmailDisplay").innerText = `Email: ${user.email}`;
+        document.getElementById("lastOrderDisplay").innerText = `Último pedido: ${lastOrder}`;
+        document.getElementById("favoritesDisplay").innerText = `Favoritos: ${favorites}`;
+        document.getElementById("savedCardsDisplay").innerText = `Cartões Salvos: ${maskedCard}`;
+        document.getElementById("addressDisplay").innerText = `Endereço: ${address}`;
+
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      } catch (error) {
+        console.error("Erro:", error.message);
+        alert("Erro ao buscar informações do usuário.");
+      }
+    } else {
+      const path = window.location.pathname;
+    
+      // Se já estiver no index.html ou raiz, não redireciona para login
+      if (!path.includes("index.html") && path !== "/") {
+        window.location.href = "index.html";
+      }
     }
+  });
 
-    const dropdown = document.getElementById("dropdownContent");
-    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-
-    if (dropdown.style.display === "block") {
-        carregarDadosUsuario();
+  // Fecha o dropdown ao clicar fora
+  window.addEventListener("click", function (event) {
+    if (!event.target.closest(".user-container")) {
+      dropdown.style.display = "none";
     }
-}
+  });
 
-function carregarDadosUsuario() {
+  // Permite que os links do dropdown funcionem
+  document.querySelectorAll(".dropdown-content a").forEach(link => {
+    link.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  });
+});
+
+async function deleteProfile() {
+  if (confirm("Tem certeza que deseja deletar seu perfil? Essa ação não pode ser desfeita.")) {
     const userEmail = localStorage.getItem("userEmail");
-    if (!userEmail) return;
 
-    fetch(`http://localhost:4000/usuarios/email/${userEmail}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${data.nome}`;
-            document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${data.email}`;
-            document.getElementById("lastOrderDisplay").innerHTML = `<strong>Último pedido:</strong> ${data.ultimoPedido || 'Nenhum'}`;
-            document.getElementById("favoritesDisplay").innerHTML = `<strong>Favoritos:</strong> ${data.favoritos?.length || 0}`;
-            document.getElementById("savedCardsDisplay").innerHTML = `<strong>Cartões Salvos:</strong> ${data.cartoes?.length || 0}`;
-            document.getElementById("addressDisplay").innerHTML = `<strong>Endereço:</strong> ${data.endereco || 'Não informado'}`;
-        })
-        .catch(error => console.error("Erro ao buscar usuário:", error));
+    try {
+      const response = await fetch(`http://localhost:4000/usuarios/email/${userEmail}`);
+      if (!response.ok) {
+        throw new Error("Usuário não encontrado.");
+      }
+
+      const user = await response.json();
+
+      const deleteResponse = await fetch(`http://localhost:4000/usuarios/${user.id}`, {
+        method: "DELETE",
+      });
+
+      if (deleteResponse.ok) {
+        alert("Perfil deletado com sucesso!");
+        localStorage.clear();
+        window.location.href = "index.html";
+      } else {
+        const errorData = await deleteResponse.json();
+        alert("Erro ao deletar: " + errorData.error);
+      }
+    } catch (error) {
+      alert("Erro ao deletar perfil: " + error.message);
+    }
+  }
 }
 
 function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("usuario");
-  window.location.href = "login.html";
+  localStorage.clear(); // Limpa tudo para evitar erro de cache
+  window.location.href = "index.html";
 }
-
-
-
-function deleteProfile() {
-    console.log("Função de deletar perfil a implementar.");
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const token = localStorage.getItem("token");
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
-
-  if (token && usuario) {
-    document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${usuario.nome}`;
-    document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${usuario.email}`;
-    // Pode buscar mais dados via /usuarios/perfil com token se quiser
-  }
-});
