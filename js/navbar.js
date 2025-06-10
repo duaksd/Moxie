@@ -1,8 +1,17 @@
-function toggleDropdown(event) {
-    event.preventDefault();
-    const token = localStorage.getItem("token");
+document.addEventListener("DOMContentLoaded", async function () {
+  const userContainer = document.querySelector(".user-container");
+  const dropdown = document.getElementById("dropdownContent");
 
-    if (!token) {
+  if (!userContainer || !dropdown) {
+    // Não tem userContainer na página, então não faz nada
+    return;
+  }
+
+  userContainer.addEventListener("click", async function (event) {
+    event.preventDefault();
+    const userEmail = localStorage.getItem("userEmail");
+
+    if (!userEmail) {
         window.location.href = "login.html";
         return;
     }
@@ -15,86 +24,42 @@ function toggleDropdown(event) {
     }
 }
 
-async function carregarDadosUsuario() {
-    const token = localStorage.getItem("token");
-    if (!token) return;
+function carregarDadosUsuario() {
+    const userEmail = localStorage.getItem("userEmail");
+    if (!userEmail) return;
 
-    // Decodifica o token para pegar o id do usuário (sem depender do localStorage)
-    function parseJwt(token) {
-        try {
-            return JSON.parse(atob(token.split('.')[1]));
-        } catch (e) {
-            return null;
-        }
-    }
-    const payload = parseJwt(token);
-    if (!payload || !payload.id) return;
-
-    try {
-        const response = await fetch(`http://localhost:4000/usuarios/${payload.id}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            const usuario = await response.json();
-            console.log('Usuário retornado do backend:', usuario); // <-- ADICIONE ESTA LINHA
-            document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${usuario.nome || '-'}`;
-            document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${usuario.email || '-'}`;
-            document.getElementById("lastOrderDisplay").innerHTML = `<strong>Último pedido:</strong> -`;
-            document.getElementById("favoritesDisplay").innerHTML = `<strong>Favoritos:</strong> -`;
-            document.getElementById("savedCardsDisplay").innerHTML = `<strong>Cartões Salvos:</strong> -`;
-            document.getElementById("addressDisplay").innerHTML = `<strong>Endereço:</strong> -`;
-        } else {
-            document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> -`;
-            document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> -`;
-        }
-    } catch (error) {
-        document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> -`;
-        document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> -`;
-    }
+    fetch(`http://localhost:4000/usuarios/email/${userEmail}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${data.nome}`;
+            document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${data.email}`;
+            document.getElementById("lastOrderDisplay").innerHTML = `<strong>Último pedido:</strong> ${data.ultimoPedido || 'Nenhum'}`;
+            document.getElementById("favoritesDisplay").innerHTML = `<strong>Favoritos:</strong> ${data.favoritos?.length || 0}`;
+            document.getElementById("savedCardsDisplay").innerHTML = `<strong>Cartões Salvos:</strong> ${data.cartoes?.length || 0}`;
+            document.getElementById("addressDisplay").innerHTML = `<strong>Endereço:</strong> ${data.endereco || 'Não informado'}`;
+        })
+        .catch(error => console.error("Erro ao buscar usuário:", error));
 }
 
 function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("usuario");
-    window.location.href = "index.html";
+  localStorage.removeItem("token");
+  localStorage.removeItem("usuario");
+  window.location.href = "login.html";
 }
 
-async function deleteProfile() {
-    if (confirm("Tem certeza que deseja deletar seu perfil? Esta ação não pode ser desfeita.")) {
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
-        const token = localStorage.getItem("token");
 
-        if (!usuario || !usuario.id || !token) {
-            alert("Usuário não autenticado.");
-            window.location.href = "login.html";
-            return;
-        }
 
-        try {
-            const response = await fetch(`http://localhost:4000/usuarios/${usuario.id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                localStorage.removeItem("token");
-                localStorage.removeItem("usuario");
-                alert("Perfil deletado com sucesso.");
-                window.location.href = "login.html";
-            } else {
-                const errorData = await response.json();
-                alert("Erro ao deletar perfil: " + (errorData.error || "Tente novamente."));
-            }
-        } catch (error) {
-            alert("Erro na requisição: " + error.message);
-        }
-    }
+function deleteProfile() {
+    console.log("Função de deletar perfil a implementar.");
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  if (token && usuario) {
+    document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${usuario.nome}`;
+    document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${usuario.email}`;
+    // Pode buscar mais dados via /usuarios/perfil com token se quiser
+  }
+});
