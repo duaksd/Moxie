@@ -95,5 +95,31 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Buscar produtos por nome
+router.get('/search', async (req, res) => {
+  try {
+    const nome = req.query.nome;
+    if (!nome) {
+      return res.status(400).json({ error: 'Parâmetro "nome" é obrigatório.' });
+    }
+
+    const produtos = await Produto.findAll({
+      where: {
+        nome: {
+          [Op.like]: `%${nome}%`
+        }
+      }
+    });
+
+    if (produtos.length > 0) {
+      return res.status(200).json(produtos);
+    } else {
+      return res.status(404).json({ error: 'Nenhum produto encontrado.' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Erro ao buscar produtos.' });
+  }
+});
 
 export default router;
