@@ -121,5 +121,6 @@ router.get('/search', async (req, res) => {
     return res.status(500).json({ error: 'Erro ao buscar produtos.' });
   }
 });
+// asdasdasd
 
 export default router;
