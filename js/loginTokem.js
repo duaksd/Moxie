@@ -1,41 +1,46 @@
-// controllers/authController.js
-import Usuario from '../models/Usuario.js';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const senha = document.getElementById('password').value.trim();
 
-const SECRET = 'seusegredoaqui'; // Ideal: use process.env.JWT_SECRET
-
-export const login = async (req, res) => {
-  const { email, senha } = req.body;
+  if (!email || !senha) {
+    alert('Preencha todos os campos.');
+    return;
+  }
 
   try {
-    const usuario = await Usuario.findOne({ where: { email } });
-
-    if (!usuario) {
-      return res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-
-    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
-    if (!senhaCorreta) {
-      return res.status(401).json({ error: 'Senha incorreta' });
-    }
-
-    const token = jwt.sign(
-      { id: usuario.id, email: usuario.email },
-      SECRET,
-      { expiresIn: '1h' }
-    );
-
-    return res.status(200).json({
-      token,
-      usuario: {
-        id: usuario.id,
-        nome: usuario.nome,
-        email: usuario.email
-      }
+    const response = await fetch('http://localhost:4000/usuarios/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, senha })
     });
-  } catch (erro) {
-    console.error("Erro no login:", erro); // Adicionado para diagnóstico
-    return res.status(500).json({ error: 'Erro no servidor', detalhes: erro.message });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Salva o token e dados do usuário no localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      alert('Login realizado com sucesso!');
+      window.location.href = 'index.html';
+    } else {
+      alert('Erro: ' + (data.error || 'Verifique seus dados.'));
+    }
+  } catch (error) {
+    alert('Erro na requisição: ' + error.message);
   }
-};
+}
+
+// ESC para voltar ao index
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") {
+    window.location.href = "index.html";
+  }
+});
+
+// // Clique fora da login-box para voltar ao index
+// document.addEventListener('click', function(e) {
+//   const loginBox = document.querySelector('.login-box');
+//   if (loginBox && !loginBox.contains(e.target)) {
+//     window.location.href = "index.html";
+//   }
+// });

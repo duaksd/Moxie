@@ -1,8 +1,70 @@
 import express from 'express';
-import bcrypt from 'bcrypt'; // Importa bcrypt para hash de senha
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'; // Adicione no topo do arquivo
+import autenticarToken from '../middlewares/auth.js';
 import Usuario from '../models/Usuario.js';
 
 const router = express.Router();
+const JWT_SECRET = process.env.JWT_SECRET || 'dragonball_super'; // Defina sua chave secreta
+
+// ROTA POST PARA LOGIN COM BCRYPT E JWT
+router.post('/login', async (req, res) => {
+  const { email, senha } = req.body;
+
+  try {
+    const usuario = await Usuario.findOne({ where: { email } });
+
+    if (!usuario) {
+      return res.status(404).json({ error: 'Usuário não encontrado!' });
+    }
+
+    // Compara senha recebida com hash armazenado
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaValida) {
+      return res.status(401).json({ error: 'Senha incorreta!' });
+    }
+
+    // Gera o token JWT
+    const token = jwt.sign(
+      { id: usuario.id, email: usuario.email, nome: usuario.nome },
+      JWT_SECRET,
+      { expiresIn: '2h' }
+    );
+
+    // Retorna dados do usuário (menos a senha) e o token
+    res.status(200).json({
+      id: usuario.id,
+      nome: usuario.nome,
+      email: usuario.email,
+      telefone: usuario.telefone,
+      status: usuario.status,
+      token // <-- token JWT aqui
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro no login', details: error.message });
+  }
+});
+
+// ROTA GET PARA BUSCAR USUÁRIO POR EMAIL
+router.get('/email/:email', async (req, res) => {
+  try {
+    const email = req.params.email;
+    const usuario = await Usuario.findOne({ where: { email } });
+    if (usuario) {
+      res.status(200).json(usuario);
+    } else {
+      res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar usuário', details: error.message });
+  }
+});
+
+// ROTA GET PROTEGIDA
+router.get('/protegida', autenticarToken, (req, res) => {
+  res.json({ mensagem: 'Acesso autorizado!', usuario: req.usuario });
+});
 
 // ROTA POST PARA CRIAR USUÁRIO COM HASH DE SENHA
 router.post('/', async (req, res) => {
@@ -28,7 +90,10 @@ router.post('/', async (req, res) => {
 });
 
 // ROTA DELETE PARA DELETAR USUÁRIO POR ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', autenticarToken, async (req, res) => {
+  if (req.usuario.id != req.params.id) {
+    return res.status(403).json({ error: 'Acesso negado.' });
+  }
   try {
     const id = req.params.id;
     const deleted = await Usuario.destroy({ where: { id } });
@@ -64,11 +129,17 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// ROTA GET PARA BUSCAR USUÁRIO POR EMAIL
-router.get('/email/:email', async (req, res) => {
+// ROTA GET PARA BUSCAR USUÁRIO POR ID (protegida por JWT)
+router.get('/:id', autenticarToken, async (req, res) => {
   try {
-    const email = req.params.email;
-    const usuario = await Usuario.findOne({ where: { email } });
+    const id = req.params.id;
+    // Opcional: só permite que o usuário autenticado acesse o próprio perfil
+    if (req.usuario.id != id) {
+      return res.status(403).json({ error: 'Acesso negado.' });
+    }
+    const usuario = await Usuario.findByPk(id, {
+      attributes: { exclude: ['senha'] } // não retorna a senha
+    });
     if (usuario) {
       res.status(200).json(usuario);
     } else {
@@ -76,37 +147,6 @@ router.get('/email/:email', async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar usuário', details: error.message });
-  }
-});
-
-// ROTA POST PARA LOGIN COM BCRYPT
-router.post('/login', async (req, res) => {
-  const { email, senha } = req.body;
-
-  try {
-    const usuario = await Usuario.findOne({ where: { email } });
-
-    if (!usuario) {
-      return res.status(404).json({ error: 'Usuário não encontrado!' });
-    }
-
-    // Compara senha recebida com hash armazenado
-    const senhaValida = await bcrypt.compare(senha, usuario.senha);
-
-    if (!senhaValida) {
-      return res.status(401).json({ error: 'Senha incorreta!' });
-    }
-
-    // Retorna dados do usuário (menos a senha)
-    res.status(200).json({
-      id: usuario.id,
-      nome: usuario.nome,
-      email: usuario.email,
-      telefone: usuario.telefone,
-      status: usuario.status,
-    });
-  } catch (error) {
-    res.status(500).json({ error: 'Erro no login', details: error.message });
   }
 });
 
@@ -119,6 +159,5 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar usuários', details: error.message });
   }
 });
-
 
 export default router;
