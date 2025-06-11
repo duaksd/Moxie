@@ -75,7 +75,7 @@
         </fieldset>
 
         <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" />
+        <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="[0-9]{10,11}" placeholder="(99) 99999-9999" />
 
         <button type="submit">Salvar Alterações</button>
       </form>
@@ -93,6 +93,26 @@
         outro.value = '';
       }
     }
+
+    document.getElementById("telefone").addEventListener("input", function (e) {
+    let valor = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+
+    // Permite a exclusão sem travamento
+    if (e.inputType === "deleteContentBackward") {
+      e.target.value = valor;
+      return;
+    }
+
+    if (valor.length > 11) valor = valor.slice(0, 11); // Limita ao tamanho máximo do telefone
+
+    if (valor.length <= 10) {
+      valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+    } else {
+      valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
+    }
+
+    e.target.value = valor;
+  });
   </script>
 </body>
 </html>
