@@ -8,16 +8,13 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
-    <script>
-        fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        })
-        .catch(error => console.error('Erro ao carregar o header:', error));
-        </script>
+    <header>
+        <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial">
+            <i class="bx bx-arrow-back"></i>
+            Voltar
+        </a>
+        <span>Carrinho de compras</span>
+    </header>
     <main>
         <div class="titulo-pagina">Seu carrinho</div>
         <div class="content">
