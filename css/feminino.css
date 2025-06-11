@@ -5,7 +5,7 @@
     --rosa-fem: #B096BC;
     --branco: #FFF;
     --cinza-pers: #D9D9D9;
-    --gradiente-header: linear-gradient(to left, #B096BC 0%, #571970 70%);
+    --gradiente-header: linear-gradient(to left, #571970 0%, #B096BC 70%);
 
     /* Fontes */
     --ff-poppins: "Poppins", sans-serif;
@@ -58,6 +58,8 @@ li {
     white-space: nowrap; /* Impede quebra de linha */
     animation: rolar 20s linear infinite; /* Define a animação */
     overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura */
+    position: relative; /* Necessário para a animação */
 }
 
 .barra-promocao-lista li a {
@@ -104,7 +106,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: rgb(224, 187, 152);
+    color: #df1242;
 }
 
 header h1 {
@@ -164,7 +166,7 @@ header h1 {
 }
 
 .header-categories ul li a:hover {
-    color: #a51eff; /* Cor de destaque ao passar o mouse */
+    color: #542b70; /* Cor de destaque ao passar o mouse */
 }
 
 /* Botões do Header */
@@ -190,11 +192,11 @@ header h1 {
 
 .icon-button:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: #a51eff; /* Cor ao passar o mouse */
+    color: #d089ff; /* Cor ao passar o mouse */
 }
 
 .icon-button:focus {
-    outline: 2px solid #a51eff; /* Destaque ao focar */
+    outline: 2px solid #d089ff; /* Destaque ao focar */
     outline-offset: 2px;
 }
 
@@ -229,7 +231,7 @@ header h1 {
 
 .search-icon:hover {
     transform: scale(1.1);
-    color: #a51eff;
+    color: #d089ff;
 }
 
 /* Caixa de pesquisa */
