@@ -8,8 +8,143 @@
   <link rel="stylesheet" href="css/carrinho.css" />
   <link rel="stylesheet" href="css/meuPerfil.css" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    .perfil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 2rem 2.5rem;
+    }
+    .perfil-label {
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+    .perfil-info-col, .perfil-edit-col {
+      width: 100%;
+    }
+    .perfil-info-value {
+      background: #f5f5f5;
+      border-radius: 5px;
+      padding: 0.5rem 0.7rem;
+      color: #222;
+      font-size: 1rem;
+      min-height: 2.1rem;
+      border: 1px solid #eee;
+      margin-bottom: 0.2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .perfil-edit-col input {
+      width: 100%;
+      margin-bottom: 0.2rem;
+      padding: 0.5rem 0.4rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      background: #fafbfc;
+      color: #222;
+      transition: border 0.2s;
+      box-sizing: border-box;
+    }
+    .perfil-edit-col input:focus {
+      border: 1.5px solid #1976d2;
+      background: #fff;
+      outline: none;
+    }
+    .perfil-edit-col button[type="submit"] {
+      width: 100%;
+      margin-top: 2rem;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .perfil-section-title {
+      grid-column: 1 / 3;
+      color: #1976d2;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .enderecos-section {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 2rem 2.5rem;
+    }
+    .endereco-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #fafbfc;
+      position: relative;
+    }
+    .endereco-card input, .endereco-card select {
+      margin-bottom: 0.5rem;
+      width: 100%;
+      padding: 0.4rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .endereco-card .card-actions {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+    .endereco-card .card-actions button {
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .endereco-card .card-actions .salvar {
+      background: #1976d2;
+      color: #fff;
+    }
+    .endereco-card .card-actions .deletar {
+      background: #e53935;
+      color: #fff;
+    }
+    #btn-adicionar-endereco {
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    @media (max-width: 900px) {
+      .perfil-grid, .enderecos-section {
+        padding: 1.2rem 0.7rem;
+      }
+      .perfil-grid {
+        grid-template-columns: 1fr;
+      }
+      .perfil-section-title {
+        grid-column: 1 / 2;
+      }
+    }
+  </style>
 </head>
-
 <body>
   <header>
     <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial">
@@ -19,100 +154,59 @@
     <span>Meu Perfil</span>
   </header>
   <main>
-    <div class="perfil-container">
-      <h2>Editar Perfil</h2>
-      <form class="perfil-form">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+    <form id="perfil-form">
+      <div class="perfil-grid">
+        <div class="perfil-section-title" style="grid-column: 1 / 3;">Informações do Usuário</div>
+        <!-- Nome -->
+        <div class="perfil-info-col">
+          <label class="perfil-label">Nome</label>
+          <div class="perfil-info-value" id="info-nome"></div>
+        </div>
+        <div class="perfil-edit-col">
+          <label class="perfil-label" for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+        </div>
+        <!-- Email -->
+        <div class="perfil-info-col">
+          <label class="perfil-label">E-mail</label>
+          <div class="perfil-info-value" id="info-email"></div>
+        </div>
+        <div class="perfil-edit-col">
+          <label class="perfil-label" for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <!-- Telefone -->
+        <div class="perfil-info-col">
+          <label class="perfil-label">Telefone</label>
+          <div class="perfil-info-value" id="info-telefone"></div>
+        </div>
+        <div class="perfil-edit-col">
+          <label class="perfil-label" for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="[0-9]{10,11}" placeholder="(99) 99999-9999" />
+        </div>
+        <!-- Senha -->
+        <div class="perfil-info-col">
+          <label class="perfil-label">Senha</label>
+          <div class="perfil-info-value">********</div>
+        </div>
+        <div class="perfil-edit-col">
+          <label class="perfil-label" for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Nova senha" autocomplete="new-password" />
+        </div>
+        <!-- Botão Salvar -->
+        <div></div>
+        <div>
+          <button type="submit">Salvar Alterações</button>
+        </div>
+      </div>
+    </form>
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha" placeholder="Nova senha" autocomplete="new-password" />
-
-        <class="perfil-endereco">
-          <legend>Endereço</legend>
-          <label for="tipo-endereco">Tipo</label>
-          <select id="tipo-endereco" name="tipo-endereco" required onchange="mostrarOutroTipoEndereco(this)">
-            <option value="residencial">Residencial</option>
-            <option value="comercial">Comercial</option>
-            <option value="outro">Outro</option>
-          </select>
-          <input type="text" id="outro-tipo-endereco" name="outro-tipo-endereco" placeholder="Descreva o tipo de endereço" style="display:none; margin-bottom:1.2rem;" />
-
-          <label for="cep">CEP</label>
-          <input type="text" id="cep" name="cep" maxlength="8" placeholder="00000000" required />
-
-          <label for="logradouro">Logradouro</label>
-          <input type="text" id="logradouro" name="logradouro" placeholder="Rua, Avenida..." required />
-
-          <label for="numero">Número</label>
-          <input type="text" id="numero" name="numero" placeholder="Número" required />
-
-          <label for="complemento">Complemento</label>
-          <input type="text" id="complemento" name="complemento" placeholder="Apartamento, bloco, etc." />
-
-          <label for="bairro">Bairro</label>
-          <input type="text" id="bairro" name="bairro" placeholder="Bairro" required />
-
-          <label for="cidade">Cidade</label>
-          <input type="text" id="cidade" name="cidade" placeholder="Cidade" required />
-
-          <label for="estado">Estado</label>
-          <select id="estado" name="estado" required>
-            <option value="">Selecione</option>
-            <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
-            <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
-            <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
-            <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
-            <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
-            <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
-            <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
-            <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
-            <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
-          </select>
-        </fieldset>
-
-        <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="[0-9]{10,11}" placeholder="(99) 99999-9999" />
-
-        <button type="submit">Salvar Alterações</button>
-      </form>
-    </div>
+    <section class="enderecos-section">
+      <h3>Endereços</h3>
+      <div id="enderecos-lista"></div>
+      <button type="button" id="btn-adicionar-endereco">Adicionar Endereço</button>
+    </section>
   </main>
-  <script>
-    function mostrarOutroTipoEndereco(select) {
-      var outro = document.getElementById('outro-tipo-endereco');
-      if (select.value === 'outro') {
-        outro.style.display = 'block';
-        outro.required = true;
-      } else {
-        outro.style.display = 'none';
-        outro.required = false;
-        outro.value = '';
-      }
-    }
-
-    document.getElementById("telefone").addEventListener("input", function (e) {
-    let valor = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
-
-    // Permite a exclusão sem travamento
-    if (e.inputType === "deleteContentBackward") {
-      e.target.value = valor;
-      return;
-    }
-
-    if (valor.length > 11) valor = valor.slice(0, 11); // Limita ao tamanho máximo do telefone
-
-    if (valor.length <= 10) {
-      valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
-    } else {
-      valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
-    }
-
-    e.target.value = valor;
-  });
-  </script>
+  <script src="js/perfilUsuario.js"></script>
 </body>
 </html>

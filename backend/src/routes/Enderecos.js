@@ -27,11 +27,6 @@ router.get('/usuario/:usuario_id', async (req, res) => {
   try {
     const usuario_id = req.params.usuario_id;
     const enderecos = await Endereco.findAll({ where: { usuario_id } });
-
-    if (enderecos.length === 0) {
-      return res.status(404).json({ mensagem: 'Nenhum endereço encontrado para esse usuário.' });
-    }
-
     res.status(200).json(enderecos);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar endereços', details: error.message });

@@ -3,22 +3,54 @@ import sequelize from '../database/ModelConnection.js';
 import Usuario from './Usuario.js';
 
 const Endereco = sequelize.define('endereco', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  usuario_id: DataTypes.INTEGER,
-  tipo: DataTypes.ENUM('residencial', 'comercial', 'outro'),
-  cep: DataTypes.CHAR(8),
-  logradouro: DataTypes.STRING,
-  numero: DataTypes.STRING,
+  id: { 
+    type: DataTypes.INTEGER, 
+    primaryKey: true, 
+    autoIncrement: true 
+  },
+  usuario_id: { 
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'usuario', // nome da tabela relacionada
+      key: 'id'
+    }
+  },
+  tipo: { 
+    type: DataTypes.ENUM('residencial', 'comercial', 'outro'),
+    allowNull: false
+  },
+  cep: { 
+    type: DataTypes.CHAR(8),
+    allowNull: false
+  },
+  logradouro: { 
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  numero: { 
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   complemento: DataTypes.STRING,
-  bairro: DataTypes.STRING,
-  cidade: DataTypes.STRING,
-  estado: DataTypes.CHAR(2)
+  bairro: { 
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  cidade: { 
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  estado: { 
+    type: DataTypes.CHAR(2),
+    allowNull: false
+  }
 }, {
   tableName: 'endereco',
   timestamps: false
 });
 
-// Definindo os relacionamentos:
+// Relacionamentos
 Endereco.belongsTo(Usuario, { foreignKey: 'usuario_id', as: 'usuario' });
 Usuario.hasMany(Endereco, { foreignKey: 'usuario_id', as: 'enderecos' });
 
