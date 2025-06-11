@@ -45,6 +45,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: var(--ff-poppins);
 }
 
 .back-to-home i {
@@ -250,7 +251,7 @@ table tbody tr td {
 }
 
 .remover-item:hover {
-    background: #c92f24;
+    background: #c02116;
     color: var(--ml-white);
 }
 
