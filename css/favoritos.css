@@ -53,6 +53,15 @@ body {
     color: var(--ml-black);
 }
 
+/* Estilo do cabeçalho */
+body > header {
+    background: var(--ml-blue);
+    color: var(--ml-white);
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
 
 /* Estilo do conteúdo principal */
 body > main {

@@ -61,9 +61,19 @@ router.get('/email/:email', async (req, res) => {
   }
 });
 
-// ROTA GET PROTEGIDA
-router.get('/protegida', autenticarToken, (req, res) => {
-  res.json({ mensagem: 'Acesso autorizado!', usuario: req.usuario });
+// ROTA GET PROTEGIDA - retorna dados completos do usuário autenticado
+router.get('/protegida', autenticarToken, async (req, res) => {
+  try {
+    const usuario = await Usuario.findByPk(req.usuario.id, {
+      attributes: { exclude: ['senha'] }
+    });
+    if (!usuario) {
+      return res.status(404).json({ error: 'Usuário não encontrado!' });
+    }
+    res.json(usuario);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar usuário', details: error.message });
+  }
 });
 
 // ROTA POST PARA CRIAR USUÁRIO COM HASH DE SENHA

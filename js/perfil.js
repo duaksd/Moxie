@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async function () {
               alert('Erro ao buscar informações do usuário.');
           }
       } else {
-          window.location.href = "index.html";
+          window.location.href = "login.html";
       }
   });
 
