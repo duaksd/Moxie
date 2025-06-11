@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meus Pedidos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/meuspedidos.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial">
+      <span class="material-icons" aria-hidden="true">arrow_back</span>
+      Voltar
+    </a>
+    <span>Meus Pedidos</span>
+  </header>
+  <main>
+    <h2>Meus Pedidos</h2>
+    <table aria-label="Lista de pedidos">
+      <thead>
+        <tr>
+          <th scope="col">Pedido</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Status</th>
+          <th scope="col">Mensagem</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="#" class="pedido-link">Moxie-10490012-10002</a>
+            <time datetime="2024-11-12T16:44:01" class="pedido-date">12/11/2024 16:44:01</time>
+          </td>
+          <td class="valor">R$ 70,02</td>
+          <td>
+            <div class="status" aria-label="Pedido enviado">
+              <span class="material-icons" aria-hidden="true" title="Pedido enviado">local_shipping</span>
+              Pedido enviado
+            </div>
+          </td>
+          <td class="mensagem">Seu pedido foi enviado! Obrigada pela confiança.</td>
+          <td>
+            <button class="btn-detalhes" aria-label="Ver detalhes do pedido Moxie-10490012-10002">Ver endereço</button>
+          </td>
+          <td>
+            <button class="btn-detalhes" aria-label="Código de Rastreio do pedido Moxie-10490012-10002">Código de Rastreio</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" class="pedido-link">Moxie-10490012-00001</a>
+            <time datetime="2024-09-30T14:52:27" class="pedido-date">30/09/2024 14:52:27</time>
+          </td>
+          <td class="valor">R$ 95,68</td>
+          <td>
+            <div class="status" aria-label="Pedido enviado">
+              <span class="material-icons" aria-hidden="true" title="Pedido enviado">local_shipping</span>
+              Pedido enviado
+            </div>
+          </td>
+          <td class="mensagem">Seu pedido foi enviado! Obrigada pela confiança.</td>
+          <td>
+            <button class="btn-detalhes" aria-label="Ver detalhes do pedido Moxie-10490012-00001">Ver Endereço</button>
+          </td>
+          <td>
+            <button class="btn-detalhes" aria-label="Código de Rastreio do pedido Moxie-10490012-00001">Código de Rastreio</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
