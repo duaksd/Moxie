@@ -16,13 +16,16 @@ async function login() {
 
     const data = await response.json();
 
-    if (response.ok) {
-      // Salva o token e dados do usuário no localStorage
+    // Só salva se houver usuário válido
+    if (response.ok && data.usuario) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('usuario', JSON.stringify(data.usuario));
       alert('Login realizado com sucesso!');
       window.location.href = 'index.html';
     } else {
+      // Limpa qualquer valor inválido
+      localStorage.removeItem('usuario');
+      localStorage.removeItem('token');
       alert('Erro: ' + (data.error || 'Verifique seus dados.'));
     }
   } catch (error) {

@@ -5,16 +5,26 @@ import Produto from '../models/Produto.js';
 
 const router = express.Router();
 
-// Buscar todos os itens do carrinho, com dados do usuário e produto
+// Buscar todos os itens do carrinho, ou por usuario_id via query param (?usuario_id=1)
 router.get('/', async (req, res) => {
+  const usuarioId = req.query.usuario_id;
   try {
-    const itens = await Carrinho.findAll({
-      include: [
-        { model: Usuario, attributes: ['id', 'nome', 'email'] },
-        { model: Produto, attributes: ['id', 'nome', 'preco', 'imagem_url'] }
-      ]
-    });
-    res.json(itens);
+    let itens;
+    if (usuarioId) {
+      itens = await Carrinho.findAll({
+        where: { usuario_id: usuarioId },
+        include: [{ model: Produto, attributes: ['id', 'nome', 'preco', 'imagem_url'] }]
+      });
+    } else {
+      itens = await Carrinho.findAll({
+        include: [
+          { model: Usuario, attributes: ['id', 'nome', 'email'] },
+          { model: Produto, attributes: ['id', 'nome', 'preco', 'imagem_url'] }
+        ]
+      });
+    }
+    // O segredo está aqui:
+    res.json(Array.isArray(itens) ? itens : []);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar itens do carrinho', details: error.message });
   }

@@ -34,11 +34,13 @@ router.post('/login', async (req, res) => {
 
     // Retorna dados do usuário (menos a senha) e o token
     res.status(200).json({
-      id: usuario.id,
-      nome: usuario.nome,
-      email: usuario.email,
-      telefone: usuario.telefone,
-      status: usuario.status,
+      usuario: {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email,
+        telefone: usuario.telefone,
+        status: usuario.status
+      },
       token // <-- token JWT aqui
     });
   } catch (error) {
