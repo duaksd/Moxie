@@ -44,19 +44,33 @@ router.get('/usuario/:usuarioId', async (req, res) => {
   }
 });
 
-// Adicionar item ao carrinho
+// Adicionar item ao carrinho (agora soma quantidade se já existir)
 router.post('/', async (req, res) => {
   try {
     const { usuario_id, produto_id, quantidade } = req.body;
     if (!usuario_id || !produto_id) {
       return res.status(400).json({ error: 'usuario_id e produto_id são obrigatórios.' });
     }
-    const carrinhoItem = await Carrinho.create({
-      usuario_id,
-      produto_id,
-      quantidade: quantidade || 1
+
+    // Verifica se já existe esse produto no carrinho do usuário
+    let carrinhoItem = await Carrinho.findOne({
+      where: { usuario_id, produto_id }
     });
-    res.status(201).json(carrinhoItem);
+
+    if (carrinhoItem) {
+      // Se já existe, soma a quantidade
+      carrinhoItem.quantidade += quantidade || 1;
+      await carrinhoItem.save();
+      return res.status(200).json(carrinhoItem);
+    } else {
+      // Se não existe, cria novo
+      carrinhoItem = await Carrinho.create({
+        usuario_id,
+        produto_id,
+        quantidade: quantidade || 1
+      });
+      return res.status(201).json(carrinhoItem);
+    }
   } catch (error) {
     res.status(400).json({ error: 'Erro ao adicionar item ao carrinho', details: error.message });
   }
