@@ -192,8 +192,8 @@ tbody td {
 /* Responsividade */
 @media (max-width: 767px) {
     main {
-        margin: 1rem 1rem 3rem 1rem;
-        padding: 1.5rem 1.5rem;
+        margin: 1rem;
+        padding: 1.5rem;
     }
     thead {
         display: none;
@@ -203,61 +203,44 @@ tbody td {
         width: 100%;
     }
     tr {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         border-bottom: 2px solid var(--color-gray-light);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        background: var(--color-bg-light);
     }
     td {
-        padding-left: 50%;
-        position: relative;
-        text-align: left;
-        border: none;
-        word-wrap: break-word; /* Adiciona quebra de linha para evitar sobreposição */
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        font-size: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+    td:last-child {
+        border-bottom: none;
     }
     td::before {
-        position: absolute;
-        top: 14px;
-        left: 16px;
-        width: 45%;
-        white-space: nowrap;
+        content: attr(data-label);
         font-weight: 600;
         color: var(--color-text-secondary);
-        font-size: 0.85rem;
+        margin-bottom: 4px;
+        display: block;
     }
-    td:nth-of-type(1)::before { content: "Pedido"; }
-    td:nth-of-type(2)::before { content: "Valor"; }
-    td:nth-of-type(3)::before { content: "Status"; }
-    td:nth-of-type(4)::before { content: "Mensagem"; }
-    td:nth-of-type(5)::before { content: ""; }
 
     .status {
         justify-content: flex-start;
     }
 }
 
-/* Ajuste adicional para telas menores */
+/* Ajuste para telas menores que 600px */
 @media (max-width: 600px) {
-    .perfil-container {
-        padding: 1.2rem 0.7rem 2rem 0.7rem;
-    }
     td {
-        font-size: 0.85rem; /* Reduz o tamanho da fonte */
-        padding-left: 40%; /* Ajusta o espaço para o texto */
+        font-size: 0.9rem;
+        padding: 10px;
     }
     td::before {
-        font-size: 0.75rem; /* Reduz o tamanho da fonte dos rótulos */
+        font-size: 0.85rem;
     }
-}
-
-/* Melhoria: Adicionando estilos de botões mais coerentes */
-button {
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background var(--transition), color var(--transition);
-}
-button:hover {
-    background: var(--color-secondary);
-    color: var(--color-bg);
 }
