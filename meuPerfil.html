@@ -182,7 +182,8 @@
         </div>
         <div class="perfil-edit-col">
           <label class="perfil-label" for="telefone">Telefone</label>
-          <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="[0-9]{10,11}" placeholder="(99) 99999-9999" />
+          <!-- Removido pattern e trocado para type="text" para evitar bloqueio do HTML -->
+          <input type="text" id="telefone" name="telefone" inputmode="numeric" placeholder="(99) 99999-9999" maxlength="15" autocomplete="off" />
         </div>
         <!-- Senha -->
         <div class="perfil-info-col">

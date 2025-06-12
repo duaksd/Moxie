@@ -12,33 +12,36 @@ const Endereco = sequelize.define('endereco', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'usuario', // nome da tabela relacionada
+      model: Usuario, // referência ao model importado
       key: 'id'
     }
   },
   tipo: { 
     type: DataTypes.ENUM('residencial', 'comercial', 'outro'),
-    allowNull: false
+    allowNull: true // Permite nulo, igual ao banco
   },
   cep: { 
     type: DataTypes.CHAR(8),
     allowNull: false
   },
   logradouro: { 
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING(100),
+    allowNull: true // Permite nulo, igual ao banco
   },
   numero: { 
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(10),
     allowNull: false
   },
-  complemento: DataTypes.STRING,
+  complemento: {
+    type: DataTypes.STRING(50),
+    allowNull: true
+  },
   bairro: { 
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   cidade: { 
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   estado: { 
