@@ -230,6 +230,19 @@
   
       const metodoPagamento = formPagamento.pagamento.value;
   
+      // Salvar os itens do carrinho como pedidos no localStorage
+      const carrinho = carregarCarrinho();
+      const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+      const novoPedido = {
+        id: `Moxie-${Date.now()}`, // Gera um ID único para o pedido
+        data: new Date().toISOString(),
+        itens: carrinho,
+        total: totalPagarEl.textContent,
+        pagamento: metodoPagamento,
+      };
+      pedidos.push(novoPedido);
+      localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  
       // Dados básicos para apresentar
       const resumo = `
         Compra finalizada com sucesso!\n
