@@ -3,16 +3,18 @@ let produtos = [];
 document.addEventListener('DOMContentLoaded', () => {
   fetchProdutos();
 
-  setTimeout(() => {
+  // Observa o DOM até o campo de busca aparecer
+  const observer = new MutationObserver(() => {
     const searchInput = document.getElementById('search-input');
-    // Não precisa mais do searchButton para busca dinâmica
-
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         filtrarProdutos(e.target.value.trim());
       });
+      observer.disconnect(); // Para de observar após encontrar
     }
-  }, 300); // 300ms para garantir que o header foi renderizado
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 
 async function fetchProdutos() {
@@ -20,7 +22,7 @@ async function fetchProdutos() {
     const response = await fetch('http://localhost:4000/produtos');
     if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
     produtos = await response.json();
-    renderizarProdutos(produtos);
+    renderizarProdutos(produtos.filter(p => (p.genero || '').toLowerCase() === 'masculino'));
   } catch (erro) {
     console.error('Erro ao buscar produtos:', erro);
     exibirMensagemErro('Não foi possível carregar os produtos.');
@@ -28,18 +30,19 @@ async function fetchProdutos() {
 }
 
 function filtrarProdutos(query) {
+  let masculinos = produtos.filter(p => (p.genero || '').toLowerCase() === 'masculino');
   if (!query) {
-    renderizarProdutos(produtos);
+    renderizarProdutos(masculinos);
     return;
   }
-  const filtrados = produtos.filter(produto =>
+  const filtrados = masculinos.filter(produto =>
     produto.nome.toLowerCase().includes(query.toLowerCase())
   );
   renderizarProdutos(filtrados);
 }
 
 function renderizarProdutos(produtos) {
-  const container = document.getElementById('produtos-container');
+  const container = document.getElementById('produtos-container-masculino');
   container.innerHTML = '';
 
   if (!produtos || produtos.length === 0) {
@@ -71,7 +74,8 @@ function renderizarProdutos(produtos) {
 }
 
 function redirecionarParaProduto(index) {
-  const produto = produtos[index];
+  const masculinos = produtos.filter(p => (p.genero || '').toLowerCase() === 'masculino');
+  const produto = masculinos[index];
   if (!produto) return;
 
   const queryString = `?imagem=${encodeURIComponent(produto.imagem_url)}&alt=${encodeURIComponent(produto.alt || produto.nome)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
@@ -80,6 +84,6 @@ function redirecionarParaProduto(index) {
 }
 
 function exibirMensagemErro(msg) {
-  const container = document.getElementById('produtos-container');
+  const container = document.getElementById('produtos-container-masculino');
   container.innerHTML = `<p>${msg}</p>`;
 }

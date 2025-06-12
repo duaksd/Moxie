@@ -1,6 +1,7 @@
 import express from 'express';
 import Produto from '../models/Produto.js';
 
+
 const router = express.Router();
 
 // Listar todos os produtos
@@ -92,6 +93,27 @@ router.delete('/:id', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Erro ao deletar produto.' });
+  }
+});
+
+// Buscar produtos por nome (parcial, case-insensitive)
+router.get('/buscar', async (req, res) => {
+  try {
+    const { nome } = req.query;
+    if (!nome) {
+      return res.status(400).json({ error: 'Informe o nome para busca.' });
+    }
+    const produtos = await Produto.findAll({
+      where: {
+        nome: {
+          [Op.iLike]: `%${nome}%` // Para PostgreSQL. Use [Op.substring] para outros bancos.
+        }
+      }
+    });
+    res.status(200).json(produtos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar produtos.' });
   }
 });
 
