@@ -9,7 +9,8 @@ import pedidosRouter from './routes/Pedidos.js';
 import itemPedidosRouter from './routes/ItemPedidos.js';
 import pagamentosRouter from './routes/Pagamentos.js';
 import parcelamentosRouter from './routes/Parcelamentos.js';
-//import validarCupom from './middlewares/validarCupom.js';
+import './models/associations.js';
+// import validarCupom from './middlewares/validarCupom.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -30,19 +31,12 @@ app.get('/', (req, res) => {
 });
 
 app.use('/produtos', produtosRouter);
-
 app.use('/usuarios', usuariosRouter);
-
 app.use('/enderecos', enderecosRouter);
-
 app.use('/carrinho', carrinhoRouter);
-
 app.use('/pedidos', pedidosRouter);
-
 app.use('/itempedidos', itemPedidosRouter);
-
 app.use('/pagamentos', pagamentosRouter);
-
 app.use('/parcelamentos', parcelamentosRouter);
 
 const PORT = process.env.PORT || 4000;

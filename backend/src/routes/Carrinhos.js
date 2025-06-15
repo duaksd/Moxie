@@ -23,8 +23,15 @@ router.get('/', async (req, res) => {
         ]
       });
     }
-    // O segredo está aqui:
-    res.json(Array.isArray(itens) ? itens : []);
+    // Garante que cada item tenha o campo preco direto (além de dentro de produto)
+    const itensFormatados = (Array.isArray(itens) ? itens : []).map(item => {
+      const obj = item.toJSON();
+      if (obj.produto && obj.produto.preco) {
+        obj.preco = parseFloat(obj.produto.preco);
+      }
+      return obj;
+    });
+    res.json(itensFormatados);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar itens do carrinho', details: error.message });
   }
@@ -38,7 +45,15 @@ router.get('/usuario/:usuarioId', async (req, res) => {
       where: { usuario_id: usuarioId },
       include: [{ model: Produto, attributes: ['id', 'nome', 'preco', 'imagem_url'] }]
     });
-    res.json(itens);
+    // Garante que cada item tenha o campo preco direto (além de dentro de produto)
+    const itensFormatados = itens.map(item => {
+      const obj = item.toJSON();
+      if (obj.produto && obj.produto.preco) {
+        obj.preco = parseFloat(obj.produto.preco);
+      }
+      return obj;
+    });
+    res.json(itensFormatados);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar itens do carrinho do usuário', details: error.message });
   }
@@ -52,18 +67,15 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'usuario_id e produto_id são obrigatórios.' });
     }
 
-    // Verifica se já existe esse produto no carrinho do usuário
     let carrinhoItem = await Carrinho.findOne({
       where: { usuario_id, produto_id }
     });
 
     if (carrinhoItem) {
-      // Se já existe, soma a quantidade
       carrinhoItem.quantidade += quantidade || 1;
       await carrinhoItem.save();
       return res.status(200).json(carrinhoItem);
     } else {
-      // Se não existe, cria novo
       carrinhoItem = await Carrinho.create({
         usuario_id,
         produto_id,

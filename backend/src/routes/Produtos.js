@@ -96,25 +96,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// Buscar produtos por nome (parcial, case-insensitive)
-router.get('/buscar', async (req, res) => {
-  try {
-    const { nome } = req.query;
-    if (!nome) {
-      return res.status(400).json({ error: 'Informe o nome para busca.' });
-    }
-    const produtos = await Produto.findAll({
-      where: {
-        nome: {
-          [Op.iLike]: `%${nome}%` // Para PostgreSQL. Use [Op.substring] para outros bancos.
-        }
-      }
-    });
-    res.status(200).json(produtos);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar produtos.' });
-  }
-});
-
 export default router;

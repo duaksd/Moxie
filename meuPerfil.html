@@ -46,7 +46,6 @@
         </div>
         <div class="perfil-edit-col">
           <label class="perfil-label" for="telefone">Telefone</label>
-          <!-- Removido pattern e trocado para type="text" para evitar bloqueio do HTML -->
           <input type="text" id="telefone" name="telefone" inputmode="numeric" placeholder="(99) 99999-9999" maxlength="15" autocomplete="off" />
         </div>
         <!-- Senha -->
@@ -58,19 +57,23 @@
           <label class="perfil-label" for="senha">Senha</label>
           <input type="password" id="senha" name="senha" placeholder="Nova senha" autocomplete="new-password" />
         </div>
-        <!-- Botão Salvar -->
-        <div>
+        <!-- Botão Salvar centralizado -->
+        <div class="perfil-btn-wrapper" style="grid-column: 1 / 3;">
           <button type="submit" id="perfil-btn" class="perfil-btn">
             <i class="bx bx-save"></i>
             Salvar Alterações
           </button>
-      </div>
-      <div class="enderecos-section">
-        <h3>Endereços</h3>
-        <div id="enderecos-lista"></div>
-        <button type="button" id="btn-adicionar-endereco">Adicionar Endereço</button>
+        </div>
       </div>
     </form>
+    <!-- Endereços agora fora do form e logo abaixo do grid -->
+    <section class="enderecos-section">
+      <h3>Endereços</h3>
+      <div id="enderecos-lista">
+        <!-- Os cards de endereço são gerados via JS -->
+      </div>
+      <button type="button" id="btn-adicionar-endereco">Adicionar Endereço</button>
+    </section>
   </main>
   <script src="js/perfilUsuario.js"></script>
 </body>

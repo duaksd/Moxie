@@ -36,6 +36,34 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Buscar cupom por código
+router.get('/codigo/:codigo', async (req, res) => {
+  try {
+    const codigo = req.params.codigo;
+    const cupom = await Cupom.findOne({ where: { codigo } });
+    
+    if (!cupom) {
+      return res.status(404).json({ erro: 'Cupom não encontrado.' });
+    }
+    
+    // Verificar validade
+    const hoje = new Date();
+    const validade = new Date(cupom.validade);
+    
+    if (validade < hoje) {
+      return res.status(400).json({ erro: 'Cupom expirado.' });
+    }
+    
+    if (!cupom.ativo) {
+      return res.status(400).json({ erro: 'Cupom inativo.' });
+    }
+    
+    res.json(cupom);
+  } catch (error) {
+    res.status(500).json({ erro: 'Erro ao buscar cupom.', detalhes: error.message });
+  }
+});
+
 // Atualizar cupom
 router.put('/:id', async (req, res) => {
   try {

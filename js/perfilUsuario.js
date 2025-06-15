@@ -115,7 +115,38 @@ async function carregarEnderecos() {
     const lista = document.getElementById('enderecos-lista');
     lista.innerHTML = '';
 
-    // Se o card de adição estiver aberto, mostra ele no topo
+    // Primeiro lista os endereços existentes normalmente
+    enderecos.forEach((endereco, idx) => {
+      const card = document.createElement('div');
+      card.className = 'endereco-card';
+      card.innerHTML = `
+        <strong>Endereço ${idx + 1}</strong>
+        <select id="tipo-${endereco.id}">
+          <option value="residencial" ${endereco.tipo === 'residencial' ? 'selected' : ''}>Residencial</option>
+          <option value="comercial" ${endereco.tipo === 'comercial' ? 'selected' : ''}>Comercial</option>
+          <option value="outro" ${endereco.tipo === 'outro' ? 'selected' : ''}>Outro</option>
+        </select>
+        <input type="text" value="${formatarCep(endereco.cep)}" placeholder="CEP" id="cep-${endereco.id}">
+        <input type="text" value="${endereco.logradouro}" placeholder="Logradouro" id="logradouro-${endereco.id}">
+        <input type="text" value="${endereco.numero}" placeholder="Número" id="numero-${endereco.id}">
+        <input type="text" value="${endereco.complemento || ''}" placeholder="Complemento" id="complemento-${endereco.id}">
+        <input type="text" value="${endereco.bairro}" placeholder="Bairro" id="bairro-${endereco.id}">
+        <input type="text" value="${endereco.cidade}" placeholder="Cidade" id="cidade-${endereco.id}">
+        <select id="estado-${endereco.id}">
+          ${estadosOptions.replace(
+            `value="${endereco.estado}"`,
+            `value="${endereco.estado}" selected`
+          )}
+        </select>
+        <div class="card-actions">
+          <button class="salvar" onclick="salvarEndereco(${endereco.id})">Salvar</button>
+          <button class="deletar" onclick="deletarEndereco(${endereco.id})">Excluir</button>
+        </div>
+      `;
+      lista.appendChild(card);
+    });
+
+    // Se o card de adição estiver aberto, mostra ele no final da lista
     if (cardAdicaoAberto) {
       const novoCard = document.createElement('div');
       novoCard.className = 'endereco-card';
@@ -188,37 +219,6 @@ async function carregarEnderecos() {
         carregarEnderecos();
       };
     }
-
-    // Lista os endereços existentes
-    enderecos.forEach((endereco, idx) => {
-      const card = document.createElement('div');
-      card.className = 'endereco-card';
-      card.innerHTML = `
-        <strong>Endereço ${idx + 1}</strong>
-        <select id="tipo-${endereco.id}">
-          <option value="residencial" ${endereco.tipo === 'residencial' ? 'selected' : ''}>Residencial</option>
-          <option value="comercial" ${endereco.tipo === 'comercial' ? 'selected' : ''}>Comercial</option>
-          <option value="outro" ${endereco.tipo === 'outro' ? 'selected' : ''}>Outro</option>
-        </select>
-        <input type="text" value="${formatarCep(endereco.cep)}" placeholder="CEP" id="cep-${endereco.id}">
-        <input type="text" value="${endereco.logradouro}" placeholder="Logradouro" id="logradouro-${endereco.id}">
-        <input type="text" value="${endereco.numero}" placeholder="Número" id="numero-${endereco.id}">
-        <input type="text" value="${endereco.complemento || ''}" placeholder="Complemento" id="complemento-${endereco.id}">
-        <input type="text" value="${endereco.bairro}" placeholder="Bairro" id="bairro-${endereco.id}">
-        <input type="text" value="${endereco.cidade}" placeholder="Cidade" id="cidade-${endereco.id}">
-        <select id="estado-${endereco.id}">
-          ${estadosOptions.replace(
-            `value="${endereco.estado}"`,
-            `value="${endereco.estado}" selected`
-          )}
-        </select>
-        <div class="card-actions">
-          <button class="salvar" onclick="salvarEndereco(${endereco.id})">Salvar</button>
-          <button class="deletar" onclick="deletarEndereco(${endereco.id})">Excluir</button>
-        </div>
-      `;
-      lista.appendChild(card);
-    });
   } catch (error) {
     alert('Erro ao carregar endereços!');
   }

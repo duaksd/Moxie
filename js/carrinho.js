@@ -201,10 +201,34 @@ document.getElementById("aplicar-cupom").addEventListener("click", () => {
   renderizarCarrinho();
 });
 
-// Evento para finalizar a compra
-document.getElementById("finalizar-compra").addEventListener("click", (event) => {
+document.getElementById("finalizar-compra").addEventListener("click", async (event) => {
   event.preventDefault();
-  window.location.href = "finalizar-compra.html";
+
+  // Carrega o carrinho do banco
+  const usuarioStr = localStorage.getItem('usuario');
+  if (!usuarioStr) return;
+  const usuario = JSON.parse(usuarioStr);
+
+  try {
+    const response = await fetch(`http://localhost:4000/carrinho?usuario_id=${usuario.id}`);
+    if (!response.ok) throw new Error('Erro ao buscar carrinho do banco');
+    const itens = await response.json();
+
+    // Salva o carrinho no localStorage para a próxima página
+    localStorage.setItem('carrinhoFinalizacao', JSON.stringify(itens));
+
+    // Salva o cupom aplicado, se houver
+    if (cupomAtual) {
+      localStorage.setItem('cupomAplicado', cupomAtual);
+    } else {
+      localStorage.removeItem('cupomAplicado');
+    }
+
+    // Redireciona para a página de finalização
+    window.location.href = "finalizar-compra.html";
+  } catch (error) {
+    alert("Erro ao preparar finalização do pedido!");
+  }
 });
 
 // Renderiza o carrinho ao carregar a página

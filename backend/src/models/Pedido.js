@@ -1,7 +1,5 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database/ModelConnection.js';
-import Usuario from './Usuario.js';
-import Endereco from './Endereco.js';
 
 const Pedido = sequelize.define('pedido', {
   id: { 
@@ -39,8 +37,5 @@ const Pedido = sequelize.define('pedido', {
   timestamps: false
 });
 
-// Definindo relações:
-Pedido.belongsTo(Usuario, { foreignKey: 'usuario_id' });
-Pedido.belongsTo(Endereco, { foreignKey: 'endereco_id' });
 
 export default Pedido;
