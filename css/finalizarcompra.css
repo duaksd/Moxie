@@ -379,7 +379,7 @@ button.finalizar-compra {
     margin-top: 1.5rem;
     background: linear-gradient(
         90deg,
-        var(--ml-green) 60%,
+        var(--ml-green) 10%,
         var(--ml-blue) 100%
     );
     color: var(--ml-white);
