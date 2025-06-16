@@ -149,13 +149,26 @@ router.post('/finalizar', autenticarToken, validarCupom, async (req, res) => {
       return res.status(400).json({ mensagem: 'Por favor, cadastre um endereço de entrega' });
     }
 
-    const subtotal = itensCarrinho.reduce((total, item) => {
-    const produto = item.Produto || item.produto || item; // cobre todos os casos
-    if (!produto || produto.preco === undefined) {
-      throw new Error('Produto sem preço no carrinho');
+    // --- VERIFICAÇÃO DE ESTOQUE (adicione aqui) ---
+    for (const item of itensCarrinho) {
+      const produto = item.Produto || item.produto || item;
+      if (!produto || produto.preco === undefined) {
+        throw new Error('Produto sem preço no carrinho');
+      }
+      if (produto.estoque < item.quantidade) {
+        return res.status(400).json({
+          mensagem: `Estoque insuficiente para o produto "${produto.nome}". Disponível: ${produto.estoque}, solicitado: ${item.quantidade}`
+        });
+      }
     }
-    return total + (parseFloat(produto.preco) * item.quantidade);
-  }, 0);
+
+    const subtotal = itensCarrinho.reduce((total, item) => {
+      const produto = item.Produto || item.produto || item;
+      if (!produto || produto.preco === undefined) {
+        throw new Error('Produto sem preço no carrinho');
+      }
+      return total + (parseFloat(produto.preco) * item.quantidade);
+    }, 0);
 
     let desconto = 0;
     if (req.cupom) {
@@ -178,17 +191,24 @@ router.post('/finalizar', autenticarToken, validarCupom, async (req, res) => {
       cupom_aplicado: req.cupom?.codigo || null
     });
 
+    // Cria os itens do pedido e desconta o estoque
     await Promise.all(
-      itensCarrinho.map(item => {
+      itensCarrinho.map(async item => {
         const produto = item.Produto || item.produto || item;
         if (!produto || produto.preco === undefined) {
           throw new Error('Produto sem preço no carrinho');
         }
-        return ItemPedido.create({
+        // Cria o item do pedido
+        await ItemPedido.create({
           pedido_id: pedido.id,
           produto_id: item.produto_id,
           quantidade: item.quantidade,
           preco_unitario: parseFloat(produto.preco)
+        });
+        // Desconta do estoque do produto
+        await Produto.decrement('estoque', {
+          by: item.quantidade,
+          where: { id: item.produto_id }
         });
       })
     );
@@ -198,7 +218,7 @@ router.post('/finalizar', autenticarToken, validarCupom, async (req, res) => {
       valor: pedido.total,
       metodo: forma_pagamento,
       status_pagamento: forma_pagamento === 'boleto' ? 'aguardando' : 'processando',
-      parcelamento_id: null // ou um valor padrão, se não usar parcelamento
+      parcelamento_id: null
     });
 
     await Carrinho.destroy({ where: { usuario_id: usuarioId } });
