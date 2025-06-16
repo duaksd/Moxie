@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async function () {
               document.getElementById("userNameDisplay").innerText = `Nome: ${userName}`;
               document.getElementById("userEmailDisplay").innerText = `Email: ${user.email}`;
               document.getElementById("lastOrderDisplay").innerText = `Último pedido: ${lastOrder}`;
-              document.getElementById("favoritesDisplay").innerText = `Favoritos: ${favorites}`;
               document.getElementById("savedCardsDisplay").innerText = `Cartões Salvos: ${maskedCard}`;
               document.getElementById("addressDisplay").innerText = `Endereço: ${address}`;
 

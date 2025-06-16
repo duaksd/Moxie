@@ -45,7 +45,6 @@ async function carregarDadosUsuario() {
             document.getElementById("userNameDisplay").innerHTML = `<strong>Nome:</strong> ${usuario.nome || '-'}`;
             document.getElementById("userEmailDisplay").innerHTML = `<strong>Email:</strong> ${usuario.email || '-'}`;
             document.getElementById("lastOrderDisplay").innerHTML = `<strong>Último pedido:</strong> -`;
-            document.getElementById("favoritesDisplay").innerHTML = `<strong>Favoritos:</strong> -`;
             document.getElementById("savedCardsDisplay").innerHTML = `<strong>Cartões Salvos:</strong> -`;
             document.getElementById("addressDisplay").innerHTML = `<strong>Endereço:</strong> -`;
         } else {
