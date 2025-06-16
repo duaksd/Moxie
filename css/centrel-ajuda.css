@@ -22,11 +22,12 @@ li {
     list-style: none;
 }
 
-/* Nav promocoes */
+/* Nav promoções */
 .barra-promocao {
     background-color: var(--cinza-pers);
     padding: 5px;
     height: 25px;
+    overflow: hidden; /* Garante que o conteúdo extra não afete o tamanho da página */
 }
 
 @keyframes rolar {
@@ -56,7 +57,7 @@ li {
     font-size: 14px;
     white-space: nowrap; /* Impede quebra de linha */
     animation: rolar 20s linear infinite; /* Define a animação */
-    overflow: hidden; /* Oculta o texto ao ultrapassar a área visível */
+    overflow: hidden; /* Oculta o texto que ultrapassa os limites */
 }
 
 .barra-promocao-lista li a {
@@ -65,7 +66,6 @@ li {
 }
 
 /* Header */
-
 .header-bar {
     background-color: var(--rosa-fem);
     height: 50px;
@@ -96,22 +96,6 @@ header h1 {
     font-family: var(--ff-OST);
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: rgb(224, 187, 152);
-}
-
-header h1 {
-    font-size: 29px;
-    font-weight: lighter;
-    font-family: var(--ff-OST);
-}
-
 /* Estilo do título no header */
 .h1-titulo a {
     text-decoration: none; /* Remove o sublinhado do link */
@@ -123,12 +107,22 @@ header h1 {
     color: #6A5ACD; /* Cor ao passar o mouse */
 }
 
-/* Nav promoções */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: rgb(224, 187, 152);
+}
+
+/* Nav promoções (repetido para certeza) */
 .barra-promocao {
     background-color: var(--cinza-pers);
     padding: 5px;
     height: 25px;
-    overflow: hidden; /* Garante que o conteúdo extra não afete o tamanho da página */
+    overflow: hidden;
 }
 
 .barra-promocao-lista {
@@ -140,9 +134,9 @@ header h1 {
     padding: 0;
     margin: 0;
     font-size: 14px;
-    white-space: nowrap; /* Impede quebra de linha */
-    animation: rolar 20s linear infinite; /* Define a animação */
-    overflow: hidden; /* Oculta o texto que ultrapassa os limites */
+    white-space: nowrap;
+    animation: rolar 20s linear infinite;
+    overflow: hidden;
 }
 
 /* Categorias no Header */
@@ -193,16 +187,9 @@ header h1 {
 }
 
 .icon-button:focus {
-    outline: 2px solid #6A5ACD; /* Destaque ao focar */
-    outline-offset: 2px;
-}
-
-/* Remove a borda padrão ao focar nos botões do header */
-.icon-button:focus {
     outline: none; /* Remove o estilo de foco padrão */
 }
 
-/* Adiciona um estilo de foco personalizado (opcional) */
 .icon-button:focus-visible {
     outline: 2px solid #6A5ACD; /* Destaque ao focar */
     outline-offset: 2px;
@@ -348,14 +335,14 @@ header h1 {
 
 /* Banner */
 .banner {
-    background: url('../img/banner-ajuda.png') no-repeat center center; /* Caminho da imagem */
-    background-size: cover; /* Ajusta a imagem para cobrir todo o banner */
-    height: 300px; /* Altura do banner */
+    background: url('../img/banner-ajuda.png') no-repeat center center;
+    background-size: cover;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhor visibilidade */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
 .banner h1 {
@@ -377,89 +364,60 @@ header h1 {
 /* Estilo geral da seção ajuda */
 .ajuda .item {
     background-color: var(--branco);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px; /* Aumentado para melhor espaçamento */
+    border-radius: 12px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ajuda .item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.ajuda .icon-help {
-    font-size: 40px;
-    color: var(--preto);
-    margin-bottom: 10px;
-}
-
-.ajuda h3 {
-    font-size: 20px;
-    color: var(--preto);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.ajuda p {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
-
-/* Remove o estilo padrão de links */
-.ajuda .item a {
-    text-decoration: none; /* Remove o sublinhado */
-    color: inherit; /* Herda a cor do elemento pai */
-    display: block; /* Faz o link ocupar todo o item */
-}
-
-/* Estilo geral da seção ajuda */
-.ajuda .item {
-    background-color: var(--branco);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ajuda .item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Ícones */
 .ajuda .icon-help {
-    font-size: 40px;
-    color: var(--preto);
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px; /* Tamanho do círculo */
+    height: 70px;
+    font-size: 32px;
+    margin: 0 auto 20px;
+    color: black;
+    background: rgb(122, 35, 245);
+    border-radius: 50%;
 }
 
 /* Títulos */
 .ajuda h3 {
-    font-size: 20px;
-    color: var(--preto);
-    margin-bottom: 10px;
-    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: bold;
 }
 
 /* Parágrafos */
 .ajuda p {
-    font-size: 14px;
-    color: #555;
+    font-size: 15px;
+    color: #666;
     line-height: 1.6;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .ajuda {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
-    }
+/* Evitar que a fonte personalizada afete os ícones */
+.icon-help i, .icon i {
+    font-family: initial;
+}
 
-    .ajuda .item {
-        padding: 15px;
+/* Responsividade */
+
+/* Para tablets e menores */
+@media (max-width: 1024px) {
+    .ajuda {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px 20px;
     }
 
     .ajuda h3 {
@@ -467,70 +425,67 @@ header h1 {
     }
 
     .ajuda p {
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+    /* Reduz ícone */
+    .ajuda .icon-help {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    /* Ajuste padding itens ajuda */
+    .ajuda .item {
+        padding: 20px;
     }
 }
 
-/* Ajustes para os itens */
-.item {
-    background: white;
-    padding: 25px; /* Aumentar o padding */
-    border-radius: 12px; /* Bordas mais arredondadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.item:hover {
-    transform: translateY(-8px); /* Aumentar o efeito de hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
-}
-
-/* Ajustes para os ícones */
-.icon-help {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px; /* Tamanho do círculo */
-    height: 70px;
-    font-size: 32px; /* Tamanho do ícone */
-    margin: 0 auto 20px; /* Centraliza e adiciona espaçamento */
-    color: black; /* Cor do ícone */
-    background: rgb(122, 35, 245); /* Cor de fundo roxa */
-    border-radius: 50%; /* Torna o fundo circular */
-}
-
-/* Ajustes para o texto */
-.item h3 {
-    font-size: 18px; /* Fonte maior */
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 12px; /* Espaçamento maior abaixo do título */
-}
-
-.item p {
-    font-size: 15px; /* Fonte ligeiramente maior */
-    color: #666;
-}
-
-/* Evitar que a fonte personalizada afete os ícones */
-.icon-help i, .icon i {
-    font-family: initial; /* Restaura a fonte padrão dos ícones */
-}
-
-
-
-/* Ajustes de responsividade */
+/* Para smartphones */
 @media (max-width: 768px) {
     .ajuda {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px; /* Espaçamento maior entre os itens */
+        grid-template-columns: 1fr; /* Uma coluna */
+        padding: 20px 15px;
+    }
+
+    .ajuda h3 {
+        font-size: 16px;
+    }
+
+    .ajuda p {
+        font-size: 13px;
+    }
+
+    .ajuda .item {
+        padding: 15px;
     }
 }
 
+/* Para telas muito pequenas */
 @media (max-width: 480px) {
     .ajuda {
         grid-template-columns: 1fr;
-        gap: 15px; /* Ajustar o espaçamento para telas menores */
+        gap: 15px;
+        padding: 15px 10px;
+    }
+
+    .ajuda h3 {
+        font-size: 15px;
+    }
+
+    .ajuda p {
+        font-size: 12px;
+    }
+
+    .ajuda .item {
+        padding: 12px;
+    }
+
+    .ajuda .icon-help {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 15px;
     }
 }
+
