@@ -71,7 +71,7 @@ function renderizarProdutos(produtos) {
           <h2>${produto.nome}</h2>
           <p>${descricaoCurta}</p>
           <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
-          <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+          <button onclick="redirecionarParaProduto(${index})">Ver Mais</button>
           <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
         </div>
       `;

@@ -1,9 +1,13 @@
-<html>
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <title>MOXIE - Central de Ajuda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body class="bg-white font-sans">
+
 <!-- Barra de Promoção -->
 <div class="bg-gray-100 h-8 overflow-hidden relative">
   <div class="absolute animate-marquee whitespace-nowrap text-sm font-bold text-black">
@@ -11,101 +15,152 @@
     <span class="mx-4">FRETE GRÁTIS A PARTIR DE R$150</span>
   </div>
 </div>
-
 <style>
-
 @keyframes marquee {
-  0% {
-    transform: translateX(500%); 
-  }
-  100% {
-    transform: translateX(-100%); 
-  }
+  0% { transform: translateX(500%);}
+  100% { transform: translateX(-100%);}
 }
-
-/* Aplica a animação ao texto */
-.animate-marquee {
-  animation: marquee 40s linear infinite; 
-}
+.animate-marquee { animation: marquee 40s linear infinite; }
 </style>
 
-  <!-- Header -->
-  <header class="bg-gradient-to-l from-black to-gray-500 p-3 text-white text-center">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 gap-4">
+<!-- Header Tailwind funcional -->
+<header class="bg-gradient-to-l from-black to-gray-500 p-3 text-white">
+  <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 gap-4">
+    <!-- Menu Hambúrguer (mobile) -->
+    <div class="flex items-center">
+      <button id="menu-toggle" class="md:hidden text-2xl mr-2 focus:outline-none">
+        <i class='bx bx-menu'></i>
+      </button>
       <h1 class="text-2xl font-light font-serif">
         <a href="index.html" class="hover:text-indigo-400">MOXIE</a>
       </h1>
-
-      <nav>
-        <ul class="flex space-x-6 font-bold text-lg">
-          <li><a href="feminino.html" class="hover:text-indigo-400">Feminino</a></li>
-          <li><a href="masculino.html" class="hover:text-indigo-400">Masculino</a></li>
-        </ul>
-      </nav>
-
-      <div class="flex space-x-4 items-center">
-        <a href="#" class="text-2xl hover:text-indigo-400"><i class='bx bx-search'></i></a>
-        <a href="carrinho.html" class="text-2xl hover:text-indigo-400"><i class='bx bx-cart'></i></a>
-        <a href="login.html" class="text-2xl hover:text-indigo-400"><i class='bx bx-user'></i></a>
-        <a href="central-ajuda.html" class="text-2xl hover:text-indigo-400"><i class='bx bx-help-circle'></i></a>
-      </div>
     </div>
-  </header>
-
-  <!-- Banner -->
-  <div class="h-72 bg-cover bg-center flex items-center justify-center text-white text-3xl font-bold shadow-md" style="background-image: url('img/banner-ajuda.png');">
-    CENTRAL DE AJUDA
+    <!-- Menu principal -->
+    <nav id="main-menu" class="hidden md:flex space-x-6 font-bold text-lg">
+      <a href="feminino.html" class="hover:text-indigo-400">Feminino</a>
+      <a href="masculino.html" class="hover:text-indigo-400">Masculino</a>
+    </nav>
+    <!-- Botões do cabeçalho -->
+    <div class="flex items-center space-x-4">
+      <!-- Pesquisa -->
+      <div class="relative">
+        <button id="search-toggle" class="text-2xl hover:text-indigo-400 focus:outline-none">
+          <i class='bx bx-search'></i>
+        </button>
+        <div id="search-box" class="absolute right-0 mt-2 bg-white text-black rounded shadow-lg p-2 hidden z-50">
+          <input type="text" id="search-input" class="border rounded px-2 py-1" placeholder="Digite sua busca...">
+          <button id="search-button" class="ml-2 px-3 py-1 bg-indigo-500 text-white rounded">Buscar</button>
+        </div>
+      </div>
+      <!-- Carrinho -->
+      <a href="carrinho.html" class="text-2xl hover:text-indigo-400"><i class='bx bx-cart'></i></a>
+      <!-- Usuário Dropdown -->
+      <div class="relative">
+        <button id="user-toggle" class="text-2xl hover:text-indigo-400 focus:outline-none">
+          <i class='bx bx-user'></i>
+        </button>
+        <div id="user-dropdown" class="absolute right-0 mt-2 w-64 bg-white text-black rounded shadow-lg p-4 hidden z-50">
+          <div class="user-info mb-2">
+            <p id="userNameDisplay" class="font-bold">Nome:</p>
+            <p id="userEmailDisplay" class="font-bold">Email:</p>
+            <p id="lastOrderDisplay" class="font-bold">Último pedido:</p>
+            <p id="savedCardsDisplay" class="font-bold">Cartões Salvos:</p>
+            <p id="addressDisplay" class="font-bold">Endereço:</p>
+          </div>
+          <hr class="my-2">
+          <a href="meuPerfil.html" class="block py-1 hover:text-indigo-500">Meu Perfil</a>
+          <a href="meuspedidos.html" class="block py-1 hover:text-indigo-500">Meus Pedidos</a>
+          <a href="favoritos.html" class="block py-1 hover:text-indigo-500">Favoritos</a>
+          <button onclick="logout()" class="w-full text-left py-1 text-red-600 hover:text-red-800">Sair da Conta</button>
+          <button onclick="deleteProfile()" class="w-full text-left py-1 text-red-600 hover:text-red-800">Deletar Perfil</button>
+        </div>
+      </div>
+      <!-- Ajuda -->
+      <a href="central-ajuda.html" class="text-2xl hover:text-indigo-400"><i class='bx bx-help-circle'></i></a>
+    </div>
   </div>
+</header>
+<script>
+  // Menu mobile toggle
+  document.getElementById('menu-toggle').onclick = function() {
+    const menu = document.getElementById('main-menu');
+    menu.classList.toggle('hidden');
+  };
+  // Pesquisa toggle
+  document.getElementById('search-toggle').onclick = function(e) {
+    e.stopPropagation();
+    document.getElementById('search-box').classList.toggle('hidden');
+  };
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#search-box') && !e.target.closest('#search-toggle')) {
+      document.getElementById('search-box').classList.add('hidden');
+    }
+  });
+  // Usuário dropdown toggle
+  document.getElementById('user-toggle').onclick = function(e) {
+    e.stopPropagation();
+    document.getElementById('user-dropdown').classList.toggle('hidden');
+  };
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#user-dropdown') && !e.target.closest('#user-toggle')) {
+      document.getElementById('user-dropdown').classList.add('hidden');
+    }
+  });
+  // Preencher dados do usuário (exemplo)
+  const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  if (usuario.nome) document.getElementById('userNameDisplay').innerHTML = `<strong>Nome:</strong> ${usuario.nome}`;
+  if (usuario.email) document.getElementById('userEmailDisplay').innerHTML = `<strong>Email:</strong> ${usuario.email}`;
+</script>
 
-  <!-- Seção de Ajuda -->
-  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 py-12">
-    <a href="suporteCliente.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bxs-conversation'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Suporte ao Cliente</h3>
-      <p class="text-gray-600 text-sm">Entre em contato para dúvidas e suporte.</p>
-    </a>
+<!-- Banner -->
+<div class="h-72 bg-cover bg-center flex items-center justify-center text-white text-3xl font-bold shadow-md" style="background-image: url('img/banner-ajuda.png');">
+  CENTRAL DE AJUDA
+</div>
 
-    <a href="trocasDevolucoes.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bx-refresh'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Trocas e Devoluções</h3>
-      <p class="text-gray-600 text-sm">Saiba como realizar trocas e devoluções.</p>
-    </a>
-
-    <a href="produtosTamanhos.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bxs-t-shirt'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Produtos e Tamanhos</h3>
-      <p class="text-gray-600 text-sm">Informações sobre tamanhos e especificações.</p>
-    </a>
-
-    <a href="cuponsPromocoes.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bx-tag'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Cupons e Promoções</h3>
-      <p class="text-gray-600 text-sm">Descubra como aproveitar nossas promoções.</p>
-    </a>
-
-    <a href="pedidosEntregas.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bx-cart'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Pedidos e Entregas</h3>
-      <p class="text-gray-600 text-sm">Acompanhe seus pedidos e prazos de entrega.</p>
-    </a>
-
-    <a href="parceirosAfiliados.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
-      <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-        <i class='bx bxs-group'></i>
-      </div>
-      <h3 class="text-lg font-bold text-gray-800 mb-2">Parceiros e Afiliados</h3>
-      <p class="text-gray-600 text-sm">Informações para parceiros e afiliados.</p>
-    </a>
-  </section>
+<!-- Seção de Ajuda -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 py-12">
+  <a href="suporteCliente.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bxs-conversation'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Suporte ao Cliente</h3>
+    <p class="text-gray-600 text-sm">Entre em contato para dúvidas e suporte.</p>
+  </a>
+  <a href="trocasDevolucoes.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bx-refresh'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Trocas e Devoluções</h3>
+    <p class="text-gray-600 text-sm">Saiba como realizar trocas e devoluções.</p>
+  </a>
+  <a href="produtosTamanhos.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bxs-t-shirt'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Produtos e Tamanhos</h3>
+    <p class="text-gray-600 text-sm">Informações sobre tamanhos e especificações.</p>
+  </a>
+  <a href="cuponsPromocoes.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bx-tag'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Cupons e Promoções</h3>
+    <p class="text-gray-600 text-sm">Descubra como aproveitar nossas promoções.</p>
+  </a>
+  <a href="pedidosEntregas.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bx-cart'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Pedidos e Entregas</h3>
+    <p class="text-gray-600 text-sm">Acompanhe seus pedidos e prazos de entrega.</p>
+  </a>
+  <a href="parceirosAfiliados.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition block">
+    <div class="w-16 h-16 bg-purple-500 text-black rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+      <i class='bx bxs-group'></i>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 mb-2">Parceiros e Afiliados</h3>
+    <p class="text-gray-600 text-sm">Informações para parceiros e afiliados.</p>
+  </a>
+</section>
 </body>
 </html>

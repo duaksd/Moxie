@@ -3,18 +3,14 @@ let produtos = [];
 document.addEventListener('DOMContentLoaded', () => {
   fetchProdutos();
 
-  // Observa o DOM até o campo de busca aparecer
-  const observer = new MutationObserver(() => {
+  setTimeout(() => {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         filtrarProdutos(e.target.value.trim());
       });
-      observer.disconnect(); // Para de observar após encontrar
     }
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
+  }, 300);
 });
 
 async function fetchProdutos() {
@@ -22,6 +18,7 @@ async function fetchProdutos() {
     const response = await fetch('http://localhost:4000/produtos');
     if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
     produtos = await response.json();
+    // Só produtos femininos ao carregar
     renderizarProdutos(produtos.filter(p => (p.genero || '').toLowerCase() === 'feminino'));
   } catch (erro) {
     console.error('Erro ao buscar produtos:', erro);
@@ -30,6 +27,7 @@ async function fetchProdutos() {
 }
 
 function filtrarProdutos(query) {
+  // Sempre filtra só os femininos
   let femininos = produtos.filter(p => (p.genero || '').toLowerCase() === 'feminino');
   if (!query) {
     renderizarProdutos(femininos);
@@ -55,7 +53,17 @@ function renderizarProdutos(produtos) {
       ? produto.descricao.substring(0, 100) + '...'
       : produto.descricao;
 
-    const queryString = `?imagem=${encodeURIComponent(produto.imagem_url)}&alt=${encodeURIComponent(produto.alt || produto.nome)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
+    // Inclui o id na query string!
+    const queryString = `?id=${produto.id}` +
+      `&imagem=${encodeURIComponent(produto.imagem_url)}` +
+      `&alt=${encodeURIComponent(produto.alt || produto.nome)}` +
+      `&nome=${encodeURIComponent(produto.nome)}` +
+      `&descricao=${encodeURIComponent(produto.descricao)}` +
+      `&preco=${encodeURIComponent(produto.preco)}` +
+      `&parcelamento=${encodeURIComponent(produto.parcelamento || '')}` +
+      `&tamanho=${encodeURIComponent(produto.tamanho || '')}` +
+      `&cor=${encodeURIComponent(produto.cor || '')}` +
+      `&genero=${encodeURIComponent(produto.genero || '')}`;
 
     const produtoHTML = `
       <div class="produto">
@@ -65,7 +73,7 @@ function renderizarProdutos(produtos) {
         <h2>${produto.nome}</h2>
         <p>${descricaoCurta}</p>
         <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
-        <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+        <button onclick="redirecionarParaProduto(${index})">Ver Mais</button>
         <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
       </div>
     `;
@@ -74,11 +82,22 @@ function renderizarProdutos(produtos) {
 }
 
 function redirecionarParaProduto(index) {
+  // Busca só entre os femininos
   const femininos = produtos.filter(p => (p.genero || '').toLowerCase() === 'feminino');
   const produto = femininos[index];
   if (!produto) return;
 
-  const queryString = `?imagem=${encodeURIComponent(produto.imagem_url)}&alt=${encodeURIComponent(produto.alt || produto.nome)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
+  // Inclui o id na query string!
+  const queryString = `?id=${produto.id}` +
+    `&imagem=${encodeURIComponent(produto.imagem_url)}` +
+    `&alt=${encodeURIComponent(produto.alt || produto.nome)}` +
+    `&nome=${encodeURIComponent(produto.nome)}` +
+    `&descricao=${encodeURIComponent(produto.descricao)}` +
+    `&preco=${encodeURIComponent(produto.preco)}` +
+    `&parcelamento=${encodeURIComponent(produto.parcelamento || '')}` +
+    `&tamanho=${encodeURIComponent(produto.tamanho || '')}` +
+    `&cor=${encodeURIComponent(produto.cor || '')}` +
+    `&genero=${encodeURIComponent(produto.genero || '')}`;
 
   window.location.href = `produto.html${queryString}`;
 }
