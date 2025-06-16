@@ -52,20 +52,29 @@ function renderizarProdutos(produtos) {
       ? produto.descricao.substring(0, 100) + '...'
       : produto.descricao;
 
-    const queryString = `?imagem=${encodeURIComponent(produto.imagem_url)}&alt=${encodeURIComponent(produto.alt || produto.nome)}&nome=${encodeURIComponent(produto.nome)}&descricao=${encodeURIComponent(produto.descricao)}&preco=${encodeURIComponent(produto.preco)}&parcelamento=${encodeURIComponent(produto.parcelamento || '')}&tamanho=${encodeURIComponent(produto.tamanho || '')}&cor=${encodeURIComponent(produto.cor || '')}&genero=${encodeURIComponent(produto.genero || '')}`;
-
-    const produtoHTML = `
-      <div class="produto">
-        <a href="produto.html${queryString}">
-          <img src="${produto.imagem_url}" alt="${produto.alt || produto.nome}">
-        </a>
-        <h2>${produto.nome}</h2>
-        <p>${descricaoCurta}</p>
-        <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
-        <button onclick="redirecionarParaProduto(${index})">Comprar</button>
-        <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
-      </div>
-    `;
+      const queryString = `?id=${produto.id}` +
+      `&imagem=${encodeURIComponent(produto.imagem_url)}` +
+      `&alt=${encodeURIComponent(produto.alt || produto.nome)}` +
+      `&nome=${encodeURIComponent(produto.nome)}` +
+      `&descricao=${encodeURIComponent(produto.descricao)}` +
+      `&preco=${encodeURIComponent(produto.preco)}` +
+      `&parcelamento=${encodeURIComponent(produto.parcelamento || '')}` +
+      `&tamanho=${encodeURIComponent(produto.tamanho || '')}` +
+      `&cor=${encodeURIComponent(produto.cor || '')}` +
+      `&genero=${encodeURIComponent(produto.genero || '')}`;
+    
+      const produtoHTML = `
+        <div class="produto">
+          <a href="produto.html${queryString}">
+            <img src="${produto.imagem_url}" alt="${produto.alt || produto.nome}">
+          </a>
+          <h2>${produto.nome}</h2>
+          <p>${descricaoCurta}</p>
+          <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
+          <button onclick="redirecionarParaProduto(${index})">Comprar</button>
+          <button class="add-to-cart" data-id="${index}">Adicionar ao Carrinho</button>
+        </div>
+      `;
     container.innerHTML += produtoHTML;
   });
 }

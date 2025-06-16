@@ -73,85 +73,9 @@
             .catch(error => console.error('Erro ao carregar o footer:', error));
             </script>
 
-<script>
-    function getQueryParams() {
-        // Função para obter os parâmetros da URL
-        const params = new URLSearchParams(window.location.search);
-            return {
-                imagem: params.get('imagem'),
-                alt: params.get('alt'),
-                nome: params.get('nome'),
-                descricao: params.get('descricao'),
-                preco: params.get('preco'),
-                parcelamento: params.get('parcelamento'),
-                tamanho: params.get('tamanho'),
-                cor: params.get('cor'),
-                genero: params.get('genero')
-            };
-        }
-
-        // Preenche os dados do produto na página
-        const produto = getQueryParams();
-        if (produto.imagem) {
-            document.getElementById('produto-imagem').src = produto.imagem;
-            document.getElementById('produto-imagem').alt = produto.alt;
-            document.getElementById('produto-nome').textContent = produto.nome;
-            document.getElementById('produto-descricao').textContent = produto.descricao;
-            document.getElementById('produto-preco').textContent = `Preço: ${produto.preco}`;
-            document.getElementById('produto-parcela').textContent = produto.parcelamento 
-                ? `Parcelamento: ${produto.parcelamento}` 
-                : 'Parcelamento não disponível.';
-                document.getElementById('produto-tamanho').textContent = produto.tamanho
-                ? `Tamanho: ${produto.tamanho}` 
-                : 'Tamanho não disponível.';
-            document.getElementById('produto-cor').textContent = produto.cor
-                ? `Cor: ${produto.cor}` 
-                : 'Cor não disponível.';
-            } else {
-                document.querySelector('.produto-detalhes').innerHTML = '<p>Produto não encontrado.</p>';
-            }
-            
-            // Adicionar produto ao carrinho
-            document.getElementById('adicionar-carrinho').addEventListener('click', () => {
-                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-                const produtoExistente = carrinho.find(item => item.nome === produto.nome);
-                
-                if (produtoExistente) {
-                    produtoExistente.quantidade = (produtoExistente.quantidade || 1) + 1;
-                } else {
-                    carrinho.push({ ...produto, quantidade: 1 });
-                }
-                
-                localStorage.setItem('carrinho', JSON.stringify(carrinho));
-                alert(`${produto.nome} foi adicionado ao carrinho!`);
-            });
-
-            // Função para verificar se o produto já está nos favoritos
-            function isFavorito(produto) {
-                const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                return favoritos.some(item => item.nome === produto.nome);
-            }
-
-            // Atualiza o estado do checkbox de favoritos ao carregar a página
-            const favoriteCheckbox = document.getElementById('favorite');
-            favoriteCheckbox.checked = isFavorito(produto);
-
-           // Evento do botão de favoritos
-            const favCheckbox = document.getElementById('favorite');
-            favCheckbox.addEventListener('change', function() {
-                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                if (this.checked) {
-                    if (!favoritos.find(item => item.nome === produto.nome)) {
-                        favoritos.push(produto);
-                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                    }
-                } else {
-                    favoritos = favoritos.filter(item => item.nome !== produto.nome);
-                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                }
-            });
-    </script>
+            <script src="js/produto.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/addCarrinho.js"></script>
     <script src="js/btnLogin.js"></script>
 </body>
 </html>
