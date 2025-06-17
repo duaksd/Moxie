@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,11 @@
   <link rel="stylesheet" href="css/carrinho.css" />
   <link rel="stylesheet" href="css/meuPerfil.css" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/alerts.css">
 </head>
+
 <body>
   <header style="display: flex; flex-direction: column; align-items: center;">
     <a href="index.html" class="back-to-home" aria-label="Voltar para a página inicial" style="align-self: flex-start;">
@@ -46,7 +51,8 @@
         </div>
         <div class="perfil-edit-col">
           <label class="perfil-label" for="telefone">Telefone</label>
-          <input type="text" id="telefone" name="telefone" inputmode="numeric" placeholder="(99) 99999-9999" maxlength="15" autocomplete="off" />
+          <input type="text" id="telefone" name="telefone" inputmode="numeric" placeholder="(99) 99999-9999"
+            maxlength="15" autocomplete="off" />
         </div>
         <!-- Senha -->
         <div class="perfil-info-col">
@@ -75,6 +81,8 @@
       <button type="button" id="btn-adicionar-endereco">Adicionar Endereço</button>
     </section>
   </main>
+  <script src="js/alerts.js"></script>
   <script src="js/perfilUsuario.js"></script>
 </body>
+
 </html>

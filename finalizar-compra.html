@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Finalizar Compra</title>
   <link rel="stylesheet" href="css/finalizarcompra.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/alerts.css">
 </head>
+
 <body>
   <div class="container" role="main" aria-label="Finalizar compra">
     <header>
@@ -13,7 +18,7 @@
         <i class="bx bx-arrow-back"></i>
         Voltar
       </a>
-    
+
     </header>
     <h1>Finalize sua Compra</h1>
 
@@ -24,7 +29,8 @@
       <div class="endereco-usuario" id="endereco-entrega" tabindex="0" aria-live="polite" aria-atomic="true">
         <!-- Endereço renderizado -->
       </div>
-      <button class="btn-alterar-endereco" id="btn-alterar-endereco" aria-expanded="false" aria-controls="form-endereco">
+      <button class="btn-alterar-endereco" id="btn-alterar-endereco" aria-expanded="false"
+        aria-controls="form-endereco">
         Alterar Endereço
       </button>
 
@@ -62,15 +68,33 @@
             <label for="estado">Estado*</label>
             <select id="estado" name="estado" required>
               <option value="">Selecione</option>
-              <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
-              <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
-              <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
-              <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
-              <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
-              <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
-              <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
-              <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
-              <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MT">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
             </select>
           </div>
         </div>
@@ -153,8 +177,8 @@
     <div id="mensagem-resultado" class="mensagem-resultado" role="alert" aria-live="assertive"></div>
   </div>
 
+  <script src="js/alerts.js"></script>
   <script src="js/finalizar-compra.js"></script>
 </body>
+
 </html>
-
-

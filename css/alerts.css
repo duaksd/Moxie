@@ -1,0 +1,78 @@
+/* ALERT GLOBAL STILIZADO */
+
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ALERT */
+.alert {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  min-width: 320px;
+  max-width: 420px;
+  padding: 18px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 9999;
+  cursor: default;
+  user-select: none;
+}
+
+.alert.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.alert.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tipos de alert */
+.alert.success {
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
+  box-shadow: 0 8px 25px rgba(86,171,47,0.6);
+}
+
+.alert.error {
+  background: linear-gradient(135deg, #e53935, #ef9a9a);
+  box-shadow: 0 8px 25px rgba(229,57,53,0.6);
+}
+
+.alert.warning {
+  background: linear-gradient(135deg, #fbc02d, #fff59d);
+  color: #333;
+  box-shadow: 0 8px 25px rgba(251,192,45,0.6);
+}
+
+.alert.info {
+  background: linear-gradient(135deg, #2196f3, #90caf9);
+  box-shadow: 0 8px 25px rgba(33,150,243,0.6);
+}
+
+/* Ícones */
+#alertIcon i {
+  font-size: 22px;
+  color: #fff;
+}
+
+.alert.warning #alertIcon i {
+  color: #333;
+}
+
+#alertMessage {
+  flex-grow: 1;
+  line-height: 1.3;
+}

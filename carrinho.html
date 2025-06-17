@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Seu Carrinho</title>
     <link rel="stylesheet" href="css/carrinho.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/alerts.css">
 </head>
+
 <body>
     <!-- Header -->
     <div id="header"></div>
     <script>
         fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        })
-        .catch(error => console.error('Erro ao carregar o header:', error));
-        </script>
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o header:', error));
+    </script>
     <main>
         <div class="titulo-pagina">Seu carrinho</div>
         <div class="content">
@@ -50,11 +55,7 @@
                             <span>Gratuito</span>
                         </div>
                         <div class="cupom-container">
-                            <input
-                                type="text"
-                                id="input-cupom"
-                                placeholder="Digite o cupom de desconto"
-                            />
+                            <input type="text" id="input-cupom" placeholder="Digite o cupom de desconto" />
                             <button id="aplicar-cupom">Aplicar Cupom</button>
                             <p id="mensagem-cupom" style="color: red; display: none;">
                                 Cupom inválido!
@@ -71,8 +72,9 @@
         </div>
     </main>
 
+    <script src="js/alerts.js"></script>
     <script src="js/carrinho.js"></script>
     <script src="js/navbar.js"></script>
 </body>
-</html>
 
+</html>
